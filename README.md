@@ -15,3 +15,10 @@ install_github("sedzinfo/crypto")
 library(crypto)
 
 crypto()
+
+
+# Screenshots
+![Alt text](https://github.com/sedzinfo/crypto/blob/main/crypto1.png)
+![Alt text](https://github.com/sedzinfo/crypto/blob/main/crypto2.png)
+
+

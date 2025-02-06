@@ -21,7 +21,7 @@ crypto()
 ```
 
 # Screenshots
-![Alt text](https://github.com/sedzinfo/crypto/blob/main/crypto1.png)
-![Alt text](https://github.com/sedzinfo/crypto/blob/main/crypto2.png)
+![Alt text](https://github.com/sedzinfo/crypto/blob/main/screenshots/crypto1.png)
+![Alt text](https://github.com/sedzinfo/crypto/blob/main/screenshots/crypto2.png)
 
 

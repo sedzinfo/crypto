@@ -29,35 +29,20 @@ An interactive R Shiny application for visualizing cryptocurrency exchange rates
 - R (≥ 4.0.0) - [Download here](https://cran.r-project.org/)
 - RStudio IDE (recommended) - [Download here](https://posit.co/downloads/)
 
-## install R
+### install R
 installation instructions can be found here: https://cran.r-project.org/  
-## install RStudio IDE (optional but a good idea)  
+### install RStudio IDE (optional but a good idea)  
 installation instructions can be found here: https://posit.co/downloads/  
 
-open RStudio and type in the console:
-```
-install.packages("devtools")
-library(devtools)
-install_github("sedzinfo/crypto")
-```
-# Usage
-```
-library(crypto)
-crypto()
-```
-
 Open RStudio (or an R console) and run:
-
 ```r
 # Install devtools if you haven't already
 install.packages("devtools")
-
+library(devtools)
 # Install the crypto package from GitHub
-devtools::install_github("sedzinfo/crypto")
+install_github("sedzinfo/crypto")
 ```
-
 ### Usage
-
 Launch the Shiny app with just two lines of code:
 
 ```r

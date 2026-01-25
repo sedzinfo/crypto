@@ -96,16 +96,6 @@ All dependencies will be automatically installed with the package.
 
 Market data is provided by [CoinMarketCap](https://coinmarketcap.com/) through their API.
 
-## 👤 Author
-
-**Dimitrios Zacharatos**
-- Email: dzacharatos@yahoo.com
-- ORCID: [0000-0003-1789-8294](https://orcid.org/0000-0003-1789-8294)
-
-## 📄 License
-
-This project is licensed under the GPL (≥ 2) License - see the [LICENSE](LICENSE) file for details.
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/sedzinfo/crypto/issues).
@@ -124,6 +114,6 @@ If you find this project useful, please consider giving it a star on GitHub!
 ![Last Commit](https://img.shields.io/github/last-commit/sedzinfo/crypto)
 ![Contributors](https://img.shields.io/github/contributors/sedzinfo/crypto)
 ![License](https://img.shields.io/github/license/sedzinfo/crypto)
-![Release](https://img.shields.io/github/v/release/sedzinfo/crypto)
-![Workflow Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/crypto/main.yml)
+<!--![Release](https://img.shields.io/github/v/release/sedzinfo/crypto)-->
+<!--!![Workflow Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/crypto/main.yml)-->
 

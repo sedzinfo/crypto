@@ -20,9 +20,9 @@ An interactive R Shiny application for visualizing cryptocurrency exchange rates
 - **Market Metrics**: Comprehensive market data including market cap, dominance, and 24h/7d/30d/60d/90d price changes
 - **Color-Coded Performance**: Heat-map style coloring for quick visual identification of price movements
 
-## 🚀 Quick Start
+# 🚀 Quick Start
 
-# Installation Instructions
+## Installation Instructions
 
 ### Prerequisites
 
@@ -42,7 +42,7 @@ library(devtools)
 # Install the crypto package from GitHub
 install_github("sedzinfo/crypto")
 ```
-### Usage
+## Usage
 Launch the Shiny app with just two lines of code:
 
 ```r

@@ -16,6 +16,7 @@ directory <- dirname(rstudioapi::getActiveDocumentContext()$path)
 setwd(directory)
 # usethis::create_package("crypto")
 document()
+if ("crypto" %in% loadedNamespaces()) unloadNamespace("crypto") # an old version still loaded would make the reinstalled one look corrupt
 if ("crypto" %in% rownames(installed.packages())) remove.packages("crypto")
 install()
 library(crypto)

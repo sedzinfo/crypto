@@ -6,7 +6,7 @@
 #' @keywords crypto timeseries
 #' @export
 #' @examples
-#' crypto()
+#' if (interactive()) crypto()
 crypto<-function() {
   ##########################################################################################
   # LOAD

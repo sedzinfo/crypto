@@ -75,10 +75,10 @@ The application will open in your default web browser.
 ## 📸 Screenshots
 
 ### Cryptocurrency Price Chart
-![Crypto Price Analysis](https://github.com/sedzinfo/crypto/blob/main/screenshots/crypto1.png)
+![Crypto Price Analysis](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto1.png)
 
 ### Top 100 Market Overview
-![Market Data Table](https://github.com/sedzinfo/crypto/blob/main/screenshots/crypto2.png)
+![Market Data Table](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto2.png)
 
 ## 🔧 Dependencies
 

@@ -10,7 +10,7 @@ crypto()
 crypto
 }
 \examples{
-crypto()
+if (interactive()) crypto()
 }
 \keyword{crypto}
 \keyword{timeseries}

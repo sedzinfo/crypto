@@ -1,18 +1,12 @@
-# Crypto Time Series Analyzer 📈
+# Crypto Time Series Analyzer
 
 plot crypto exchange rate time series
-
-[![Stars](https://img.shields.io/github/stars/sedzinfo/crypto)](https://github.com/sedzinfo/crypto/stargazers)
-[![Forks](https://img.shields.io/github/forks/sedzinfo/crypto)](https://github.com/sedzinfo/crypto/network)
-[![License](https://img.shields.io/github/license/sedzinfo/crypto)](https://sedzinfo.github.io/crypto/LICENSE)
-[![Last
-Commit](https://img.shields.io/github/last-commit/sedzinfo/crypto)](https://github.com/sedzinfo/crypto/commits)
 
 An interactive R Shiny application for visualizing cryptocurrency
 exchange rates and market data with real-time updates and historical
 time series analysis.
 
-## ✨ Features
+## Features
 
 - **Interactive Candlestick Charts**: Visualize cryptocurrency price
   movements with open, high, low, and close data
@@ -30,7 +24,7 @@ time series analysis.
 - **Color-Coded Performance**: Heat-map style coloring for quick visual
   identification of price movements
 
-# 🚀 Quick Start
+# Quick Start
 
 ## Installation Instructions
 
@@ -71,7 +65,7 @@ crypto()
 
 The application will open in your default web browser.
 
-## 📊 Application Overview
+## Application Overview
 
 ### Timeseries Tab
 
@@ -93,7 +87,7 @@ The application will open in your default web browser.
   - Market cap and market dominance
   - Fully diluted market cap
 
-## 📸 Screenshots
+## Screenshots
 
 ### Cryptocurrency Price Chart
 
@@ -109,7 +103,7 @@ Table](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto2.png)
 
 Market Data Table
 
-## 🔧 Dependencies
+## Dependencies
 
 This package relies on several R packages:
 
@@ -121,7 +115,7 @@ This package relies on several R packages:
 
 All dependencies will be automatically installed with the package.
 
-## 📝 Data Source
+## Data Source
 
 Market data is provided by [CoinMarketCap](https://coinmarketcap.com/)
 through their API.
@@ -130,11 +124,6 @@ through their API.
 
 Contributions, issues, and feature requests are welcome! Feel free to
 check the [issues page](https://github.com/sedzinfo/crypto/issues).
-
-## ⭐ Show Your Support
-
-If you find this project useful, please consider giving it a star on
-GitHub!
 
 ------------------------------------------------------------------------
 

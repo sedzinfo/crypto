@@ -6,8 +6,21 @@
 # R CMD build crypto --resave-data
 library(devtools)
 library(roxygen2)
-directory<-paste0(dirname(rstudioapi::getActiveDocumentContext()$path),"/")
+rm(list = ls())
+graphics.off()
+cat("\014")
+##########################################################################################
+# FUNCTIONS PACKAGE
+##########################################################################################
+directory <- dirname(rstudioapi::getActiveDocumentContext()$path)
 setwd(directory)
 # usethis::create_package("crypto")
 document()
+if ("crypto" %in% rownames(installed.packages())) remove.packages("crypto")
 install()
+library(crypto)
+
+pkgdown::build_site(getwd())
+system("R CMD Rd2pdf . --force --no-preview --output=crypto.pdf")
+if (.Platform$OS.type == "windows") shell.exec("crypto.pdf") else system("evince crypto.pdf")
+system("R CMD build . --resave-data")

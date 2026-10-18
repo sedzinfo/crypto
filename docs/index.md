@@ -1,4 +1,4 @@
-# Crypto Time Series Analyzer 📈
+# Crypto Time Series Analyzer
 
 plot crypto exchange rate time series
 

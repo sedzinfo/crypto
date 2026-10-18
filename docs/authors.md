@@ -7,12 +7,17 @@
 
 ## Citation
 
+Source:
+[`DESCRIPTION`](https://github.com/sedzinfo/crypto/blob/HEAD/DESCRIPTION)
+
 Zacharatos D (2026). *crypto: What the Package Does (One Line, Title
-Case)*. R package version 0.0.0.9000.
+Case)*. R package version 0.0.0.9000,
+<https://sedzinfo.github.io/crypto/>.
 
     @Manual{,
       title = {crypto: What the Package Does (One Line, Title Case)},
       author = {Dimitrios Zacharatos},
       year = {2026},
       note = {R package version 0.0.0.9000},
+      url = {https://sedzinfo.github.io/crypto/},
     }

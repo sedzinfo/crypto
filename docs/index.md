@@ -1,4 +1,4 @@
-# Crypto Time Series Analyzer
+# Crypto Time Series Analyzer 📈
 
 plot crypto exchange rate time series
 
@@ -120,7 +120,7 @@ All dependencies will be automatically installed with the package.
 Market data is provided by [CoinMarketCap](https://coinmarketcap.com/)
 through their API.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to
 check the [issues page](https://github.com/sedzinfo/crypto/issues).
@@ -130,4 +130,5 @@ check the [issues page](https://github.com/sedzinfo/crypto/issues).
 ![Stars](https://img.shields.io/github/stars/sedzinfo/crypto)![Watchers](https://img.shields.io/github/watchers/sedzinfo/crypto)![Repo
 Size](https://img.shields.io/github/repo-size/sedzinfo/crypto)![Open
 Issues](https://img.shields.io/github/issues/sedzinfo/crypto)![Forks](https://img.shields.io/github/forks/sedzinfo/crypto)![Last
-Commit](https://img.shields.io/github/last-commit/sedzinfo/crypto)![Contributors](https://img.shields.io/github/contributors/sedzinfo/crypto)![License](https://img.shields.io/github/license/sedzinfo/crypto)
+Commit](https://img.shields.io/github/last-commit/sedzinfo/crypto)![Contributors](https://img.shields.io/github/contributors/sedzinfo/crypto)![License](https://img.shields.io/github/license/sedzinfo/crypto)![Workflow
+Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/crypto/build-tarball.yml)

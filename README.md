@@ -114,6 +114,5 @@ If you find this project useful, please consider giving it a star on GitHub!
 ![Last Commit](https://img.shields.io/github/last-commit/sedzinfo/crypto)
 ![Contributors](https://img.shields.io/github/contributors/sedzinfo/crypto)
 ![License](https://img.shields.io/github/license/sedzinfo/crypto)
-<!--![Release](https://img.shields.io/github/v/release/sedzinfo/crypto)-->
-<!--!![Workflow Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/crypto/main.yml)-->
+![Workflow Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/crypto/build-tarball.yml)
 

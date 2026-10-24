@@ -1,0 +1,561 @@
+\nonstopmode{}
+\documentclass[a4paper]{book}
+\usepackage[times,inconsolata,hyper]{Rd}
+\usepackage{makeidx}
+\makeatletter\@ifl@t@r\fmtversion{2018/04/01}{}{\usepackage[utf8]{inputenc}}\makeatother
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Package `crypto'}}
+\par\bigskip{\large \today}
+\end{center}
+\ifthenelse{\boolean{Rd@use@hyper}}{\hypersetup{pdftitle = {crypto: Interactive Cryptocurrency Time Series and Market Data Explorer}}}{}
+\ifthenelse{\boolean{Rd@use@hyper}}{\hypersetup{pdfauthor = {Dimitrios Zacharatos}}}{}
+\begin{description}
+\raggedright{}
+\item[Title]\AsIs{Interactive Cryptocurrency Time Series and Market Data Explorer}
+\item[Version]\AsIs{0.1.0}
+\item[Maintainer]\AsIs{Dimitrios Zacharatos }\email{dzacharatos@yahoo.com}\AsIs{}
+\item[Description]\AsIs{A 'shiny' application for exploring cryptocurrency exchange rates.
+Plots interactive candlestick and volume charts of historical prices since
+2013 for any active cryptocurrency, and shows a table of the top 100
+cryptocurrencies by market capitalisation with price changes over 24 hours
+to 90 days, market dominance and fully diluted market cap. Also compares
+normalized prices of several coins, and shows a market cap treemap and a
+calendar of monthly returns. Market data is retrieved from
+'CoinMarketCap'.}
+\item[Imports]\AsIs{bslib,
+cachem,
+coinmarketcapr,
+crypto2,
+DT,
+plotly,
+shiny,
+shinycssloaders,
+shinyWidgets,
+stats,
+tools,
+utils}
+\item[Suggests]\AsIs{testthat (>= 3.0.0)}
+\item[Config/testthat/edition]\AsIs{3}
+\item[License]\AsIs{GPL-3}
+\item[URL]\AsIs{}\url{https://sedzinfo.github.io/crypto/}\AsIs{, }\url{https://github.com/sedzinfo/crypto}\AsIs{}
+\item[BugReports]\AsIs{}\url{https://github.com/sedzinfo/crypto/issues}\AsIs{}
+\item[Encoding]\AsIs{UTF-8}
+\item[Roxygen]\AsIs{list(markdown = TRUE)}
+\item[Config/roxygen2/version]\AsIs{8.1.1}
+\end{description}
+\Rdcontents{Contents}
+\HeaderA{crypto}{Launch the Crypto Time Series Analyzer}{crypto}
+\keyword{crypto}{crypto}
+\keyword{timeseries}{crypto}
+%
+\begin{Description}
+Starts an interactive 'shiny' application for exploring
+cryptocurrency exchange rates and market data from 'CoinMarketCap'.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+crypto(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), ...)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{api\_key}] A 'CoinMarketCap' API key, needed for the market listings.
+By default it is read from the \code{COINMARKETCAP\_APIKEY} environment
+variable, which can be set in \code{.Renviron}.
+
+\item[\code{...}] Further arguments passed to \code{\LinkA{shiny::shinyApp()}{shiny::shinyApp()}}, for example
+\code{options = list(port = 8080)}.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Details}
+The application has the following tabs:
+\begin{description}
+
+\item[Timeseries] Candlestick chart of daily open, high, low and close
+prices in USD since 2013 for any active cryptocurrency, with its 50-
+and 200-day moving averages, and charts of the volume and of the
+drawdown (how far the price is below its all-time high) underneath.
+\item[Top 100] Table of the top 100 cryptocurrencies by market cap with
+price, volume, 24h to 90d price changes, market dominance and fully
+diluted market cap.
+\item[Compare] Close prices of up to 10 coins, normalized to 100 on the
+first date all of them have data.
+\item[Treemap] Top 100 coins sized by market cap and colored by 24h
+change.
+\item[Returns calendar] Monthly returns by year for the coin selected
+in the Timeseries tab.
+
+\end{description}
+
+Market listings are downloaded when the app starts and refreshed every 10
+minutes. Historical prices are downloaded on demand with
+\code{\LinkA{crypto2::crypto\_history()}{crypto2::crypto.Rul.history()}} and kept on disk between R sessions, so
+after the first download only the days since the last one are fetched.
+An internet connection is required. When 'CoinMarketCap' limits the requests,
+crypto2 prints "Retrying in 60 seconds" and the chart appears about a
+minute later.
+\end{Details}
+%
+\begin{Value}
+A \code{\LinkA{shiny::shinyApp()}{shiny::shinyApp()}} object. Printing it, or calling \code{crypto()} at
+the console, opens the app in the browser.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+if (interactive()) crypto()
+
+# with the API key passed directly, on a fixed port
+if (interactive()) crypto(api_key = "your-api-key", options = list(port = 8080))
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{drawdown}{Drawdown of prices}{drawdown}
+%
+\begin{Description}
+How far each close is below the highest close up to that day, the
+all-time high so far, in percent: 0 on a new high and -50 at half of it.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+drawdown(close)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{close}] Numeric vector of close prices, sorted by date.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A numeric vector as long as \code{close}, from -100 to 0.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+drawdown(c(100, 120, 90, 130, 65))
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{get\_coins}{List the active coins}{get.Rul.coins}
+%
+\begin{Description}
+Downloads the list of the active coins tracked by 'CoinMarketCap' and
+keeps it on disk for a day (see \code{\LinkA{disk\_cache()}{disk.Rul.cache}}). When the download fails,
+the kept list is used. Its \code{name\_symbol} column holds the labels, such as
+"Bitcoin (BTC)", that pick coins in \code{\LinkA{get\_history()}{get.Rul.history}}.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_coins()
+\end{verbatim}
+\end{Usage}
+%
+\begin{Value}
+The \code{\LinkA{crypto2::crypto\_list()}{crypto2::crypto.Rul.list()}} data frame, with a \code{name\_symbol}
+column.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+coins <- get_coins()
+head(coins$name_symbol)
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{get\_history}{Get the daily price history of coins}{get.Rul.history}
+%
+\begin{Description}
+Returns the daily USD prices of one or more coins from 'CoinMarketCap'.
+Each coin's history is kept on disk between R sessions, and once it is
+more than an hour old only the days since its last day are downloaded, so
+calls are fast and stay below the request limit of 'CoinMarketCap'. When
+that limit is hit, crypto2 waits a minute and tries again.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_history(labels, start_date = Sys.Date() - 365, coins = get_coins())
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{labels}] Character vector of coin labels, such as "Bitcoin (BTC)",
+from the \code{name\_symbol} column of \code{\LinkA{get\_coins()}{get.Rul.coins}}.
+
+\item[\code{start\_date}] Date. The first day to get, a year ago by default.
+
+\item[\code{coins}] Data frame of coins from \code{\LinkA{get\_coins()}{get.Rul.coins}}, to look the labels up.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A data frame with one row per coin and day, sorted by coin and
+date, with the \code{open}, \code{high}, \code{low}, \code{close} and \code{volume} columns,
+\code{timestamp} as a Date and the \code{name\_symbol} label. Labels that match no
+coin are left out with a message, and \code{NULL} is returned when no label
+matches or nothing could be downloaded.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+btc <- get_history("Bitcoin (BTC)", as.Date("2020-01-01"))
+plot_timeseries(btc)
+
+history <- get_history(c("Bitcoin (BTC)", "Ethereum (ETH)"))
+plot_compare(normalize_prices(history))
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{get\_listings}{Get the latest market listings}{get.Rul.listings}
+%
+\begin{Description}
+Returns the listings of the coins by market cap, with their price, volume,
+price changes from 24 hours to 90 days, market cap and dominance in USD.
+The listings are downloaded again when they are older than 10 minutes,
+and the download is shared by all sessions and app runs in the same R
+process, so the API is called at most once in that time.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+get_listings()
+\end{verbatim}
+\end{Usage}
+%
+\begin{Details}
+The listings need a 'CoinMarketCap' API key in the \code{COINMARKETCAP\_APIKEY}
+environment variable, see the README. The first download lets errors
+through. When a later download fails, the previous listings and their
+time are kept, so the time stays truthful.
+\end{Details}
+%
+\begin{Value}
+A list with \code{data}, a data frame with one row per coin sorted by
+market cap, and \code{time}, when it was downloaded.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+listings <- get_listings()
+listings$time
+head(listings$data)
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{listings\_table}{Table of the market listings}{listings.Rul.table}
+%
+\begin{Description}
+A sortable table with 100 rows per page and numbers rounded to 2
+decimals, showing the price in dollars and the price changes in percent.
+Losses are shaded red and gains green, more strongly the larger the
+change, in steps of 0.1 percentile from the 5th to the 95th. Changes near
+zero keep the table's own background, so the table suits the light and the
+dark mode.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+listings_table(listings)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{listings}] The \code{data} of \code{\LinkA{get\_listings()}{get.Rul.listings}}.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A DT datatable.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+listings_table(get_listings()$data)
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{monthly\_returns}{Monthly returns of a coin}{monthly.Rul.returns}
+%
+\begin{Description}
+Each month's return is its last close relative to the last close of the
+month before, in percent. The first month, and the months still to come,
+are \code{NA}.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+monthly_returns(history)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{history}] Price history of one coin from \code{\LinkA{get\_history()}{get.Rul.history}}, with
+\code{timestamp} and \code{close} columns, sorted by date.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A year by month matrix of returns in percent, rounded to 2
+decimals, with the years as row names and \code{month.abb} as column names.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+history <- data.frame(
+  timestamp = as.Date(c("2024-01-31", "2024-02-29", "2024-03-31")),
+  close = c(100, 110, 121)
+)
+monthly_returns(history)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{moving\_average}{Moving average of prices}{moving.Rul.average}
+%
+\begin{Description}
+The simple moving average: each day's value is the mean of the last
+\code{days} closes, that day included, so the first \code{days - 1} days have none.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+moving_average(close, days)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{close}] Numeric vector of close prices, sorted by date.
+
+\item[\code{days}] Number of days to average, such as 50 or 200.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A numeric vector as long as \code{close}, \code{NA} for the first
+\code{days - 1} days, and all \code{NA} when there are fewer than \code{days} closes,
+as for a coin younger than the average.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+moving_average(c(1, 2, 3, 4, 5), days = 3)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{normalize\_prices}{Normalize close prices to 100}{normalize.Rul.prices}
+%
+\begin{Description}
+Every coin starts at 100 on the first date on which all of them have data,
+so their lines can be compared directly: 150 means the price rose by half
+since that date.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+normalize_prices(history)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{history}] Price history from \code{\LinkA{get\_history()}{get.Rul.history}}, with \code{name\_symbol},
+\code{timestamp} and \code{close} columns, sorted by coin and date.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+\code{history} from the first common date on, with an \code{index} column.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+history <- data.frame(
+  name_symbol = rep(c("Alpha (A)", "Beta (B)"), each = 3),
+  timestamp = rep(as.Date("2024-01-01") + 0:2, 2),
+  close = c(10, 11, 12, 200, 180, 220)
+)
+normalize_prices(history)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{plot\_compare}{Line chart of normalized close prices}{plot.Rul.compare}
+%
+\begin{Description}
+One line per coin, with buttons that switch the y axis between a linear
+and a log scale.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+plot_compare(prices, mode = "light")
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{prices}] Prices from \code{\LinkA{normalize\_prices()}{normalize.Rul.prices}}.
+
+\item[\code{mode}] \code{"light"} (the default) or \code{"dark"}, to suit a light or dark
+page.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A plotly object.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+history <- get_history(c("Bitcoin (BTC)", "Ethereum (ETH)", "Solana (SOL)"))
+plot_compare(normalize_prices(history))
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{plot\_returns\_calendar}{Heatmap of monthly returns by year}{plot.Rul.returns.Rul.calendar}
+%
+\begin{Description}
+Months are colored from red to green by their return. The color limit is
+the 95th percentile of the absolute returns, so a few extreme months do
+not wash out the rest.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+plot_returns_calendar(calendar, label = NULL, mode = "light")
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{calendar}] Matrix from \code{\LinkA{monthly\_returns()}{monthly.Rul.returns}}.
+
+\item[\code{label}] Label of the coin for the title, or \code{NULL} for none.
+
+\item[\code{mode}] \code{"light"} (the default) or \code{"dark"}, to suit a light or dark
+page.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A plotly object.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+btc <- get_history("Bitcoin (BTC)", as.Date("2013-04-29"))
+plot_returns_calendar(monthly_returns(btc), "Bitcoin (BTC)")
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{plot\_timeseries}{Candlestick chart of a coin's prices}{plot.Rul.timeseries}
+%
+\begin{Description}
+Plots the daily open, high, low and close prices, with a line through the
+close, its moving averages, date range buttons and a range slider.
+Underneath, smaller charts show the trading volume and the drawdown: how
+far the price is below its all-time high so far. A click on a legend entry
+hides or shows that line.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+plot_timeseries(
+  history,
+  mode = "light",
+  averages = c(50, 200),
+  show_drawdown = TRUE
+)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{history}] Price history of one coin from \code{\LinkA{get\_history()}{get.Rul.history}}. The
+averages and the drawdown use the whole history, so pass all of it and
+zoom with the range buttons.
+
+\item[\code{mode}] \code{"light"} (the default) or \code{"dark"}, to suit a light or dark
+page.
+
+\item[\code{averages}] Days of the moving averages to draw (see
+\code{\LinkA{moving\_average()}{moving.Rul.average}}), or \code{NULL} for none.
+
+\item[\code{show\_drawdown}] \code{TRUE} to add the drawdown chart (see \code{\LinkA{drawdown()}{drawdown}}).
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A plotly object.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+btc <- get_history("Bitcoin (BTC)", as.Date("2013-04-29"))
+plot_timeseries(btc)
+
+# shorter averages, and no drawdown chart
+plot_timeseries(btc, averages = c(20, 100), show_drawdown = FALSE)
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\HeaderA{plot\_treemap}{Treemap of the top 100 coins}{plot.Rul.treemap}
+%
+\begin{Description}
+Each box is sized by market cap and colored from red to green by the 24h
+price change. The color limits are the 5th and 95th percentiles of the
+changes, so a few outliers do not wash out the rest. Coins without a 24h
+change are labelled n/a and colored white.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+plot_treemap(listings, mode = "light")
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{listings}] The \code{data} of \code{\LinkA{get\_listings()}{get.Rul.listings}}.
+
+\item[\code{mode}] \code{"light"} (the default) or \code{"dark"}, to suit a light or dark
+page.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+A plotly object.
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+## Not run: 
+plot_treemap(get_listings()$data)
+
+## End(Not run)
+\end{ExampleCode}
+\end{Examples}
+\printindex{}
+\end{document}

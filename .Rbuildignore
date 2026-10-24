@@ -11,3 +11,7 @@
 ^LICENSE$
 ^screenshots$
 ^\.Rd2pdf.*$
+^app\.R$
+^\.rscignore$
+^rsconnect$
+^\.Renviron$

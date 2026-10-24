@@ -5,3 +5,5 @@
 # left behind by a failed R CMD Rd2pdf, and by R CMD check
 .Rd2pdf*/
 *.Rcheck/
+# holds the CoinMarketCap API key that is uploaded to shinyapps.io with app.R
+.Renviron

@@ -1,14 +1,36 @@
 Package: crypto
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Interactive Cryptocurrency Time Series and Market Data Explorer
+Version: 0.1.0
 Authors@R: person("Dimitrios", "Zacharatos", , "dzacharatos@yahoo.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1789-8294"))
 Maintainer: Dimitrios Zacharatos <dzacharatos@yahoo.com>
-Depends: plotly, shiny, coinmarketcapr, crypto2, shinyWidgets
-Description: What the package does (one paragraph).
+Description: A 'shiny' application for exploring cryptocurrency exchange rates.
+    Plots interactive candlestick and volume charts of historical prices since
+    2013 for any active cryptocurrency, and shows a table of the top 100
+    cryptocurrencies by market capitalisation with price changes over 24 hours
+    to 90 days, market dominance and fully diluted market cap. Also compares
+    normalized prices of several coins, and shows a market cap treemap and a
+    calendar of monthly returns. Market data is retrieved from
+    'CoinMarketCap'.
+Imports:
+    bslib,
+    cachem,
+    coinmarketcapr,
+    crypto2,
+    DT,
+    plotly,
+    shiny,
+    shinycssloaders,
+    shinyWidgets,
+    stats,
+    tools,
+    utils
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
 License: GPL-3
 URL: https://sedzinfo.github.io/crypto/, https://github.com/sedzinfo/crypto
 BugReports: https://github.com/sedzinfo/crypto/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1

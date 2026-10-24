@@ -13,9 +13,32 @@ code:
 
 destination: docs
 
+reference:
+  - title: App
+    contents:
+      - crypto
+  - title: Data
+    contents:
+      - get_coins
+      - get_history
+      - get_listings
+  - title: Calculations
+    contents:
+      - normalize_prices
+      - monthly_returns
+      - moving_average
+      - drawdown
+  - title: Charts and tables
+    contents:
+      - plot_timeseries
+      - plot_compare
+      - plot_returns_calendar
+      - plot_treemap
+      - listings_table
+
 navbar:
   structure:
-    left: [intro, reference, articles]
+    left: [intro, reference, articles, news]
     right: [sedzinfo, github]
   components:
     sedzinfo:

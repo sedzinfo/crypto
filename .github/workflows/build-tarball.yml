@@ -5,6 +5,8 @@ on:
     branches: [ "main" ]
     paths:                                        # only when the package itself changes
       - "R/**"
+      - "inst/**"
+      - "tests/**"
       - "man/**"
       - "DESCRIPTION"
       - "NAMESPACE"

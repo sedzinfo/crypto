@@ -25,3 +25,5 @@ pkgdown::build_site(getwd())
 system("R CMD Rd2pdf . --force --no-preview --output=crypto.pdf")
 if (.Platform$OS.type == "windows") shell.exec("crypto.pdf") else system("evince crypto.pdf")
 system("R CMD build . --resave-data")
+
+if (interactive()) crypto()

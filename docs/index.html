@@ -5,16 +5,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>What the Package Does (One Line, Title Case) • crypto</title>
+<title>Interactive Cryptocurrency Time Series and Market Data Explorer • crypto</title>
 <!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="katex-auto.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
-<meta property="og:title" content="What the Package Does (One Line, Title Case)">
-<meta name="description" content="What the package does (one paragraph).">
-<meta property="og:description" content="What the package does (one paragraph).">
+<meta property="og:title" content="Interactive Cryptocurrency Time Series and Market Data Explorer">
+<meta name="description" content="A shiny application for exploring cryptocurrency exchange rates. Plots interactive candlestick and volume charts of historical prices since 2013 for any active cryptocurrency, and shows a table of the top 100 cryptocurrencies by market capitalisation with price changes over 24 hours to 90 days, market dominance and fully diluted market cap. Also compares normalized prices of several coins, and shows a market cap treemap and a calendar of monthly returns. Market data is retrieved from CoinMarketCap.">
+<meta property="og:description" content="A shiny application for exploring cryptocurrency exchange rates. Plots interactive candlestick and volume charts of historical prices since 2013 for any active cryptocurrency, and shows a table of the top 100 cryptocurrencies by market capitalisation with price changes over 24 hours to 90 days, market dominance and fully diluted market cap. Also compares normalized prices of several coins, and shows a market cap treemap and a calendar of monthly returns. Market data is retrieved from CoinMarketCap.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -24,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="index.html">crypto</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +34,7 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><a class="external-link nav-link" href="https://sedzinfo.github.io/" aria-label="sedzinfo home page"><span class="fa fas fa-house"></span> home</a></li>
@@ -57,19 +58,31 @@
 <li>
 <strong>Interactive Candlestick Charts</strong>: Visualize cryptocurrency price movements with open, high, low, and close data</li>
 <li>
-<strong>Real-Time Market Data</strong>: Access live cryptocurrency prices and market statistics for the top 100 cryptocurrencies</li>
+<strong>Real-Time Market Data</strong>: Live prices and market statistics for the top 100 cryptocurrencies, refreshed every 10 minutes</li>
 <li>
 <strong>Historical Analysis</strong>: View historical price data dating back to 2013</li>
 <li>
 <strong>Advanced Filtering</strong>: Live search functionality to quickly find any cryptocurrency</li>
 <li>
-<strong>Multiple Timeframes</strong>: Flexible date range selectors (1 day to all-time) with custom range slider</li>
+<strong>Multiple Timeframes</strong>: Flexible date range selectors (7 days to all-time) with custom range slider</li>
 <li>
 <strong>Volume Analysis</strong>: Dedicated volume charts to track trading activity</li>
+<li>
+<strong>Moving Averages and Drawdown</strong>: 50- and 200-day moving averages on the price chart, and a chart of how far the price is below its all-time high</li>
 <li>
 <strong>Market Metrics</strong>: Comprehensive market data including market cap, dominance, and 24h/7d/30d/60d/90d price changes</li>
 <li>
 <strong>Color-Coded Performance</strong>: Heat-map style coloring for quick visual identification of price movements</li>
+<li>
+<strong>Coin Comparison</strong>: Compare up to 10 coins, with their prices normalized to start at 100</li>
+<li>
+<strong>Market Treemap</strong>: The top 100 coins sized by market cap and colored by their 24h change</li>
+<li>
+<strong>Returns Calendar</strong>: Monthly returns by year for any coin</li>
+<li>
+<strong>Light and Dark Mode</strong>: Switch with the toggle in the navigation bar</li>
+<li>
+<strong>CSV Downloads</strong>: Download the data behind every tab as a CSV file</li>
 </ul>
 </div>
 </div>
@@ -105,13 +118,54 @@ installation instructions can be found here: <a href="https://posit.co/downloads
 </div>
 </div>
 <div class="section level2">
+<h2 id="coinmarketcap-api-key">CoinMarketCap API key<a class="anchor" aria-label="anchor" href="#coinmarketcap-api-key"></a>
+</h2>
+<p>The market data comes from the CoinMarketCap API, which needs a free API key.</p>
+<ol style="list-style-type: decimal">
+<li><p>Sign up at <a href="https://coinmarketcap.com/api/" class="external-link">coinmarketcap.com/api</a> and copy your API key.</p></li>
+<li>
+<p>Open your <code>.Renviron</code> file:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</li>
+<li>
+<p>Add this line with your own key, save the file and restart R:</p>
+<pre><code><span><span class="va">COINMARKETCAP_APIKEY</span><span class="op">=</span><span class="va">your</span><span class="op">-</span><span class="va">api</span><span class="op">-</span><span class="va">key</span></span></code></pre>
+</li>
+</ol>
+<p>You can also pass the key directly with <code>crypto(api_key = "your-api-key")</code>. Keep the key out of your code and out of Git, because anyone who has it can use your API credits.</p>
+</div>
+<div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>Launch the Shiny app with just two lines of code:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sedzinfo.github.io/crypto/">crypto</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/crypto.html">crypto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>The application will open in your default web browser.</p>
+<p>The application will open in your default web browser. Any <a href="https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html" class="external-link"><code>shiny::shinyApp()</code></a> option can be passed on, for example <code>crypto(options = list(port = 8080))</code>.</p>
+</div>
+<div class="section level2">
+<h2 id="using-the-functions-in-r">Using the Functions in R<a class="anchor" aria-label="anchor" href="#using-the-functions-in-r"></a>
+</h2>
+<p>The data, calculations and charts of the app are also available as functions, for scripts and R Markdown reports:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sedzinfo.github.io/crypto/">crypto</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># one coin since 2020: candlestick chart and monthly returns</span></span>
+<span><span class="va">btc</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_history.html">get_history</a></span><span class="op">(</span><span class="st">"Bitcoin (BTC)"</span>, <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="st">"2020-01-01"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_timeseries.html">plot_timeseries</a></span><span class="op">(</span><span class="va">btc</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_timeseries.html">plot_timeseries</a></span><span class="op">(</span><span class="va">btc</span>, averages <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span>   <span class="co"># other moving averages</span></span>
+<span><span class="fu"><a href="reference/plot_returns_calendar.html">plot_returns_calendar</a></span><span class="op">(</span><span class="fu"><a href="reference/monthly_returns.html">monthly_returns</a></span><span class="op">(</span><span class="va">btc</span><span class="op">)</span>, <span class="st">"Bitcoin (BTC)"</span>, mode <span class="op">=</span> <span class="st">"dark"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># several coins over the last year, starting at 100</span></span>
+<span><span class="va">history</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_history.html">get_history</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Bitcoin (BTC)"</span>, <span class="st">"Ethereum (ETH)"</span>, <span class="st">"Solana (SOL)"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_compare.html">plot_compare</a></span><span class="op">(</span><span class="fu"><a href="reference/normalize_prices.html">normalize_prices</a></span><span class="op">(</span><span class="va">history</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># the top 100 coins, which needs the API key</span></span>
+<span><span class="va">listings</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_listings.html">get_listings</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">data</span></span>
+<span><span class="fu"><a href="reference/plot_treemap.html">plot_treemap</a></span><span class="op">(</span><span class="va">listings</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/listings_table.html">listings_table</a></span><span class="op">(</span><span class="va">listings</span><span class="op">)</span></span></code></pre></div>
+<p>Coins are picked by their label, such as <code>"Bitcoin (BTC)"</code>, and <code>get_coins()$name_symbol</code> lists all of them. Downloads are reused: the price histories and the list of coins are kept on disk between R sessions (see <a href="#data-source">Data Source</a>), and the listings for 10 minutes.</p>
 </div>
 <div class="section level2">
 <h2 id="application-overview">Application Overview<a class="anchor" aria-label="anchor" href="#application-overview"></a>
@@ -125,13 +179,15 @@ installation instructions can be found here: <a href="https://posit.co/downloads
 <li>Interactive chart with zoom, pan, and hover tooltips</li>
 <li>Built-in date range selector with preset options</li>
 <li>Volume chart synchronized with the main price chart</li>
+<li>50- and 200-day moving averages; click a legend entry to hide or show a line</li>
+<li>Drawdown chart: how far the price is below its all-time high</li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="top-100-tab">Top 100 Tab<a class="anchor" aria-label="anchor" href="#top-100-tab"></a>
 </h3>
 <ul>
-<li>Real-time data table of the top 100 cryptocurrencies by market cap</li>
+<li>Data table of the top 100 cryptocurrencies by market cap, refreshed every 10 minutes, with the time of the last update</li>
 <li>Sortable columns for easy comparison</li>
 <li>Color-coded performance indicators for quick insights</li>
 <li>Key metrics including:
@@ -145,6 +201,29 @@ installation instructions can be found here: <a href="https://posit.co/downloads
 </li>
 </ul>
 </div>
+<div class="section level3">
+<h3 id="compare-tab">Compare Tab<a class="anchor" aria-label="anchor" href="#compare-tab"></a>
+</h3>
+<ul>
+<li>Pick up to 10 coins and a start date</li>
+<li>Each coin’s close price starts at 100 on the first date all of them have data, so their performance can be compared directly</li>
+<li>Switch between a linear and a log scale</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="treemap-tab">Treemap Tab<a class="anchor" aria-label="anchor" href="#treemap-tab"></a>
+</h3>
+<ul>
+<li>The top 100 coins, each box sized by market cap and colored from red to green by its 24h change</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="returns-calendar-tab">Returns Calendar Tab<a class="anchor" aria-label="anchor" href="#returns-calendar-tab"></a>
+</h3>
+<ul>
+<li>Monthly returns by year for the coin selected in the Timeseries tab</li>
+</ul>
+</div>
 </div>
 <div class="section level2">
 <h2 id="screenshots">Screenshots<a class="anchor" aria-label="anchor" href="#screenshots"></a>
@@ -153,14 +232,35 @@ installation instructions can be found here: <a href="https://posit.co/downloads
 <h3 id="cryptocurrency-price-chart">Cryptocurrency Price Chart<a class="anchor" aria-label="anchor" href="#cryptocurrency-price-chart"></a>
 </h3>
 <div class="float">
-<img src="https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto1.png" alt="Crypto Price Analysis"><div class="figcaption">Crypto Price Analysis</div>
+<img src="https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto1.png" alt="Candlestick and volume chart of Bitcoin since 2013"><div class="figcaption">Candlestick and volume chart of Bitcoin since 2013</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="top-100-market-overview">Top 100 Market Overview<a class="anchor" aria-label="anchor" href="#top-100-market-overview"></a>
 </h3>
 <div class="float">
-<img src="https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto2.png" alt="Market Data Table"><div class="figcaption">Market Data Table</div>
+<img src="https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto2.png" alt="Table of the top 100 coins with color-coded price changes"><div class="figcaption">Table of the top 100 coins with color-coded price changes</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="coin-comparison">Coin Comparison<a class="anchor" aria-label="anchor" href="#coin-comparison"></a>
+</h3>
+<div class="float">
+<img src="https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto3.png" alt="Close prices of Bitcoin, Ethereum and Tether normalized to 100"><div class="figcaption">Close prices of Bitcoin, Ethereum and Tether normalized to 100</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="market-treemap-dark-mode">Market Treemap (dark mode)<a class="anchor" aria-label="anchor" href="#market-treemap-dark-mode"></a>
+</h3>
+<div class="float">
+<img src="https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto4.png" alt="Treemap of the top 100 coins sized by market cap and colored by 24h change"><div class="figcaption">Treemap of the top 100 coins sized by market cap and colored by 24h change</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="returns-calendar-dark-mode">Returns Calendar (dark mode)<a class="anchor" aria-label="anchor" href="#returns-calendar-dark-mode"></a>
+</h3>
+<div class="float">
+<img src="https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto5.png" alt="Monthly returns of Bitcoin by year"><div class="figcaption">Monthly returns of Bitcoin by year</div>
 </div>
 </div>
 </div>
@@ -172,9 +272,15 @@ installation instructions can be found here: <a href="https://posit.co/downloads
 <li>
 <code>shiny</code> - Web application framework</li>
 <li>
+<code>bslib</code> - Bootstrap 5 theme and the light/dark mode toggle</li>
+<li>
 <code>plotly</code> - Interactive plotting</li>
 <li>
+<code>DT</code> - Interactive tables</li>
+<li>
 <code>shinyWidgets</code> - Enhanced UI widgets</li>
+<li>
+<code>shinycssloaders</code> - Loading spinners</li>
 <li>
 <code>crypto2</code> - Cryptocurrency historical data</li>
 <li>
@@ -186,13 +292,72 @@ installation instructions can be found here: <a href="https://posit.co/downloads
 <h2 id="data-source">Data Source<a class="anchor" aria-label="anchor" href="#data-source"></a>
 </h2>
 <p>Market data is provided by <a href="https://coinmarketcap.com/" class="external-link">CoinMarketCap</a> through their API.</p>
+<p>Price histories are downloaded with <a href="https://github.com/sstoeckl/crypto2" class="external-link">crypto2</a> and kept on disk between R sessions, in the folder given by <code>tools::R_user_dir("crypto", "cache")</code>. CoinMarketCap sends at most 400 days per request, so the first download of a coin’s full history takes about 13 requests; after that, only the days since the last download are fetched, in a single request. To keep the downloads somewhere else, set <code>options(crypto.cache_dir = "path/to/folder")</code>, and delete the folder to start over.</p>
+<p>CoinMarketCap pauses clients that send too many requests in a short time. When that happens the R console shows <code>Retrying in 60 seconds</code> and the chart appears about a minute later.</p>
+</div>
+<div class="section level2">
+<h2 id="development">Development<a class="anchor" aria-label="anchor" href="#development"></a>
+</h2>
+<p>The package follows the layout of a <a href="https://thinkr-open.github.io/golem/" class="external-link">golem</a> app, without depending on golem:</p>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr>
+<th>File</th>
+<th>Contents</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>R/run_app.R</code></td>
+<td>
+<code><a href="reference/crypto.html">crypto()</a></code>, which starts the app</td>
+</tr>
+<tr>
+<td>
+<code>R/app_ui.R</code>, <code>R/app_server.R</code>
+</td>
+<td>The page layout and the server, which connect the modules</td>
+</tr>
+<tr>
+<td><code>R/mod_*.R</code></td>
+<td>One Shiny module per tab</td>
+</tr>
+<tr>
+<td><code>R/fct_data.R</code></td>
+<td>Downloads, and the cache of the market listings</td>
+</tr>
+<tr>
+<td><code>R/fct_calc.R</code></td>
+<td>Calculations: normalized prices and monthly returns</td>
+</tr>
+<tr>
+<td><code>R/fct_plots.R</code></td>
+<td>The plotly charts and the Top 100 table</td>
+</tr>
+<tr>
+<td><code>R/utils_helpers.R</code></td>
+<td>Color scales and light/dark mode helpers</td>
+</tr>
+<tr>
+<td><code>inst/app/www/</code></td>
+<td>Favicon and the keep-alive script</td>
+</tr>
+<tr>
+<td><code>tests/testthat/</code></td>
+<td>Tests, which run offline on small sample data</td>
+</tr>
+</tbody>
+</table>
+<p>Run the tests with <code><a href="https://devtools.r-lib.org/reference/test.html" class="external-link">devtools::test()</a></code>, and the full package check with <code><a href="https://devtools.r-lib.org/reference/check.html" class="external-link">devtools::check()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h2>
 <p>Contributions, issues, and feature requests are welcome! Feel free to check the <a href="https://github.com/sedzinfo/crypto/issues" class="external-link">issues page</a>.</p>
 <hr>
-<p><img src="https://img.shields.io/github/stars/sedzinfo/crypto" alt="Stars"><img src="https://img.shields.io/github/watchers/sedzinfo/crypto" alt="Watchers"><img src="https://img.shields.io/github/repo-size/sedzinfo/crypto" alt="Repo Size"><img src="https://img.shields.io/github/issues/sedzinfo/crypto" alt="Open Issues"><img src="https://img.shields.io/github/forks/sedzinfo/crypto" alt="Forks"><img src="https://img.shields.io/github/last-commit/sedzinfo/crypto" alt="Last Commit"><img src="https://img.shields.io/github/contributors/sedzinfo/crypto" alt="Contributors"><img src="https://img.shields.io/github/license/sedzinfo/crypto" alt="License"><img src="https://img.shields.io/github/actions/workflow/status/sedzinfo/crypto/build-tarball.yml" alt="Workflow Status"></p>
+<p><img src="https://img.shields.io/github/stars/sedzinfo/crypto" alt="Stars"><img src="https://img.shields.io/github/watchers/sedzinfo/crypto" alt="Watchers"><img src="https://img.shields.io/github/repo-size/sedzinfo/crypto" alt="Repo Size"><img src="https://img.shields.io/github/issues/sedzinfo/crypto" alt="Open Issues"><img src="https://img.shields.io/github/forks/sedzinfo/crypto" alt="Forks"><img src="https://img.shields.io/github/last-commit/sedzinfo/crypto" alt="Last Commit"><img src="https://img.shields.io/github/contributors/sedzinfo/crypto" alt="Contributors"><img src="https://img.shields.io/github/license/sedzinfo/crypto" alt="License"><img src="https://img.shields.io/github/actions/workflow/status/sedzinfo/crypto/build-tarball.yml" alt="Workflow Status"><img src="https://github.com/sedzinfo/crypto/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></p>
 </div>
 </div>
 

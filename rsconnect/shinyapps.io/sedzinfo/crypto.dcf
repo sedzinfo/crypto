@@ -5,7 +5,7 @@ account: sedzinfo
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 18270393
-bundleId:
+bundleId: 12735184
 url: https://sedzinfo.shinyapps.io/crypto/
 version: 1
 asMultiple: FALSE

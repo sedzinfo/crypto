@@ -30,6 +30,10 @@
 #' @param api_key A 'CoinMarketCap' API key, needed for the market listings.
 #'   By default it is read from the `COINMARKETCAP_APIKEY` environment
 #'   variable, which can be set in `.Renviron`.
+#' @param analytics `TRUE` to add Google Analytics, through the cookie banner
+#'   shared with the sites of sedzinfo.github.io, which loads it only after the
+#'   visitor accepts. Meant for the public deployment (see `app.R`); off by
+#'   default, so that running the app yourself sends nothing.
 #' @param ... Further arguments passed to [shiny::shinyApp()], for example
 #'   `options = list(port = 8080)`.
 #' @return A [shiny::shinyApp()] object. Printing it, or calling `crypto()` at
@@ -43,13 +47,13 @@
 #'
 #' # with the API key passed directly, on a fixed port
 #' if (interactive()) crypto(api_key = "your-api-key", options = list(port = 8080))
-crypto <- function(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), ...) {
+crypto <- function(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), analytics = FALSE, ...) {
   use_api_key(api_key)
   coins <- get_coins()
   top_coins <- get_listings()$data$name_symbol
 
   shinyApp(
-    ui = app_ui(coins, top_coins),
+    ui = app_ui(coins, top_coins, analytics),
     server = app_server(coins),
     onStart = function() {
       # show small prices in full rather than as 1e-05, for this app run only

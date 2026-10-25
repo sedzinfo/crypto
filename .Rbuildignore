@@ -12,6 +12,7 @@
 ^screenshots$
 ^\.Rd2pdf.*$
 ^app\.R$
+^R/_disable_autoload\.R$
 ^\.rscignore$
 ^rsconnect$
 ^\.Renviron$

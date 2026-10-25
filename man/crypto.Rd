@@ -4,12 +4,17 @@
 \alias{crypto}
 \title{Launch the Crypto Time Series Analyzer}
 \usage{
-crypto(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), ...)
+crypto(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), analytics = FALSE, ...)
 }
 \arguments{
 \item{api_key}{A 'CoinMarketCap' API key, needed for the market listings.
 By default it is read from the \code{COINMARKETCAP_APIKEY} environment
 variable, which can be set in \code{.Renviron}.}
+
+\item{analytics}{\code{TRUE} to add Google Analytics, through the cookie banner
+shared with the sites of sedzinfo.github.io, which loads it only after the
+visitor accepts. Meant for the public deployment (see \code{app.R}); off by
+default, so that running the app yourself sends nothing.}
 
 \item{...}{Further arguments passed to \code{\link[shiny:shinyApp]{shiny::shinyApp()}}, for example
 \code{options = list(port = 8080)}.}

@@ -26,6 +26,7 @@ Imports:
     tools,
     utils
 Suggests:
+    htmltools,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 License: GPL-3

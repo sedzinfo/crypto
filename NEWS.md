@@ -18,6 +18,7 @@
 * The Top 100 listings refresh every 10 minutes and show when they were last updated.
 * The data, calculations and charts of the app can be used directly from R: `get_coins()`, `get_history()`, `get_listings()`, `normalize_prices()`, `monthly_returns()`, `plot_timeseries()`, `plot_compare()`, `plot_returns_calendar()`, `plot_treemap()` and `listings_table()`.
 * Price histories and the list of coins are kept on disk between R sessions. After the first download of a coin, only the days since the last download are fetched, so charts appear faster and the app makes far fewer requests to CoinMarketCap. Set `options(crypto.cache_dir = )` to keep the downloads in another folder.
+* `crypto(analytics = TRUE)` adds Google Analytics, through the cookie banner of the sedzinfo.github.io sites, which loads it only after the visitor accepts. The tabs and the CSV downloads are reported as pages and downloads. It is off by default and on in `app.R`, the file used to deploy the app on shinyapps.io.
 * `crypto()` passes further arguments on to `shiny::shinyApp()`, for example `crypto(options = list(port = 8080))`.
 
 ## Bug fixes and smaller changes

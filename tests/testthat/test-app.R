@@ -1,0 +1,10 @@
+test_that("Google Analytics and its cookie banner are in the page only when asked for", {
+  page <- function(analytics) htmltools::renderTags(app_ui(coins, "Alpha (A)", analytics = analytics))
+  with <- page(TRUE)
+  expect_match(with$head, "https://sedzinfo.github.io/consent.js", fixed = TRUE)
+  expect_match(with$head, "www/analytics.js", fixed = TRUE)
+  expect_match(with$html, "#cookie-settings", fixed = TRUE)
+  without <- page(FALSE)
+  expect_no_match(without$head, "consent.js", fixed = TRUE)
+  expect_no_match(without$html, "cookie-settings", fixed = TRUE)
+})

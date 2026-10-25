@@ -186,6 +186,14 @@ The package follows the layout of a [golem](https://thinkr-open.github.io/golem/
 
 Run the tests with `devtools::test()`, and the full package check with `devtools::check()`.
 
+### Deploying to shinyapps.io
+
+`app.R` starts the app on [shinyapps.io](https://www.shinyapps.io/), with Google Analytics behind the cookie banner of the sedzinfo.github.io sites, and `.rscignore` keeps the upload to the files the app needs.
+
+1. Create a `.Renviron` file in the package folder with `COINMARKETCAP_APIKEY=your-api-key`. It is uploaded with the app but never committed, as `.gitignore` lists it.
+2. Connect your account once, with the `rsconnect::setAccountInfo()` line from Account, Tokens on shinyapps.io.
+3. Run `rsconnect::deployApp(appName = "crypto")` from the package folder, or open `app.R` in RStudio and click Publish.
+
 ## Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/sedzinfo/crypto/issues).

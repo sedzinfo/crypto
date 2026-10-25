@@ -1,0 +1,12 @@
+name: crypto
+title: crypto
+username: sedzinfo
+account: sedzinfo
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 18270393
+bundleId: 12735095
+url: https://sedzinfo.shinyapps.io/crypto/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

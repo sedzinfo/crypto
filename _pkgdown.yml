@@ -1,4 +1,4 @@
-url: https://sedzinfo.github.io/crypto/
+url: https://sedzinfo.github.io/golemcrypto/
 
 template:
   bootstrap: 5
@@ -48,7 +48,7 @@ navbar:
       aria-label: sedzinfo home page
     github:
       icon: fab fa-github
-      href: https://github.com/sedzinfo/crypto
+      href: https://github.com/sedzinfo/golemcrypto
       aria-label: GitHub
 
 footer:

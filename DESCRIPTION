@@ -1,4 +1,4 @@
-Package: crypto
+Package: golemcrypto
 Title: Interactive Cryptocurrency Time Series and Market Data Explorer
 Version: 0.1.0
 Authors@R: person("Dimitrios", "Zacharatos", , "dzacharatos@yahoo.com", role = c("aut", "cre"),
@@ -30,8 +30,8 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 License: GPL-3
-URL: https://sedzinfo.github.io/crypto/, https://github.com/sedzinfo/crypto
-BugReports: https://github.com/sedzinfo/crypto/issues
+URL: https://sedzinfo.github.io/golemcrypto/, https://github.com/sedzinfo/golemcrypto
+BugReports: https://github.com/sedzinfo/golemcrypto/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Config/roxygen2/version: 8.1.1

@@ -1,7 +1,7 @@
 # Download the latest market listings
 
 Calls the 'CoinMarketCap' API with the key from
-[`use_api_key()`](https://sedzinfo.github.io/crypto/reference/use_api_key.md).
+[`use_api_key()`](https://sedzinfo.github.io/golemcrypto/reference/use_api_key.md).
 
 ## Usage
 

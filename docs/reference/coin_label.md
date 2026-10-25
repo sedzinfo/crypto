@@ -1,7 +1,7 @@
 # Label coins as "Name (SYMBOL)"
 
 The label identifies coins throughout the package: in the arguments of
-[`get_history()`](https://sedzinfo.github.io/crypto/reference/get_history.md),
+[`get_history()`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md),
 and in the pickers, tables and plots of the app.
 
 ## Usage

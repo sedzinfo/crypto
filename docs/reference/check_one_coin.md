@@ -14,7 +14,7 @@ check_one_coin(history)
 - history:
 
   Price history from
-  [`get_history()`](https://sedzinfo.github.io/crypto/reference/get_history.md).
+  [`get_history()`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md).
 
 ## Value
 

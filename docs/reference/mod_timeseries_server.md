@@ -17,12 +17,12 @@ mod_timeseries_server(id, coins, dark_mode)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_timeseries_ui()`](https://sedzinfo.github.io/crypto/reference/mod_timeseries_ui.md).
+  [`mod_timeseries_ui()`](https://sedzinfo.github.io/golemcrypto/reference/mod_timeseries_ui.md).
 
 - coins:
 
   Data frame of coins from
-  [`get_coins()`](https://sedzinfo.github.io/crypto/reference/get_coins.md).
+  [`get_coins()`](https://sedzinfo.github.io/golemcrypto/reference/get_coins.md).
 
 - dark_mode:
 
@@ -31,7 +31,7 @@ mod_timeseries_server(id, coins, dark_mode)
 ## Value
 
 A reactive returning the price history of the selected coin, from
-[`get_history()`](https://sedzinfo.github.io/crypto/reference/get_history.md),
+[`get_history()`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md),
 which the Returns calendar reuses.
 
 ## Examples

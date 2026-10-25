@@ -15,7 +15,7 @@ normalize_prices(history)
 - history:
 
   Price history from
-  [`get_history()`](https://sedzinfo.github.io/crypto/reference/get_history.md),
+  [`get_history()`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md),
   with `name_symbol`, `timestamp` and `close` columns, sorted by coin
   and date.
 

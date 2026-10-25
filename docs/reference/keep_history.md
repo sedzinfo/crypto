@@ -1,7 +1,7 @@
 # Keep a downloaded price history on disk
 
 A history with missing days (see
-[`has_gaps()`](https://sedzinfo.github.io/crypto/reference/has_gaps.md))
+[`has_gaps()`](https://sedzinfo.github.io/golemcrypto/reference/has_gaps.md))
 is returned but not kept, so the next call downloads it again.
 
 ## Usage
@@ -15,7 +15,7 @@ keep_history(key, history, from)
 - key:
 
   Key of the coin in
-  [`disk_cache()`](https://sedzinfo.github.io/crypto/reference/disk_cache.md).
+  [`disk_cache()`](https://sedzinfo.github.io/golemcrypto/reference/disk_cache.md).
 
 - history:
 

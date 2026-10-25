@@ -14,7 +14,7 @@ plot_compare(prices, mode = "light")
 - prices:
 
   Prices from
-  [`normalize_prices()`](https://sedzinfo.github.io/crypto/reference/normalize_prices.md).
+  [`normalize_prices()`](https://sedzinfo.github.io/golemcrypto/reference/normalize_prices.md).
 
 - mode:
 

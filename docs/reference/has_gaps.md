@@ -15,7 +15,7 @@ has_gaps(history)
 - history:
 
   Price history from
-  [`download_history()`](https://sedzinfo.github.io/crypto/reference/download_history.md),
+  [`download_history()`](https://sedzinfo.github.io/golemcrypto/reference/download_history.md),
   sorted by coin and date.
 
 ## Value

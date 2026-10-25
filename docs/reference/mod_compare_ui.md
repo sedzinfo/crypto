@@ -19,7 +19,7 @@ mod_compare_ui(id, coins, top_coins)
 - coins:
 
   Data frame of coins from
-  [`get_coins()`](https://sedzinfo.github.io/crypto/reference/get_coins.md),
+  [`get_coins()`](https://sedzinfo.github.io/golemcrypto/reference/get_coins.md),
   whose `name_symbol` labels fill the picker.
 
 - top_coins:

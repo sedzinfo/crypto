@@ -16,12 +16,12 @@ mod_top100_server(id, listings)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_top100_ui()`](https://sedzinfo.github.io/crypto/reference/mod_top100_ui.md).
+  [`mod_top100_ui()`](https://sedzinfo.github.io/golemcrypto/reference/mod_top100_ui.md).
 
 - listings:
 
   Reactive returning the result of
-  [`get_listings()`](https://sedzinfo.github.io/crypto/reference/get_listings.md).
+  [`get_listings()`](https://sedzinfo.github.io/golemcrypto/reference/get_listings.md).
 
 ## Value
 

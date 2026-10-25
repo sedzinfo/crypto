@@ -16,12 +16,12 @@ mod_treemap_server(id, listings, dark_mode)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_treemap_ui()`](https://sedzinfo.github.io/crypto/reference/mod_treemap_ui.md).
+  [`mod_treemap_ui()`](https://sedzinfo.github.io/golemcrypto/reference/mod_treemap_ui.md).
 
 - listings:
 
   Reactive returning the result of
-  [`get_listings()`](https://sedzinfo.github.io/crypto/reference/get_listings.md).
+  [`get_listings()`](https://sedzinfo.github.io/golemcrypto/reference/get_listings.md).
 
 - dark_mode:
 

@@ -18,12 +18,12 @@ mod_compare_server(id, coins, dark_mode)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_compare_ui()`](https://sedzinfo.github.io/crypto/reference/mod_compare_ui.md).
+  [`mod_compare_ui()`](https://sedzinfo.github.io/golemcrypto/reference/mod_compare_ui.md).
 
 - coins:
 
   Data frame of coins from
-  [`get_coins()`](https://sedzinfo.github.io/crypto/reference/get_coins.md).
+  [`get_coins()`](https://sedzinfo.github.io/golemcrypto/reference/get_coins.md).
 
 - dark_mode:
 

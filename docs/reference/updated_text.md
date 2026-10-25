@@ -22,5 +22,5 @@ A character string such as "Data: CoinMarketCap, updated 14:32".
 
 ``` r
 crypto:::updated_text(Sys.time())
-#> [1] "Data: CoinMarketCap, updated 03:41"
+#> [1] "Data: CoinMarketCap, updated 12:39"
 ```

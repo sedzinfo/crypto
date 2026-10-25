@@ -15,7 +15,7 @@ plot_returns_calendar(calendar, label = NULL, mode = "light")
 - calendar:
 
   Matrix from
-  [`monthly_returns()`](https://sedzinfo.github.io/crypto/reference/monthly_returns.md).
+  [`monthly_returns()`](https://sedzinfo.github.io/golemcrypto/reference/monthly_returns.md).
 
 - label:
 

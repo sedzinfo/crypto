@@ -17,12 +17,12 @@ mod_returns_calendar_server(id, history, dark_mode)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_returns_calendar_ui()`](https://sedzinfo.github.io/crypto/reference/mod_returns_calendar_ui.md).
+  [`mod_returns_calendar_ui()`](https://sedzinfo.github.io/golemcrypto/reference/mod_returns_calendar_ui.md).
 
 - history:
 
   Reactive returning the price history of the selected coin, from
-  [`mod_timeseries_server()`](https://sedzinfo.github.io/crypto/reference/mod_timeseries_server.md).
+  [`mod_timeseries_server()`](https://sedzinfo.github.io/golemcrypto/reference/mod_timeseries_server.md).
 
 - dark_mode:
 

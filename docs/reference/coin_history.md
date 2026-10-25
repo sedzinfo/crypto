@@ -2,7 +2,7 @@
 
 The first call downloads the history from `start_date` and keeps it on
 disk (see
-[`disk_cache()`](https://sedzinfo.github.io/crypto/reference/disk_cache.md)).
+[`disk_cache()`](https://sedzinfo.github.io/golemcrypto/reference/disk_cache.md)).
 Later calls use the kept history, and once it is more than an hour old
 download only the days since its last day, because past days do not
 change: one request instead of one per 400 days. A history kept from a
@@ -20,7 +20,7 @@ coin_history(coin, start_date)
 - coin:
 
   One row of
-  [`get_coins()`](https://sedzinfo.github.io/crypto/reference/get_coins.md).
+  [`get_coins()`](https://sedzinfo.github.io/golemcrypto/reference/get_coins.md).
 
 - start_date:
 

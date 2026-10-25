@@ -18,7 +18,7 @@ listings_table(listings)
 - listings:
 
   The `data` of
-  [`get_listings()`](https://sedzinfo.github.io/crypto/reference/get_listings.md).
+  [`get_listings()`](https://sedzinfo.github.io/golemcrypto/reference/get_listings.md).
 
 ## Value
 

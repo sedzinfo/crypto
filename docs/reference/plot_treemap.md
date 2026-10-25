@@ -16,7 +16,7 @@ plot_treemap(listings, mode = "light")
 - listings:
 
   The `data` of
-  [`get_listings()`](https://sedzinfo.github.io/crypto/reference/get_listings.md).
+  [`get_listings()`](https://sedzinfo.github.io/golemcrypto/reference/get_listings.md).
 
 - mode:
 

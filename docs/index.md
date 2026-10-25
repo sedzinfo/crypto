@@ -80,7 +80,7 @@ out of Git, because anyone who has it can use your API credits.
 
 Launch the Shiny app with just two lines of code:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`crypto`](https://sedzinfo.github.io/crypto/)`)`` `[`crypto`](https://sedzinfo.github.io/crypto/reference/crypto.md)`(``)`
+[`library`](https://rdrr.io/r/base/library.html)`(`[`crypto`](https://sedzinfo.github.io/crypto/)`)`` `[`crypto`](https://sedzinfo.github.io/golemcrypto/reference/crypto.md)`(``)`
 
 The application will open in your default web browser. Any
 [`shiny::shinyApp()`](https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html)
@@ -92,7 +92,7 @@ option can be passed on, for example
 The data, calculations and charts of the app are also available as
 functions, for scripts and R Markdown reports:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`crypto`](https://sedzinfo.github.io/crypto/)`)`` `` ``# one coin since 2020: candlestick chart and monthly returns`` ``btc`` ``<-`` `[`get_history`](https://sedzinfo.github.io/crypto/reference/get_history.md)`(``"Bitcoin (BTC)"``, `[`as.Date`](https://rdrr.io/r/base/as.Date.html)`(``"2020-01-01"``)``)`` `[`plot_timeseries`](https://sedzinfo.github.io/crypto/reference/plot_timeseries.md)`(``btc``)`` `[`plot_timeseries`](https://sedzinfo.github.io/crypto/reference/plot_timeseries.md)`(``btc``, averages ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``20``, ``100``)``)`` ``# other moving averages`` `[`plot_returns_calendar`](https://sedzinfo.github.io/crypto/reference/plot_returns_calendar.md)`(`[`monthly_returns`](https://sedzinfo.github.io/crypto/reference/monthly_returns.md)`(``btc``)``, ``"Bitcoin (BTC)"``, mode ``=`` ``"dark"``)`` `` ``# several coins over the last year, starting at 100`` ``history`` ``<-`` `[`get_history`](https://sedzinfo.github.io/crypto/reference/get_history.md)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"Bitcoin (BTC)"``, ``"Ethereum (ETH)"``, ``"Solana (SOL)"``)``)`` `[`plot_compare`](https://sedzinfo.github.io/crypto/reference/plot_compare.md)`(`[`normalize_prices`](https://sedzinfo.github.io/crypto/reference/normalize_prices.md)`(``history``)``)`` `` ``# the top 100 coins, which needs the API key`` ``listings`` ``<-`` `[`get_listings`](https://sedzinfo.github.io/crypto/reference/get_listings.md)`(``)``$``data`` `[`plot_treemap`](https://sedzinfo.github.io/crypto/reference/plot_treemap.md)`(``listings``)`` `[`listings_table`](https://sedzinfo.github.io/crypto/reference/listings_table.md)`(``listings``)`
+[`library`](https://rdrr.io/r/base/library.html)`(`[`crypto`](https://sedzinfo.github.io/crypto/)`)`` `` ``# one coin since 2020: candlestick chart and monthly returns`` ``btc`` ``<-`` `[`get_history`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md)`(``"Bitcoin (BTC)"``, `[`as.Date`](https://rdrr.io/r/base/as.Date.html)`(``"2020-01-01"``)``)`` `[`plot_timeseries`](https://sedzinfo.github.io/golemcrypto/reference/plot_timeseries.md)`(``btc``)`` `[`plot_timeseries`](https://sedzinfo.github.io/golemcrypto/reference/plot_timeseries.md)`(``btc``, averages ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``20``, ``100``)``)`` ``# other moving averages`` `[`plot_returns_calendar`](https://sedzinfo.github.io/golemcrypto/reference/plot_returns_calendar.md)`(`[`monthly_returns`](https://sedzinfo.github.io/golemcrypto/reference/monthly_returns.md)`(``btc``)``, ``"Bitcoin (BTC)"``, mode ``=`` ``"dark"``)`` `` ``# several coins over the last year, starting at 100`` ``history`` ``<-`` `[`get_history`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"Bitcoin (BTC)"``, ``"Ethereum (ETH)"``, ``"Solana (SOL)"``)``)`` `[`plot_compare`](https://sedzinfo.github.io/golemcrypto/reference/plot_compare.md)`(`[`normalize_prices`](https://sedzinfo.github.io/golemcrypto/reference/normalize_prices.md)`(``history``)``)`` `` ``# the top 100 coins, which needs the API key`` ``listings`` ``<-`` `[`get_listings`](https://sedzinfo.github.io/golemcrypto/reference/get_listings.md)`(``)``$``data`` `[`plot_treemap`](https://sedzinfo.github.io/golemcrypto/reference/plot_treemap.md)`(``listings``)`` `[`listings_table`](https://sedzinfo.github.io/golemcrypto/reference/listings_table.md)`(``listings``)`
 
 Coins are picked by their label, such as `"Bitcoin (BTC)"`, and
 `get_coins()$name_symbol` lists all of them. Downloads are reused: the
@@ -222,7 +222,7 @@ golem:
 
 | File | Contents |
 |----|----|
-| `R/run_app.R` | [`crypto()`](https://sedzinfo.github.io/crypto/reference/crypto.md), which starts the app |
+| `R/run_app.R` | [`crypto()`](https://sedzinfo.github.io/golemcrypto/reference/crypto.md), which starts the app |
 | `R/app_ui.R`, `R/app_server.R` | The page layout and the server, which connect the modules |
 | `R/mod_*.R` | One Shiny module per tab |
 | `R/fct_data.R` | Downloads, and the cache of the market listings |

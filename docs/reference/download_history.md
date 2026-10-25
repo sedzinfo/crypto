@@ -16,7 +16,7 @@ download_history(coin, start_date)
 - coin:
 
   One row of
-  [`get_coins()`](https://sedzinfo.github.io/crypto/reference/get_coins.md).
+  [`get_coins()`](https://sedzinfo.github.io/golemcrypto/reference/get_coins.md).
 
 - start_date:
 
@@ -25,7 +25,7 @@ download_history(coin, start_date)
 ## Value
 
 The price history of the coin, as described in
-[`get_history()`](https://sedzinfo.github.io/crypto/reference/get_history.md),
+[`get_history()`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md),
 or `NULL` when nothing could be downloaded.
 
 ## Examples

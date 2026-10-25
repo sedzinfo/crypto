@@ -22,7 +22,7 @@ plot_timeseries(
 - history:
 
   Price history of one coin from
-  [`get_history()`](https://sedzinfo.github.io/crypto/reference/get_history.md).
+  [`get_history()`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md).
   The averages and the drawdown use the whole history, so pass all of it
   and zoom with the range buttons.
 
@@ -33,13 +33,13 @@ plot_timeseries(
 - averages:
 
   Days of the moving averages to draw (see
-  [`moving_average()`](https://sedzinfo.github.io/crypto/reference/moving_average.md)),
+  [`moving_average()`](https://sedzinfo.github.io/golemcrypto/reference/moving_average.md)),
   or `NULL` for none.
 
 - show_drawdown:
 
   `TRUE` to add the drawdown chart (see
-  [`drawdown()`](https://sedzinfo.github.io/crypto/reference/drawdown.md)).
+  [`drawdown()`](https://sedzinfo.github.io/golemcrypto/reference/drawdown.md)).
 
 ## Value
 

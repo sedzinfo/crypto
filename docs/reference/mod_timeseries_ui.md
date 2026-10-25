@@ -19,7 +19,7 @@ mod_timeseries_ui(id, coins)
 - coins:
 
   Data frame of coins from
-  [`get_coins()`](https://sedzinfo.github.io/crypto/reference/get_coins.md),
+  [`get_coins()`](https://sedzinfo.github.io/golemcrypto/reference/get_coins.md),
   whose `name_symbol` labels fill the picker.
 
 ## Value

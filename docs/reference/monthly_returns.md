@@ -15,7 +15,7 @@ monthly_returns(history)
 - history:
 
   Price history of one coin from
-  [`get_history()`](https://sedzinfo.github.io/crypto/reference/get_history.md),
+  [`get_history()`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md),
   with `timestamp` and `close` columns, sorted by date.
 
 ## Value

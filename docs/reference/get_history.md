@@ -18,7 +18,7 @@ get_history(labels, start_date = Sys.Date() - 365, coins = get_coins())
 
   Character vector of coin labels, such as "Bitcoin (BTC)", from the
   `name_symbol` column of
-  [`get_coins()`](https://sedzinfo.github.io/crypto/reference/get_coins.md).
+  [`get_coins()`](https://sedzinfo.github.io/golemcrypto/reference/get_coins.md).
 
 - start_date:
 
@@ -27,7 +27,7 @@ get_history(labels, start_date = Sys.Date() - 365, coins = get_coins())
 - coins:
 
   Data frame of coins from
-  [`get_coins()`](https://sedzinfo.github.io/crypto/reference/get_coins.md),
+  [`get_coins()`](https://sedzinfo.github.io/golemcrypto/reference/get_coins.md),
   to look the labels up.
 
 ## Value

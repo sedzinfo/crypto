@@ -30,10 +30,11 @@ mod_timeseries_ui <- function(id, coins) {
         # the page's own colors follow the light/dark mode, the default light button stays white
         options = list(`live-search` = TRUE, style = "border bg-body text-body")
       ),
-      div(class = "mb-3", downloadButton(ns("csv"), "CSV", class = "btn-sm"))
+      div(class = "mb-3", downloadButton(ns("csv"), "CSV"))
     ),
     shinycssloaders::withSpinner(
-      plotly::plotlyOutput(ns("plot"), width = "100%", height = "1080px")
+      # the rest of the window below the controls, with a minimum in styles.css
+      plotly::plotlyOutput(ns("plot"), width = "100%", height = "calc(100vh - 170px)")
     )
   )
 }

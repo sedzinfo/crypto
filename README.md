@@ -188,7 +188,7 @@ Run the tests with `devtools::test()`, and the full package check with `devtools
 
 ### Deploying to shinyapps.io
 
-`app.R` starts the app on [shinyapps.io](https://www.shinyapps.io/), with Google Analytics behind the cookie banner of the sedzinfo.github.io sites, and `.rscignore` keeps the upload to the files the app needs.
+`app.R` starts the app on [shinyapps.io](https://www.shinyapps.io/), with Google Analytics behind the cookie banner of the sedzinfo.github.io sites, and without the keep-alive pings, so the app goes to sleep when nobody uses it instead of using up the active hours of the plan. `.rscignore` keeps the upload to the files the app needs.
 
 1. Create a `.Renviron` file in the package folder with `COINMARKETCAP_APIKEY=your-api-key`. It is uploaded with the app but never committed, as `.gitignore` lists it.
 2. Connect your account once, with the `rsconnect::setAccountInfo()` line from Account, Tokens on shinyapps.io.

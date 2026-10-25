@@ -24,7 +24,7 @@
 ## Bug fixes and smaller changes
 
 * A failed download shows a short message, such as "Data not available for this coin", instead of an R error.
-* The keep-alive pings now get an answer from the server, so idle connections stay open behind proxies.
+* The keep-alive pings now get an answer from the server, so idle connections stay open behind proxies. `crypto(keep_alive = FALSE)` turns them off, as `app.R` does, so that the app can go to sleep on shinyapps.io when nobody uses it.
 * Small prices are no longer shown in scientific notation, and the app no longer changes the options of your R session to do so.
 * Treemap labels show the 24h change instead of NaN.
 * The date range buttons of the Timeseries chart are readable in dark mode.

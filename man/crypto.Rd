@@ -4,7 +4,12 @@
 \alias{crypto}
 \title{Launch the Crypto Time Series Analyzer}
 \usage{
-crypto(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), analytics = FALSE, ...)
+crypto(
+  api_key = Sys.getenv("COINMARKETCAP_APIKEY"),
+  analytics = FALSE,
+  keep_alive = TRUE,
+  ...
+)
 }
 \arguments{
 \item{api_key}{A 'CoinMarketCap' API key, needed for the market listings.
@@ -15,6 +20,12 @@ variable, which can be set in \code{.Renviron}.}
 shared with the sites of sedzinfo.github.io, which loads it only after the
 visitor accepts. Meant for the public deployment (see \code{app.R}); off by
 default, so that running the app yourself sends nothing.}
+
+\item{keep_alive}{\code{TRUE} (the default) to ping the server every 15 seconds
+while the page is open, so that proxies do not close idle connections.
+\code{FALSE} lets the app go to sleep when nobody uses it, as \code{app.R} does on
+shinyapps.io, where an app that stays awake uses up the active hours of
+the plan.}
 
 \item{...}{Further arguments passed to \code{\link[shiny:shinyApp]{shiny::shinyApp()}}, for example
 \code{options = list(port = 8080)}.}

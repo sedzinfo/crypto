@@ -35,10 +35,11 @@ mod_compare_ui <- function(id, coins, top_coins) {
         options = list(`live-search` = TRUE, `max-options` = 10, style = "border bg-body text-body")
       ),
       dateInput(ns("start"), label = "Start date", value = Sys.Date() - 365, max = Sys.Date() - 1),
-      div(class = "mb-3", downloadButton(ns("csv"), "CSV", class = "btn-sm"))
+      div(class = "mb-3", downloadButton(ns("csv"), "CSV"))
     ),
     shinycssloaders::withSpinner(
-      plotly::plotlyOutput(ns("plot"), width = "100%", height = "800px")
+      # the rest of the window below the controls, with a minimum in styles.css
+      plotly::plotlyOutput(ns("plot"), width = "100%", height = "calc(100vh - 170px)")
     )
   )
 }

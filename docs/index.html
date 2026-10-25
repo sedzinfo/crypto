@@ -351,6 +351,16 @@ installation instructions can be found here: <a href="https://posit.co/downloads
 </tbody>
 </table>
 <p>Run the tests with <code><a href="https://devtools.r-lib.org/reference/test.html" class="external-link">devtools::test()</a></code>, and the full package check with <code><a href="https://devtools.r-lib.org/reference/check.html" class="external-link">devtools::check()</a></code>.</p>
+<div class="section level3">
+<h3 id="deploying-to-shinyappsio">Deploying to shinyapps.io<a class="anchor" aria-label="anchor" href="#deploying-to-shinyappsio"></a>
+</h3>
+<p><code>app.R</code> starts the app on <a href="https://www.shinyapps.io/" class="external-link">shinyapps.io</a>, with Google Analytics behind the cookie banner of the sedzinfo.github.io sites, and without the keep-alive pings, so the app goes to sleep when nobody uses it instead of using up the active hours of the plan. <code>.rscignore</code> keeps the upload to the files the app needs.</p>
+<ol style="list-style-type: decimal">
+<li>Create a <code>.Renviron</code> file in the package folder with <code>COINMARKETCAP_APIKEY=your-api-key</code>. It is uploaded with the app but never committed, as <code>.gitignore</code> lists it.</li>
+<li>Connect your account once, with the <code><a href="https://rstudio.github.io/rsconnect/reference/setAccountInfo.html" class="external-link">rsconnect::setAccountInfo()</a></code> line from Account, Tokens on shinyapps.io.</li>
+<li>Run <code>rsconnect::deployApp(appName = "crypto")</code> from the package folder, or open <code>app.R</code> in RStudio and click Publish.</li>
+</ol>
+</div>
 </div>
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>

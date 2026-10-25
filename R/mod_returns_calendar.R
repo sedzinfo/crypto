@@ -25,7 +25,8 @@ mod_returns_calendar_ui <- function(id) {
       downloadButton(ns("csv"), "CSV", class = "btn-sm")
     ),
     shinycssloaders::withSpinner(
-      plotly::plotlyOutput(ns("plot"), width = "100%", height = "800px")
+      # the rest of the window below the controls, with a minimum in styles.css
+      plotly::plotlyOutput(ns("plot"), width = "100%", height = "calc(100vh - 130px)")
     )
   )
 }

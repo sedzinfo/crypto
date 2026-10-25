@@ -34,6 +34,11 @@
 #'   shared with the sites of sedzinfo.github.io, which loads it only after the
 #'   visitor accepts. Meant for the public deployment (see `app.R`); off by
 #'   default, so that running the app yourself sends nothing.
+#' @param keep_alive `TRUE` (the default) to ping the server every 15 seconds
+#'   while the page is open, so that proxies do not close idle connections.
+#'   `FALSE` lets the app go to sleep when nobody uses it, as `app.R` does on
+#'   shinyapps.io, where an app that stays awake uses up the active hours of
+#'   the plan.
 #' @param ... Further arguments passed to [shiny::shinyApp()], for example
 #'   `options = list(port = 8080)`.
 #' @return A [shiny::shinyApp()] object. Printing it, or calling `crypto()` at
@@ -47,13 +52,13 @@
 #'
 #' # with the API key passed directly, on a fixed port
 #' if (interactive()) crypto(api_key = "your-api-key", options = list(port = 8080))
-crypto <- function(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), analytics = FALSE, ...) {
+crypto <- function(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), analytics = FALSE, keep_alive = TRUE, ...) {
   use_api_key(api_key)
   coins <- get_coins()
   top_coins <- get_listings()$data$name_symbol
 
   shinyApp(
-    ui = app_ui(coins, top_coins, analytics),
+    ui = app_ui(coins, top_coins, analytics, keep_alive),
     server = app_server(coins),
     onStart = function() {
       # show small prices in full rather than as 1e-05, for this app run only

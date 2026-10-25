@@ -61,6 +61,11 @@ CRAN release: 2018-01-14
   far fewer requests to CoinMarketCap. Set
   `options(crypto.cache_dir = )` to keep the downloads in another
   folder.
+- `crypto(analytics = TRUE)` adds Google Analytics, through the cookie
+  banner of the sedzinfo.github.io sites, which loads it only after the
+  visitor accepts. The tabs and the CSV downloads are reported as pages
+  and downloads. It is off by default and on in `app.R`, the file used
+  to deploy the app on shinyapps.io.
 - [`crypto()`](https://sedzinfo.github.io/crypto/reference/crypto.md)
   passes further arguments on to
   [`shiny::shinyApp()`](https://rdrr.io/pkg/shiny/man/shinyApp.html),
@@ -71,7 +76,9 @@ CRAN release: 2018-01-14
 - A failed download shows a short message, such as “Data not available
   for this coin”, instead of an R error.
 - The keep-alive pings now get an answer from the server, so idle
-  connections stay open behind proxies.
+  connections stay open behind proxies. `crypto(keep_alive = FALSE)`
+  turns them off, as `app.R` does, so that the app can go to sleep on
+  shinyapps.io when nobody uses it.
 - Small prices are no longer shown in scientific notation, and the app
   no longer changes the options of your R session to do so.
 - Treemap labels show the 24h change instead of NaN.

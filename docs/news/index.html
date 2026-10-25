@@ -58,12 +58,14 @@
 <li>The data, calculations and charts of the app can be used directly from R: <code><a href="../reference/get_coins.html">get_coins()</a></code>, <code><a href="../reference/get_history.html">get_history()</a></code>, <code><a href="../reference/get_listings.html">get_listings()</a></code>, <code><a href="../reference/normalize_prices.html">normalize_prices()</a></code>, <code><a href="../reference/monthly_returns.html">monthly_returns()</a></code>, <code><a href="../reference/plot_timeseries.html">plot_timeseries()</a></code>, <code><a href="../reference/plot_compare.html">plot_compare()</a></code>, <code><a href="../reference/plot_returns_calendar.html">plot_returns_calendar()</a></code>, <code><a href="../reference/plot_treemap.html">plot_treemap()</a></code> and <code><a href="../reference/listings_table.html">listings_table()</a></code>.</li>
 <li>Price histories and the list of coins are kept on disk between R sessions. After the first download of a coin, only the days since the last download are fetched, so charts appear faster and the app makes far fewer requests to CoinMarketCap. Set <code>options(crypto.cache_dir = )</code> to keep the downloads in another folder.</li>
 <li>
+<code>crypto(analytics = TRUE)</code> adds Google Analytics, through the cookie banner of the sedzinfo.github.io sites, which loads it only after the visitor accepts. The tabs and the CSV downloads are reported as pages and downloads. It is off by default and on in <code>app.R</code>, the file used to deploy the app on shinyapps.io.</li>
+<li>
 <code><a href="../reference/crypto.html">crypto()</a></code> passes further arguments on to <code><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shiny::shinyApp()</a></code>, for example <code>crypto(options = list(port = 8080))</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-and-smaller-changes-0-1-0">Bug fixes and smaller changes<a class="anchor" aria-label="anchor" href="#bug-fixes-and-smaller-changes-0-1-0"></a></h3>
 <ul><li>A failed download shows a short message, such as “Data not available for this coin”, instead of an R error.</li>
-<li>The keep-alive pings now get an answer from the server, so idle connections stay open behind proxies.</li>
+<li>The keep-alive pings now get an answer from the server, so idle connections stay open behind proxies. <code>crypto(keep_alive = FALSE)</code> turns them off, as <code>app.R</code> does, so that the app can go to sleep on shinyapps.io when nobody uses it.</li>
 <li>Small prices are no longer shown in scientific notation, and the app no longer changes the options of your R session to do so.</li>
 <li>Treemap labels show the 24h change instead of NaN.</li>
 <li>The date range buttons of the Timeseries chart are readable in dark mode.</li>

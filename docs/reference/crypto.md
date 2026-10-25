@@ -6,7 +6,12 @@ exchange rates and market data from 'CoinMarketCap'.
 ## Usage
 
 ``` r
-crypto(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), ...)
+crypto(
+  api_key = Sys.getenv("COINMARKETCAP_APIKEY"),
+  analytics = FALSE,
+  keep_alive = TRUE,
+  ...
+)
 ```
 
 ## Arguments
@@ -16,6 +21,21 @@ crypto(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), ...)
   A 'CoinMarketCap' API key, needed for the market listings. By default
   it is read from the `COINMARKETCAP_APIKEY` environment variable, which
   can be set in `.Renviron`.
+
+- analytics:
+
+  `TRUE` to add Google Analytics, through the cookie banner shared with
+  the sites of sedzinfo.github.io, which loads it only after the visitor
+  accepts. Meant for the public deployment (see `app.R`); off by
+  default, so that running the app yourself sends nothing.
+
+- keep_alive:
+
+  `TRUE` (the default) to ping the server every 15 seconds while the
+  page is open, so that proxies do not close idle connections. `FALSE`
+  lets the app go to sleep when nobody uses it, as `app.R` does on
+  shinyapps.io, where an app that stays awake uses up the active hours
+  of the plan.
 
 - ...:
 

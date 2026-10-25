@@ -93,7 +93,8 @@ plot_timeseries <- function(history, mode = "light", averages = c(50, 200), show
   }
   price <- price %>%
     plotly::layout(
-      title = unique(history$name),
+      # on the left, as the legend is centred above the chart
+      title = list(text = unique(history$name), x = 0.01, xanchor = "left"),
       legend = list(orientation = "h", x = 0.5, xanchor = "center"),
       yaxis = list(title = "USD"),
       xaxis = list(
@@ -110,7 +111,8 @@ plot_timeseries <- function(history, mode = "light", averages = c(50, 200), show
     line = list(color = "#2ca02c"),
     name = "Volume"
   ) %>%
-    plotly::layout(yaxis = list(title = "Volume"))
+    # no axis title: the legend names the panel, and on a short panel the titles run into each other
+    plotly::layout(yaxis = list(title = ""))
   panels <- list(price, volume)
   heights <- c(0.8, 0.2)
   if (show_drawdown) {
@@ -125,7 +127,7 @@ plot_timeseries <- function(history, mode = "light", averages = c(50, 200), show
       name = "From high",
       hovertemplate = "%{x}<br>From high: %{y:.1f}%<extra></extra>"
     ) %>%
-      plotly::layout(yaxis = list(title = "From high (%)"))
+      plotly::layout(yaxis = list(title = "", ticksuffix = "%"))
     panels <- c(panels, list(from_high))
     heights <- c(0.65, 0.15, 0.2)
   }

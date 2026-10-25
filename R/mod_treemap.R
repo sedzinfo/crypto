@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' shiny::fluidPage(crypto:::mod_treemap_ui("treemap"))
+#' shiny::fluidPage(golemcrypto:::mod_treemap_ui("treemap"))
 #' }
 mod_treemap_ui <- function(id) {
   ns <- NS(id)

@@ -16,6 +16,6 @@ The number of minutes from \code{time} until now.
 Minutes since a time
 }
 \examples{
-crypto:::minutes_since(Sys.time() - 90)
+golemcrypto:::minutes_since(Sys.time() - 90)
 }
 \keyword{internal}

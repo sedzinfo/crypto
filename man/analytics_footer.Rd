@@ -14,6 +14,6 @@ A \code{div} for the bottom of the page.
 their choice at any time, as the privacy note promises.
 }
 \examples{
-crypto:::analytics_footer()
+golemcrypto:::analytics_footer()
 }
 \keyword{internal}

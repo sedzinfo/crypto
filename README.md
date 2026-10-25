@@ -41,7 +41,7 @@ Open RStudio (or an R console) and run:
 install.packages("devtools")
 library(devtools)
 # Install the crypto package from GitHub
-install_github("sedzinfo/crypto")
+install_github("sedzinfo/golemcrypto")
 ```
 
 ## CoinMarketCap API key
@@ -64,7 +64,7 @@ You can also pass the key directly with `crypto(api_key = "your-api-key")`. Keep
 Launch the Shiny app with just two lines of code:
 
 ```r
-library(crypto)
+library(golemcrypto)
 crypto()
 ```
 
@@ -75,7 +75,7 @@ The application will open in your default web browser. Any [`shiny::shinyApp()`]
 The data, calculations and charts of the app are also available as functions, for scripts and R Markdown reports:
 
 ```r
-library(crypto)
+library(golemcrypto)
 
 # one coin since 2020: candlestick chart and monthly returns
 btc <- get_history("Bitcoin (BTC)", as.Date("2020-01-01"))
@@ -131,19 +131,19 @@ Coins are picked by their label, such as `"Bitcoin (BTC)"`, and `get_coins()$nam
 ## Screenshots
 
 ### Cryptocurrency Price Chart
-![Candlestick and volume chart of Bitcoin since 2013](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto1.png)
+![Candlestick and volume chart of Bitcoin since 2013](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto1.png)
 
 ### Top 100 Market Overview
-![Table of the top 100 coins with color-coded price changes](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto2.png)
+![Table of the top 100 coins with color-coded price changes](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto2.png)
 
 ### Coin Comparison
-![Close prices of Bitcoin, Ethereum and Tether normalized to 100](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto3.png)
+![Close prices of Bitcoin, Ethereum and Tether normalized to 100](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto3.png)
 
 ### Market Treemap (dark mode)
-![Treemap of the top 100 coins sized by market cap and colored by 24h change](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto4.png)
+![Treemap of the top 100 coins sized by market cap and colored by 24h change](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto4.png)
 
 ### Returns Calendar (dark mode)
-![Monthly returns of Bitcoin by year](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto5.png)
+![Monthly returns of Bitcoin by year](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto5.png)
 
 ## Dependencies
 
@@ -192,21 +192,21 @@ Run the tests with `devtools::test()`, and the full package check with `devtools
 
 1. Create a `.Renviron` file in the package folder with `COINMARKETCAP_APIKEY=your-api-key`. It is uploaded with the app but never committed, as `.gitignore` lists it.
 2. Connect your account once, with the `rsconnect::setAccountInfo()` line from Account, Tokens on shinyapps.io.
-3. Run `rsconnect::deployApp(appName = "crypto")` from the package folder, or open `app.R` in RStudio and click Publish.
+3. Run `rsconnect::deployApp(appName = "golemcrypto")` from the package folder, or open `app.R` in RStudio and click Publish.
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/sedzinfo/crypto/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/sedzinfo/golemcrypto/issues).
 
 ---
 
-![Stars](https://img.shields.io/github/stars/sedzinfo/crypto)
-![Watchers](https://img.shields.io/github/watchers/sedzinfo/crypto)
-![Repo Size](https://img.shields.io/github/repo-size/sedzinfo/crypto)
-![Open Issues](https://img.shields.io/github/issues/sedzinfo/crypto)
-![Forks](https://img.shields.io/github/forks/sedzinfo/crypto)
-![Last Commit](https://img.shields.io/github/last-commit/sedzinfo/crypto)
-![Contributors](https://img.shields.io/github/contributors/sedzinfo/crypto)
-![License](https://img.shields.io/github/license/sedzinfo/crypto)
-![Workflow Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/crypto/build-tarball.yml)
-![R-CMD-check](https://github.com/sedzinfo/crypto/actions/workflows/R-CMD-check.yaml/badge.svg)
+![Stars](https://img.shields.io/github/stars/sedzinfo/golemcrypto)
+![Watchers](https://img.shields.io/github/watchers/sedzinfo/golemcrypto)
+![Repo Size](https://img.shields.io/github/repo-size/sedzinfo/golemcrypto)
+![Open Issues](https://img.shields.io/github/issues/sedzinfo/golemcrypto)
+![Forks](https://img.shields.io/github/forks/sedzinfo/golemcrypto)
+![Last Commit](https://img.shields.io/github/last-commit/sedzinfo/golemcrypto)
+![Contributors](https://img.shields.io/github/contributors/sedzinfo/golemcrypto)
+![License](https://img.shields.io/github/license/sedzinfo/golemcrypto)
+![Workflow Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/golemcrypto/build-tarball.yml)
+![R-CMD-check](https://github.com/sedzinfo/golemcrypto/actions/workflows/R-CMD-check.yaml/badge.svg)

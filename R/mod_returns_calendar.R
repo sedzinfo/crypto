@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' shiny::fluidPage(crypto:::mod_returns_calendar_ui("returns_calendar"))
+#' shiny::fluidPage(golemcrypto:::mod_returns_calendar_ui("returns_calendar"))
 #' }
 mod_returns_calendar_ui <- function(id) {
   ns <- NS(id)

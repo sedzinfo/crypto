@@ -18,6 +18,6 @@ several coins gives a clear error instead of a wrong result.
 }
 \examples{
 history <- data.frame(name_symbol = c("Alpha (A)", "Beta (B)"))
-try(crypto:::check_one_coin(history))
+try(golemcrypto:::check_one_coin(history))
 }
 \keyword{internal}

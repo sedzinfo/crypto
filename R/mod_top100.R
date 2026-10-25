@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' shiny::fluidPage(crypto:::mod_top100_ui("top100"))
+#' shiny::fluidPage(golemcrypto:::mod_top100_ui("top100"))
 #' }
 mod_top100_ui <- function(id) {
   ns <- NS(id)

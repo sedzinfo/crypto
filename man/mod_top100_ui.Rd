@@ -18,7 +18,7 @@ downloads the listings as CSV, and a sortable table of the top 100 coins.
 }
 \examples{
 \dontrun{
-shiny::fluidPage(crypto:::mod_top100_ui("top100"))
+shiny::fluidPage(golemcrypto:::mod_top100_ui("top100"))
 }
 }
 \keyword{internal}

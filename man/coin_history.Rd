@@ -26,7 +26,7 @@ full, and when bringing it up to date fails, the kept history is used.
 \examples{
 \dontrun{
 coins <- get_coins()
-crypto:::coin_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
+golemcrypto:::coin_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
 }
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ because the orange primary color of the app is too pale behind its white
 text.
 }
 \examples{
-crypto:::analytics_resources()
+golemcrypto:::analytics_resources()
 }
 \keyword{internal}

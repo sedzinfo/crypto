@@ -18,6 +18,6 @@ plotly buttons default to a light background, which hides the light text
 of the dark mode.
 }
 \examples{
-crypto:::button_colors("dark")
+golemcrypto:::button_colors("dark")
 }
 \keyword{internal}

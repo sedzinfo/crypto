@@ -16,7 +16,7 @@ Calls the 'CoinMarketCap' API with the key from \code{\link[=use_api_key]{use_ap
 }
 \examples{
 \dontrun{
-listings <- crypto:::fetch_listings()
+listings <- golemcrypto:::fetch_listings()
 head(listings)
 }
 }

@@ -21,6 +21,6 @@ on every axis of a chart with several panels.
 }
 \examples{
 p <- plotly::plot_ly(x = 1:3, y = c(2, 1, 3), type = "scatter", mode = "lines")
-crypto:::plot_theme(p, "dark")
+golemcrypto:::plot_theme(p, "dark")
 }
 \keyword{internal}

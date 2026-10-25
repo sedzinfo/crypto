@@ -17,7 +17,7 @@ survive R restarts: by default in the cache folder of the package from
 }
 \examples{
 \dontrun{
-crypto:::disk_cache()$keys()
+golemcrypto:::disk_cache()$keys()
 }
 }
 \keyword{internal}

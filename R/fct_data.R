@@ -44,7 +44,7 @@ disk <- new.env(parent = emptyenv())
 #'
 #' @examples
 #' \dontrun{
-#' crypto:::disk_cache()$keys()
+#' golemcrypto:::disk_cache()$keys()
 #' }
 disk_cache <- function() {
   dir <- getOption("crypto.cache_dir", tools::R_user_dir("crypto", which = "cache"))
@@ -71,7 +71,7 @@ disk_cache <- function() {
 #'
 #' @examples
 #' \dontrun{
-#' crypto:::use_api_key()
+#' golemcrypto:::use_api_key()
 #' }
 use_api_key <- function(api_key = Sys.getenv("COINMARKETCAP_APIKEY")) {
   if (!nzchar(api_key)) {
@@ -99,7 +99,7 @@ use_api_key <- function(api_key = Sys.getenv("COINMARKETCAP_APIKEY")) {
 #' @keywords internal
 #'
 #' @examples
-#' crypto:::coin_label(data.frame(name = c("Bitcoin", "Ethereum"), symbol = c("BTC", "ETH")))
+#' golemcrypto:::coin_label(data.frame(name = c("Bitcoin", "Ethereum"), symbol = c("BTC", "ETH")))
 coin_label <- function(coins) {
   paste0(coins$name, " (", coins$symbol, ")")
 }
@@ -157,7 +157,7 @@ get_coins <- function() {
 #'
 #' @examples
 #' \dontrun{
-#' listings <- crypto:::fetch_listings()
+#' listings <- golemcrypto:::fetch_listings()
 #' head(listings)
 #' }
 fetch_listings <- function() {
@@ -235,7 +235,7 @@ get_listings <- function() {
 #' @examples
 #' \dontrun{
 #' coins <- get_coins()
-#' crypto:::download_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
+#' golemcrypto:::download_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
 #' }
 download_history <- function(coin, start_date) {
   tryCatch(
@@ -284,7 +284,7 @@ download_history <- function(coin, start_date) {
 #'   name_symbol = "Alpha (A)",
 #'   timestamp = as.Date(c("2024-01-01", "2024-01-02", "2024-01-05"))
 #' )
-#' crypto:::has_gaps(history)
+#' golemcrypto:::has_gaps(history)
 has_gaps <- function(history) {
   any(tapply(history$timestamp, history$name_symbol, function(dates) any(diff(dates) > 1)))
 }
@@ -311,7 +311,7 @@ has_gaps <- function(history) {
 #' \dontrun{
 #' coins <- get_coins()
 #' btc <- coins[coins$name_symbol == "Bitcoin (BTC)", ]
-#' crypto:::keep_history("history_1", crypto:::download_history(btc, Sys.Date() - 30), Sys.Date() - 30)
+#' golemcrypto:::keep_history("history_1", golemcrypto:::download_history(btc, Sys.Date() - 30), Sys.Date() - 30)
 #' }
 keep_history <- function(key, history, from) {
   if (is.null(history)) {
@@ -348,7 +348,7 @@ keep_history <- function(key, history, from) {
 #' @examples
 #' \dontrun{
 #' coins <- get_coins()
-#' crypto:::coin_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
+#' golemcrypto:::coin_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
 #' }
 coin_history <- function(coin, start_date) {
   key <- paste0("history_", coin$id)

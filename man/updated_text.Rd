@@ -16,6 +16,6 @@ A character string such as "Data: CoinMarketCap, updated 14:32".
 Text with the source and time of the market listings
 }
 \examples{
-crypto:::updated_text(Sys.time())
+golemcrypto:::updated_text(Sys.time())
 }
 \keyword{internal}

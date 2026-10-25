@@ -13,7 +13,7 @@
 #' @keywords internal
 #'
 #' @examples
-#' crypto:::file_stem("Bitcoin (BTC)")
+#' golemcrypto:::file_stem("Bitcoin (BTC)")
 file_stem <- function(label) {
   gsub("^-+|-+$", "", gsub("[^a-z0-9]+", "-", tolower(label)))
 }
@@ -39,7 +39,7 @@ file_stem <- function(label) {
 #' @examples
 #' \dontrun{
 #' # inside a module server, with downloadButton(ns("csv"), "CSV") in its UI:
-#' output$csv <- crypto:::csv_download(reactive(head(mtcars)), "cars")
+#' output$csv <- golemcrypto:::csv_download(reactive(head(mtcars)), "cars")
 #' }
 csv_download <- function(data, stem) {
   downloadHandler(

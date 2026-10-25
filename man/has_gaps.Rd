@@ -23,6 +23,6 @@ history <- data.frame(
   name_symbol = "Alpha (A)",
   timestamp = as.Date(c("2024-01-01", "2024-01-02", "2024-01-05"))
 )
-crypto:::has_gaps(history)
+golemcrypto:::has_gaps(history)
 }
 \keyword{internal}

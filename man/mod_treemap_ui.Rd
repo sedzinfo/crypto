@@ -18,7 +18,7 @@ downloads the treemap's data as CSV, and a treemap of the top 100 coins.
 }
 \examples{
 \dontrun{
-shiny::fluidPage(crypto:::mod_treemap_ui("treemap"))
+shiny::fluidPage(golemcrypto:::mod_treemap_ui("treemap"))
 }
 }
 \keyword{internal}

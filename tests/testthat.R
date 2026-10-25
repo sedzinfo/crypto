@@ -1,4 +1,4 @@
 library(testthat)
-library(crypto)
+library(golemcrypto)
 
-test_check("crypto")
+test_check("golemcrypto")

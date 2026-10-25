@@ -16,6 +16,6 @@ A CSS color, the body text color of Bootstrap in that mode.
 Text color of the light or dark mode
 }
 \examples{
-crypto:::text_color("dark")
+golemcrypto:::text_color("dark")
 }
 \keyword{internal}

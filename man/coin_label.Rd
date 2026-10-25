@@ -17,6 +17,6 @@ The label identifies coins throughout the package: in the arguments of
 \code{\link[=get_history]{get_history()}}, and in the pickers, tables and plots of the app.
 }
 \examples{
-crypto:::coin_label(data.frame(name = c("Bitcoin", "Ethereum"), symbol = c("BTC", "ETH")))
+golemcrypto:::coin_label(data.frame(name = c("Bitcoin", "Ethereum"), symbol = c("BTC", "ETH")))
 }
 \keyword{internal}

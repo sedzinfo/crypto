@@ -17,6 +17,6 @@ Lower case, with every run of characters other than letters and digits
 replaced by a hyphen, so that "Bitcoin (BTC)" becomes "bitcoin-btc".
 }
 \examples{
-crypto:::file_stem("Bitcoin (BTC)")
+golemcrypto:::file_stem("Bitcoin (BTC)")
 }
 \keyword{internal}

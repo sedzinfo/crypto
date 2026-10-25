@@ -15,5 +15,5 @@
 #' app_sys("app/www")
 #' }
 app_sys <- function(...) {
-  system.file(..., package = "crypto")
+  system.file(..., package = "golemcrypto")
 }

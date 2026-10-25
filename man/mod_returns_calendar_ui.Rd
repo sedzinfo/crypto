@@ -18,7 +18,7 @@ monthly returns of the coin selected in the Timeseries tab.
 }
 \examples{
 \dontrun{
-shiny::fluidPage(crypto:::mod_returns_calendar_ui("returns_calendar"))
+shiny::fluidPage(golemcrypto:::mod_returns_calendar_ui("returns_calendar"))
 }
 }
 \keyword{internal}

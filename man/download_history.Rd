@@ -23,7 +23,7 @@ of an error.
 \examples{
 \dontrun{
 coins <- get_coins()
-crypto:::download_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
+golemcrypto:::download_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
 }
 }
 \keyword{internal}

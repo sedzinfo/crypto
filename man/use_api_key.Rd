@@ -19,7 +19,7 @@ sets the address of the API.
 }
 \examples{
 \dontrun{
-crypto:::use_api_key()
+golemcrypto:::use_api_key()
 }
 }
 \keyword{internal}

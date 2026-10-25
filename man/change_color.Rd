@@ -20,6 +20,6 @@ that changes near zero take the color of the page in light and dark mode.
 At most 75\% opaque, so the text on top stays readable in both modes.
 }
 \examples{
-crypto:::change_color(c(0, 0.5, 1), gain = TRUE)
+golemcrypto:::change_color(c(0, 0.5, 1), gain = TRUE)
 }
 \keyword{internal}

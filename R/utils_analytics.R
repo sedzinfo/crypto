@@ -22,7 +22,7 @@ consent_script <- "https://sedzinfo.github.io/consent.js"
 #' @keywords internal
 #'
 #' @examples
-#' crypto:::analytics_resources()
+#' golemcrypto:::analytics_resources()
 analytics_resources <- function() {
   tagList(
     tags$script(src = consent_script, defer = NA),
@@ -42,7 +42,7 @@ analytics_resources <- function() {
 #' @keywords internal
 #'
 #' @examples
-#' crypto:::analytics_footer()
+#' golemcrypto:::analytics_footer()
 analytics_footer <- function() {
   div(
     class = "text-center small py-3",

@@ -15,7 +15,7 @@
 #' @keywords internal
 #'
 #' @examples
-#' crypto:::change_color(c(0, 0.5, 1), gain = TRUE)
+#' golemcrypto:::change_color(c(0, 0.5, 1), gain = TRUE)
 change_color <- function(strength, gain) {
   rgb <- if (gain) "25,135,84" else "220,53,69"
   sprintf("rgba(%s,%.3f)", rgb, 0.75 * strength)
@@ -47,7 +47,7 @@ colorscale_change <- list(
 #' @keywords internal
 #'
 #' @examples
-#' crypto:::text_color("dark")
+#' golemcrypto:::text_color("dark")
 text_color <- function(mode) {
   if (identical(mode, "dark")) "#dee2e6" else "#212529"
 }
@@ -69,7 +69,7 @@ text_color <- function(mode) {
 #'
 #' @examples
 #' p <- plotly::plot_ly(x = 1:3, y = c(2, 1, 3), type = "scatter", mode = "lines")
-#' crypto:::plot_theme(p, "dark")
+#' golemcrypto:::plot_theme(p, "dark")
 plot_theme <- function(p, mode) {
   grid <- list(gridcolor = if (identical(mode, "dark")) "rgba(255,255,255,0.1)" else "rgba(0,0,0,0.1)")
   # a chart made with subplot() has an axis per panel: yaxis2, yaxis3, ...
@@ -99,7 +99,7 @@ plot_theme <- function(p, mode) {
 #' @keywords internal
 #'
 #' @examples
-#' crypto:::button_colors("dark")
+#' golemcrypto:::button_colors("dark")
 button_colors <- function(mode) {
   if (identical(mode, "dark")) {
     list(bgcolor = "#343a40", activecolor = "#6c757d")
@@ -123,7 +123,7 @@ button_colors <- function(mode) {
 #'
 #' @examples
 #' history <- data.frame(name_symbol = c("Alpha (A)", "Beta (B)"))
-#' try(crypto:::check_one_coin(history))
+#' try(golemcrypto:::check_one_coin(history))
 check_one_coin <- function(history) {
   coins <- unique(history$name_symbol)
   if (length(coins) > 1) {
@@ -147,7 +147,7 @@ check_one_coin <- function(history) {
 #' @keywords internal
 #'
 #' @examples
-#' crypto:::minutes_since(Sys.time() - 90)
+#' golemcrypto:::minutes_since(Sys.time() - 90)
 minutes_since <- function(time) {
   as.numeric(difftime(Sys.time(), time, units = "mins"))
 }
@@ -163,7 +163,7 @@ minutes_since <- function(time) {
 #' @keywords internal
 #'
 #' @examples
-#' crypto:::updated_text(Sys.time())
+#' golemcrypto:::updated_text(Sys.time())
 updated_text <- function(time) {
   paste0("Data: CoinMarketCap, updated ", format(time, "%H:%M"))
 }

@@ -27,3 +27,6 @@ if (.Platform$OS.type == "windows") shell.exec("golemcrypto.pdf") else system("e
 system("R CMD build . --resave-data")
 
 if (interactive()) crypto()
+
+
+

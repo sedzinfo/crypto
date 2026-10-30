@@ -54,7 +54,14 @@ installation instructions can be found here:
 
 Open RStudio (or an R console) and run:
 
-`# Install devtools if you haven't already`` `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"devtools"``)`` `[`library`](https://rdrr.io/r/base/library.html)`(`[`devtools`](https://devtools.r-lib.org/)`)`` ``# Install the crypto package from GitHub`` `[`install_github`](https://devtools.r-lib.org/reference/install-deprecated.html)`(``"sedzinfo/crypto"``)`
+``` r
+
+# Install devtools if you haven't already
+install.packages("devtools")
+library(devtools)
+# Install the crypto package from GitHub
+install_github("sedzinfo/golemcrypto")
+```
 
 ## CoinMarketCap API key
 
@@ -66,7 +73,10 @@ key.
 
 2.  Open your `.Renviron` file:
 
-    `usethis``::`[`edit_r_environ`](https://usethis.r-lib.org/reference/edit.html)`(``)`
+    ``` r
+
+    usethis::edit_r_environ()
+    ```
 
 3.  Add this line with your own key, save the file and restart R:
 
@@ -76,11 +86,21 @@ You can also pass the key directly with
 `crypto(api_key = "your-api-key")`. Keep the key out of your code and
 out of Git, because anyone who has it can use your API credits.
 
+Only the market listings of the Top 100 and Treemap tabs use the key:
+one credit per download, at most one download every 10 minutes while the
+app runs. When the key has used up its credits, the app still starts;
+those two tabs tell the visitors when the limit resets, and the other
+tabs work as usual.
+
 ## Usage
 
 Launch the Shiny app with just two lines of code:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`crypto`](https://sedzinfo.github.io/crypto/)`)`` `[`crypto`](https://sedzinfo.github.io/golemcrypto/reference/crypto.md)`(``)`
+``` r
+
+library(golemcrypto)
+crypto()
+```
 
 The application will open in your default web browser. Any
 [`shiny::shinyApp()`](https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html)
@@ -92,7 +112,25 @@ option can be passed on, for example
 The data, calculations and charts of the app are also available as
 functions, for scripts and R Markdown reports:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`crypto`](https://sedzinfo.github.io/crypto/)`)`` `` ``# one coin since 2020: candlestick chart and monthly returns`` ``btc`` ``<-`` `[`get_history`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md)`(``"Bitcoin (BTC)"``, `[`as.Date`](https://rdrr.io/r/base/as.Date.html)`(``"2020-01-01"``)``)`` `[`plot_timeseries`](https://sedzinfo.github.io/golemcrypto/reference/plot_timeseries.md)`(``btc``)`` `[`plot_timeseries`](https://sedzinfo.github.io/golemcrypto/reference/plot_timeseries.md)`(``btc``, averages ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``20``, ``100``)``)`` ``# other moving averages`` `[`plot_returns_calendar`](https://sedzinfo.github.io/golemcrypto/reference/plot_returns_calendar.md)`(`[`monthly_returns`](https://sedzinfo.github.io/golemcrypto/reference/monthly_returns.md)`(``btc``)``, ``"Bitcoin (BTC)"``, mode ``=`` ``"dark"``)`` `` ``# several coins over the last year, starting at 100`` ``history`` ``<-`` `[`get_history`](https://sedzinfo.github.io/golemcrypto/reference/get_history.md)`(`[`c`](https://rdrr.io/r/base/c.html)`(``"Bitcoin (BTC)"``, ``"Ethereum (ETH)"``, ``"Solana (SOL)"``)``)`` `[`plot_compare`](https://sedzinfo.github.io/golemcrypto/reference/plot_compare.md)`(`[`normalize_prices`](https://sedzinfo.github.io/golemcrypto/reference/normalize_prices.md)`(``history``)``)`` `` ``# the top 100 coins, which needs the API key`` ``listings`` ``<-`` `[`get_listings`](https://sedzinfo.github.io/golemcrypto/reference/get_listings.md)`(``)``$``data`` `[`plot_treemap`](https://sedzinfo.github.io/golemcrypto/reference/plot_treemap.md)`(``listings``)`` `[`listings_table`](https://sedzinfo.github.io/golemcrypto/reference/listings_table.md)`(``listings``)`
+``` r
+
+library(golemcrypto)
+
+# one coin since 2020: candlestick chart and monthly returns
+btc <- get_history("Bitcoin (BTC)", as.Date("2020-01-01"))
+plot_timeseries(btc)
+plot_timeseries(btc, averages = c(20, 100))   # other moving averages
+plot_returns_calendar(monthly_returns(btc), "Bitcoin (BTC)", mode = "dark")
+
+# several coins over the last year, starting at 100
+history <- get_history(c("Bitcoin (BTC)", "Ethereum (ETH)", "Solana (SOL)"))
+plot_compare(normalize_prices(history))
+
+# the top 100 coins, which needs the API key
+listings <- get_listings()$data
+plot_treemap(listings)
+listings_table(listings)
+```
 
 Coins are picked by their label, such as `"Bitcoin (BTC)"`, and
 `get_coins()$name_symbol` lists all of them. Downloads are reused: the
@@ -147,28 +185,28 @@ minutes.
 ### Cryptocurrency Price Chart
 
 ![Candlestick and volume chart of Bitcoin since
-2013](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto1.png)
+2013](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto1.png)
 
 Candlestick and volume chart of Bitcoin since 2013
 
 ### Top 100 Market Overview
 
 ![Table of the top 100 coins with color-coded price
-changes](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto2.png)
+changes](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto2.png)
 
 Table of the top 100 coins with color-coded price changes
 
 ### Coin Comparison
 
 ![Close prices of Bitcoin, Ethereum and Tether normalized to
-100](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto3.png)
+100](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto3.png)
 
 Close prices of Bitcoin, Ethereum and Tether normalized to 100
 
 ### Market Treemap (dark mode)
 
 ![Treemap of the top 100 coins sized by market cap and colored by 24h
-change](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto4.png)
+change](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto4.png)
 
 Treemap of the top 100 coins sized by market cap and colored by 24h
 change
@@ -176,7 +214,7 @@ change
 ### Returns Calendar (dark mode)
 
 ![Monthly returns of Bitcoin by
-year](https://github.com/sedzinfo/crypto/raw/main/screenshots/crypto5.png)
+year](https://github.com/sedzinfo/golemcrypto/raw/main/screenshots/crypto5.png)
 
 Monthly returns of Bitcoin by year
 
@@ -251,18 +289,18 @@ nobody uses it instead of using up the active hours of the plan.
 2.  Connect your account once, with the
     [`rsconnect::setAccountInfo()`](https://rstudio.github.io/rsconnect/reference/setAccountInfo.html)
     line from Account, Tokens on shinyapps.io.
-3.  Run `rsconnect::deployApp(appName = "crypto")` from the package
+3.  Run `rsconnect::deployApp(appName = "golemcrypto")` from the package
     folder, or open `app.R` in RStudio and click Publish.
 
 ## Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to
-check the [issues page](https://github.com/sedzinfo/crypto/issues).
+check the [issues page](https://github.com/sedzinfo/golemcrypto/issues).
 
 ------------------------------------------------------------------------
 
-![Stars](https://img.shields.io/github/stars/sedzinfo/crypto)![Watchers](https://img.shields.io/github/watchers/sedzinfo/crypto)![Repo
-Size](https://img.shields.io/github/repo-size/sedzinfo/crypto)![Open
-Issues](https://img.shields.io/github/issues/sedzinfo/crypto)![Forks](https://img.shields.io/github/forks/sedzinfo/crypto)![Last
-Commit](https://img.shields.io/github/last-commit/sedzinfo/crypto)![Contributors](https://img.shields.io/github/contributors/sedzinfo/crypto)![License](https://img.shields.io/github/license/sedzinfo/crypto)![Workflow
-Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/crypto/build-tarball.yml)![R-CMD-check](https://github.com/sedzinfo/crypto/actions/workflows/R-CMD-check.yaml/badge.svg)
+![Stars](https://img.shields.io/github/stars/sedzinfo/golemcrypto)![Watchers](https://img.shields.io/github/watchers/sedzinfo/golemcrypto)![Repo
+Size](https://img.shields.io/github/repo-size/sedzinfo/golemcrypto)![Open
+Issues](https://img.shields.io/github/issues/sedzinfo/golemcrypto)![Forks](https://img.shields.io/github/forks/sedzinfo/golemcrypto)![Last
+Commit](https://img.shields.io/github/last-commit/sedzinfo/golemcrypto)![Contributors](https://img.shields.io/github/contributors/sedzinfo/golemcrypto)![License](https://img.shields.io/github/license/sedzinfo/golemcrypto)![Workflow
+Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/golemcrypto/build-tarball.yml)![R-CMD-check](https://github.com/sedzinfo/golemcrypto/actions/workflows/R-CMD-check.yaml/badge.svg)

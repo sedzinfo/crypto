@@ -24,6 +24,6 @@ The key, invisibly.
 
 ``` r
 if (FALSE) { # \dontrun{
-crypto:::use_api_key()
+golemcrypto:::use_api_key()
 } # }
 ```

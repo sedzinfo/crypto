@@ -23,6 +23,6 @@ A `tagList` of Shiny UI elements.
 
 ``` r
 if (FALSE) { # \dontrun{
-shiny::fluidPage(crypto:::mod_returns_calendar_ui("returns_calendar"))
+shiny::fluidPage(golemcrypto:::mod_returns_calendar_ui("returns_calendar"))
 } # }
 ```

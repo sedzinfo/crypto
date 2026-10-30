@@ -14,6 +14,70 @@ test_that("use_api_key() asks for a key when there is none", {
   expect_error(use_api_key(""), "API key is needed")
 })
 
+# get_listings() would reuse the listings of an earlier test for 10 minutes
+forget_listings <- function() rm(list = ls(listings_cache), envir = listings_cache)
+
+# the answer of key/info for a key that has used up its credits
+used_up <- list(
+  status = list(error_code = 0L),
+  data = list(
+    plan = list(credit_limit_monthly_reset_timestamp = "2026-11-01T00:00:00.000Z"),
+    usage = list(current_day = list(credits_left = 0), current_month = list(credits_left = 0))
+  )
+)
+
+test_that("listings_problem() says when used-up credits reset", {
+  expect_match(listings_problem(used_up), "monthly limit .* resets on 1 November 2026 at 00:00 UTC")
+  # when key/info is refused as well, there is no date
+  expect_match(listings_problem(list(status = list(error_code = 1010L))), "monthly limit .* resets next month")
+  expect_match(listings_problem(list(status = list(error_code = "1009"))), "daily limit .* resets at 00:00 UTC")
+})
+
+test_that("listings_problem() says the app tries again for any other failure", {
+  credits_left <- used_up
+  credits_left$data$usage$current_day$credits_left <- 100
+  credits_left$data$usage$current_month$credits_left <- 4000
+  expect_match(listings_problem(credits_left), "right now. The app tries again every 10 minutes")
+  # an invalid key, and no answer at all
+  expect_match(listings_problem(list(status = list(error_code = 1001L))), "right now")
+  expect_match(listings_problem(NULL), "right now")
+})
+
+test_that("get_listings() says why the listings are missing and tries again after 10 minutes", {
+  forget_listings()
+  downloads <- 0
+  available <- FALSE
+  local_mocked_bindings(
+    fetch_listings = function() {
+      downloads <<- downloads + 1
+      if (!available) stop("over the limit")
+      listings
+    },
+    key_info = function() used_up
+  )
+  expect_message(result <- get_listings(), "get_crypto_listings failed: over the limit")
+  expect_null(result$data)
+  expect_match(result$problem, "monthly limit")
+  get_listings()
+  expect_equal(downloads, 1)
+
+  available <- TRUE
+  listings_cache$tried <- listings_cache$tried - refresh_minutes * 60
+  result <- get_listings()
+  expect_equal(downloads, 2)
+  expect_equal(result$data, listings)
+  expect_null(result$problem)
+
+  # a later failure keeps the listings and their time
+  available <- FALSE
+  listings_cache$tried <- listings_cache$tried - refresh_minutes * 60
+  expect_message(kept <- get_listings(), "get_crypto_listings failed")
+  expect_equal(kept$data, listings)
+  expect_equal(kept$time, result$time)
+  expect_match(kept$problem, "monthly limit")
+  forget_listings()
+})
+
 test_that("get_coins() keeps the list of coins on disk for a day", {
   disk_cache()$reset()
   downloads <- 0

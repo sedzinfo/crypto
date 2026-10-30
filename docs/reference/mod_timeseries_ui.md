@@ -30,6 +30,6 @@ A `tagList` of Shiny UI elements.
 
 ``` r
 if (FALSE) { # \dontrun{
-shiny::fluidPage(crypto:::mod_timeseries_ui("timeseries", crypto:::get_coins()))
+shiny::fluidPage(golemcrypto:::mod_timeseries_ui("timeseries", golemcrypto:::get_coins()))
 } # }
 ```

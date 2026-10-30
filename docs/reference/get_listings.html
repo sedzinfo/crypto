@@ -56,14 +56,18 @@ process, so the API is called at most once in that time.</p>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A list with <code>data</code>, a data frame with one row per coin sorted by
-market cap, and <code>time</code>, when it was downloaded.</p>
+market cap, and <code>time</code>, when it was downloaded (both <code>NULL</code> until a
+download works), and <code>problem</code>, <code>NULL</code> when the last download worked
+and otherwise a sentence on why it failed.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The listings need a 'CoinMarketCap' API key in the <code>COINMARKETCAP_APIKEY</code>
-environment variable, see the README. The first download lets errors
-through. When a later download fails, the previous listings and their
-time are kept, so the time stays truthful.</p>
+environment variable, see the README. A failed download, for example when
+the key has used up its credits, is tried again after 10 minutes. Until
+then the previous listings and their time are kept, so the time stays
+truthful, and <code>problem</code> tells the visitors of the app why, see
+<code><a href="listings_problem.html">listings_problem()</a></code>.</p>
     </div>
 
     <div class="section level2">

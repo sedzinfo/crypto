@@ -175,6 +175,83 @@ fetch_listings <- function() {
 ##########################################################################################
 #
 ##########################################################################################
+#' Ask 'CoinMarketCap' about the API key
+#'
+#' Calls the key/info endpoint, which uses no credits, for the plan of the
+#' key from [use_api_key()] and the credits it has used and has left.
+#'
+#' @return The answer as a list with `status` and, for a valid key, `data`,
+#'   or `NULL` when 'CoinMarketCap' cannot be reached.
+#'
+#' @keywords internal
+#'
+#' @examples
+#' \dontrun{
+#' golemcrypto:::key_info()$data$usage$current_month
+#' }
+key_info <- function() {
+  handle <- curl::new_handle(timeout = 10)
+  curl::handle_setheaders(handle, "X-CMC_PRO_API_KEY" = Sys.getenv("COINMARKETCAP_APIKEY"))
+  tryCatch(
+    jsonlite::fromJSON(rawToChar(curl::curl_fetch_memory("https://pro-api.coinmarketcap.com/v1/key/info", handle = handle)$content)),
+    error = function(e) NULL
+  )
+}
+##########################################################################################
+#
+##########################################################################################
+#' Why the market listings cannot be downloaded
+#'
+#' Tells the visitors of the app when the API key has used up its credits
+#' for the month or the day, and when the limit resets. For any other
+#' failure, it says that the download is tried again in 10 minutes.
+#'
+#' @param info The answer of [key_info()].
+#'
+#' @return A character string for the visitors of the app.
+#'
+#' @keywords internal
+#'
+#' @examples
+#' info <- list(
+#'   status = list(error_code = 0),
+#'   data = list(
+#'     plan = list(credit_limit_monthly_reset_timestamp = "2026-11-01T00:00:00.000Z"),
+#'     usage = list(current_month = list(credits_left = 0))
+#'   )
+#' )
+#' golemcrypto:::listings_problem(info)
+listings_problem <- function(info = key_info()) {
+  usage <- info$data$usage
+  # 'CoinMarketCap' answers a key over its monthly limit with 1010 and over its daily limit with 1009
+  code <- as.character(info$status$error_code)
+  if (isTRUE(usage$current_month$credits_left <= 0) || identical(code, "1010")) {
+    stamp <- info$data$plan$credit_limit_monthly_reset_timestamp
+    reset <- if (is.character(stamp)) as.POSIXct(stamp, tz = "UTC", format = "%Y-%m-%dT%H:%M:%OS") else NA
+    when <- if (is.na(reset)) {
+      "next month"
+    } else {
+      paste0("on ", as.integer(format(reset, "%d")), " ", month.name[as.integer(format(reset, "%m"))], format(reset, " %Y at %H:%M UTC"))
+    }
+    paste0(
+      "The app has reached its monthly limit of CoinMarketCap requests, so the market data ",
+      "cannot be downloaded until the limit resets ", when, ". Please come back then."
+    )
+  } else if (isTRUE(usage$current_day$credits_left <= 0) || identical(code, "1009")) {
+    paste0(
+      "The app has reached its daily limit of CoinMarketCap requests, so the market data ",
+      "cannot be downloaded until the limit resets at 00:00 UTC. Please come back then."
+    )
+  } else {
+    paste0(
+      "The market data cannot be downloaded from CoinMarketCap right now. ",
+      "The app tries again every ", refresh_minutes, " minutes."
+    )
+  }
+}
+##########################################################################################
+#
+##########################################################################################
 #' Get the latest market listings
 #'
 #' Returns the listings of the coins by market cap, with their price, volume,
@@ -184,12 +261,16 @@ fetch_listings <- function() {
 #' process, so the API is called at most once in that time.
 #'
 #' The listings need a 'CoinMarketCap' API key in the `COINMARKETCAP_APIKEY`
-#' environment variable, see the README. The first download lets errors
-#' through. When a later download fails, the previous listings and their
-#' time are kept, so the time stays truthful.
+#' environment variable, see the README. A failed download, for example when
+#' the key has used up its credits, is tried again after 10 minutes. Until
+#' then the previous listings and their time are kept, so the time stays
+#' truthful, and `problem` tells the visitors of the app why, see
+#' [listings_problem()].
 #'
 #' @return A list with `data`, a data frame with one row per coin sorted by
-#'   market cap, and `time`, when it was downloaded.
+#'   market cap, and `time`, when it was downloaded (both `NULL` until a
+#'   download works), and `problem`, `NULL` when the last download worked
+#'   and otherwise a sentence on why it failed.
 #'
 #' @export
 #'
@@ -200,20 +281,21 @@ fetch_listings <- function() {
 #' head(listings$data)
 #' }
 get_listings <- function() {
-  if (is.null(listings_cache$data)) {
-    listings_cache$data <- fetch_listings()
-    listings_cache$time <- Sys.time()
-  } else if (minutes_since(listings_cache$time) >= refresh_minutes) {
+  if (is.null(listings_cache$tried) || minutes_since(listings_cache$tried) >= refresh_minutes) {
+    listings_cache$tried <- Sys.time()
     listings <- tryCatch(fetch_listings(), error = function(e) {
       message("get_crypto_listings failed: ", conditionMessage(e))
       NULL
     })
-    if (!is.null(listings)) {
+    if (is.null(listings)) {
+      listings_cache$problem <- listings_problem()
+    } else {
       listings_cache$data <- listings
       listings_cache$time <- Sys.time()
+      listings_cache$problem <- NULL
     }
   }
-  list(data = listings_cache$data, time = listings_cache$time)
+  list(data = listings_cache$data, time = listings_cache$time, problem = listings_cache$problem)
 }
 ##########################################################################################
 #

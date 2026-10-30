@@ -21,6 +21,6 @@ A CSS color, the body text color of Bootstrap in that mode.
 ## Examples
 
 ``` r
-crypto:::text_color("dark")
+golemcrypto:::text_color("dark")
 #> [1] "#dee2e6"
 ```

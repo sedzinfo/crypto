@@ -5,22 +5,32 @@ Text with the source and time of the market listings
 ## Usage
 
 ``` r
-updated_text(time)
+updated_text(time, problem = NULL)
 ```
 
 ## Arguments
 
 - time:
 
-  POSIXct. When the listings were downloaded.
+  POSIXct. When the listings were downloaded, `NULL` when no download
+  has worked yet.
+
+- problem:
+
+  Why the last download failed, from
+  [`get_listings()`](https://sedzinfo.github.io/golemcrypto/reference/get_listings.md),
+  or `NULL` when it worked.
 
 ## Value
 
-A character string such as "Data: CoinMarketCap, updated 14:32".
+A character string such as "Data: CoinMarketCap, updated 14:32",
+followed by `problem`, or `NULL` when there is no `time`.
 
 ## Examples
 
 ``` r
-crypto:::updated_text(Sys.time())
-#> [1] "Data: CoinMarketCap, updated 12:39"
+golemcrypto:::updated_text(Sys.time())
+#> [1] "Data: CoinMarketCap, updated 10:06"
+golemcrypto:::updated_text(Sys.time(), "The market data cannot be downloaded right now.")
+#> [1] "Data: CoinMarketCap, updated 10:06. The market data cannot be downloaded right now."
 ```

@@ -23,6 +23,6 @@ A character vector with one label per row of `coins`.
 ## Examples
 
 ``` r
-crypto:::coin_label(data.frame(name = c("Bitcoin", "Ethereum"), symbol = c("BTC", "ETH")))
+golemcrypto:::coin_label(data.frame(name = c("Bitcoin", "Ethereum"), symbol = c("BTC", "ETH")))
 #> [1] "Bitcoin (BTC)"  "Ethereum (ETH)"
 ```

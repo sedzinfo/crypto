@@ -22,6 +22,6 @@ object.
 
 ``` r
 if (FALSE) { # \dontrun{
-crypto:::disk_cache()$keys()
+golemcrypto:::disk_cache()$keys()
 } # }
 ```

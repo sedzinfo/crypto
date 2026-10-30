@@ -21,6 +21,6 @@ The number of minutes from `time` until now.
 ## Examples
 
 ``` r
-crypto:::minutes_since(Sys.time() - 90)
+golemcrypto:::minutes_since(Sys.time() - 90)
 #> [1] 1.5
 ```

@@ -20,7 +20,7 @@ A `tagList` for the head of the page.
 ## Examples
 
 ``` r
-crypto:::analytics_resources()
+golemcrypto:::analytics_resources()
 #> <script src="https://sedzinfo.github.io/consent.js" defer></script>
 #> <script src="www/analytics.js"></script>
 ```

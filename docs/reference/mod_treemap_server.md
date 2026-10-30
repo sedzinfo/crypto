@@ -3,7 +3,8 @@
 Renders the time of the last listings download and the treemap, and
 serves the top 100 coins as a CSV file named like
 `treemap-2026-10-24.csv`, with the columns `name_symbol`, `market_cap`
-and `change_24h`.
+and `change_24h`. When the listings cannot be downloaded, it shows why
+in place of the treemap.
 
 ## Usage
 

@@ -22,6 +22,6 @@ A character string that can be used in a file name.
 ## Examples
 
 ``` r
-crypto:::file_stem("Bitcoin (BTC)")
+golemcrypto:::file_stem("Bitcoin (BTC)")
 #> [1] "bitcoin-btc"
 ```

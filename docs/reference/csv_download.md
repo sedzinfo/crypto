@@ -37,6 +37,6 @@ to assign to an output.
 ``` r
 if (FALSE) { # \dontrun{
 # inside a module server, with downloadButton(ns("csv"), "CSV") in its UI:
-output$csv <- crypto:::csv_download(reactive(head(mtcars)), "cars")
+output$csv <- golemcrypto:::csv_download(reactive(head(mtcars)), "cars")
 } # }
 ```

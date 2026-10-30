@@ -23,7 +23,7 @@ plotly `rangeselector`.
 ## Examples
 
 ``` r
-crypto:::button_colors("dark")
+golemcrypto:::button_colors("dark")
 #> $bgcolor
 #> [1] "#343a40"
 #> 

@@ -21,7 +21,8 @@ None. Called for its side effect of registering the module server.
 \description{
 Renders the time of the last listings download and the treemap, and
 serves the top 100 coins as a CSV file named like \verb{treemap-2026-10-24.csv},
-with the columns \code{name_symbol}, \code{market_cap} and \code{change_24h}.
+with the columns \code{name_symbol}, \code{market_cap} and \code{change_24h}. When the
+listings cannot be downloaded, it shows why in place of the treemap.
 }
 \examples{
 \dontrun{

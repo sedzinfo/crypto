@@ -80,7 +80,10 @@ The application has the following tabs:
   Monthly returns by year for the coin selected in the Timeseries tab.
 
 Market listings are downloaded when the app starts and refreshed every
-10 minutes. Historical prices are downloaded on demand with
+10 minutes. When they cannot be downloaded, for example because the API
+key has used up its credits, the app still starts, and the Top 100 and
+Treemap tabs tell the visitors why and when the limit resets. Historical
+prices are downloaded on demand with
 [`crypto2::crypto_history()`](https://www.sebastianstoeckl.com/crypto2/dev/reference/crypto_history.html)
 and kept on disk between R sessions, so after the first download only
 the days since the last one are fetched. An internet connection is

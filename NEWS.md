@@ -24,6 +24,7 @@
 ## Bug fixes and smaller changes
 
 * A failed download shows a short message, such as "Data not available for this coin", instead of an R error.
+* The app no longer stops at start when the market listings cannot be downloaded, for example when the API key has used up its CoinMarketCap credits. The Top 100 and Treemap tabs say why instead, and when the credits reset, the other tabs work as usual, and the download is tried again every 10 minutes. `get_listings()` returns why in its new `problem` element instead of an error.
 * The keep-alive pings now get an answer from the server, so idle connections stay open behind proxies. `crypto(keep_alive = FALSE)` turns them off, as `app.R` does, so that the app can go to sleep on shinyapps.io when nobody uses it.
 * Small prices are no longer shown in scientific notation, and the app no longer changes the options of your R session to do so.
 * Treemap labels show the 24h change instead of NaN.

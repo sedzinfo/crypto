@@ -28,6 +28,6 @@ CSS `rgba()` colors, one per `strength`.
 ## Examples
 
 ``` r
-crypto:::change_color(c(0, 0.5, 1), gain = TRUE)
+golemcrypto:::change_color(c(0, 0.5, 1), gain = TRUE)
 #> [1] "rgba(25,135,84,0.000)" "rgba(25,135,84,0.375)" "rgba(25,135,84,0.750)"
 ```

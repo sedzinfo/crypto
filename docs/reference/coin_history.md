@@ -36,6 +36,6 @@ not be downloaded.
 ``` r
 if (FALSE) { # \dontrun{
 coins <- get_coins()
-crypto:::coin_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
+golemcrypto:::coin_history(coins[coins$name_symbol == "Bitcoin (BTC)", ], Sys.Date() - 30)
 } # }
 ```

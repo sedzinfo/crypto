@@ -37,7 +37,8 @@ mod_treemap_ui <- function(id) {
 #'
 #' Renders the time of the last listings download and the treemap, and
 #' serves the top 100 coins as a CSV file named like `treemap-2026-10-24.csv`,
-#' with the columns `name_symbol`, `market_cap` and `change_24h`.
+#' with the columns `name_symbol`, `market_cap` and `change_24h`. When the
+#' listings cannot be downloaded, it shows why in place of the treemap.
 #'
 #' @param id Character. Module namespace id, must match the id used in
 #'   [mod_treemap_ui()].
@@ -58,10 +59,14 @@ mod_treemap_ui <- function(id) {
 #' }
 mod_treemap_server <- function(id, listings, dark_mode) {
   moduleServer(id, function(input, output, session) {
-    output$updated <- renderText(updated_text(listings()$time))
-    output$plot <- plotly::renderPlotly(plot_treemap(listings()$data, dark_mode()))
+    output$updated <- renderText(updated_text(listings()$time, listings()$problem))
+    output$plot <- plotly::renderPlotly({
+      validate(need(listings()$data, listings()$problem))
+      plot_treemap(listings()$data, dark_mode())
+    })
     output$csv <- csv_download(
       reactive({
+        req(listings()$data)
         top <- utils::head(listings()$data, 100)
         data.frame(
           name_symbol = top$name_symbol,

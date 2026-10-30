@@ -3,7 +3,8 @@
 Renders the time of the last listings download and the listings table,
 and serves the listings as a CSV file named like
 `top100-2026-10-24.csv`, with the column names of the table and the
-values unrounded.
+values unrounded. When the listings cannot be downloaded, it shows why
+in place of the table.
 
 ## Usage
 

@@ -16,7 +16,7 @@ A `div` for the bottom of the page.
 ## Examples
 
 ``` r
-crypto:::analytics_footer()
+golemcrypto:::analytics_footer()
 #> <div class="text-center small py-3">
 #>   <a href="#cookie-settings">Cookie settings</a>
 #>    &middot; 

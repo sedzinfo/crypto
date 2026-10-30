@@ -34,6 +34,27 @@ test_that("the top 100 and treemap modules show the listings and when they were 
   })
 })
 
+test_that("the top 100 and treemap modules say why the listings are missing", {
+  problem <- "The app has reached its monthly limit of CoinMarketCap requests"
+  unavailable <- reactive(list(data = NULL, time = NULL, problem = problem))
+  testServer(mod_top100_server, args = list(listings = unavailable), {
+    expect_equal(output$updated, "")
+    expect_error(output$table, problem)
+    expect_error(output$csv)
+  })
+  testServer(mod_treemap_server, args = list(listings = unavailable, dark_mode = light), {
+    expect_equal(output$updated, "")
+    expect_error(output$plot, problem)
+    expect_error(output$csv)
+  })
+  # listings downloaded before the problem stay, with the problem after their time
+  kept <- reactive(list(data = listings, time = as.POSIXct("2024-03-31 14:32"), problem = problem))
+  testServer(mod_top100_server, args = list(listings = kept), {
+    expect_equal(output$updated, paste0("Data: CoinMarketCap, updated 14:32. ", problem))
+    expect_no_error(output$table)
+  })
+})
+
 test_that("file_stem() turns a coin label into a file name", {
   expect_equal(file_stem("Bitcoin (BTC)"), "bitcoin-btc")
   expect_equal(file_stem("Gram (prev. Toncoin) (GRAM)"), "gram-prev-toncoin-gram")

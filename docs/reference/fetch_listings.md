@@ -19,7 +19,7 @@ and dominance columns shown in the app.
 
 ``` r
 if (FALSE) { # \dontrun{
-listings <- crypto:::fetch_listings()
+listings <- golemcrypto:::fetch_listings()
 head(listings)
 } # }
 ```

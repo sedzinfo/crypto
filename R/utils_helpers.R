@@ -156,14 +156,22 @@ minutes_since <- function(time) {
 ##########################################################################################
 #' Text with the source and time of the market listings
 #'
-#' @param time POSIXct. When the listings were downloaded.
+#' @param time POSIXct. When the listings were downloaded, `NULL` when no
+#'   download has worked yet.
+#' @param problem Why the last download failed, from [get_listings()], or
+#'   `NULL` when it worked.
 #'
-#' @return A character string such as "Data: CoinMarketCap, updated 14:32".
+#' @return A character string such as "Data: CoinMarketCap, updated 14:32",
+#'   followed by `problem`, or `NULL` when there is no `time`.
 #'
 #' @keywords internal
 #'
 #' @examples
 #' golemcrypto:::updated_text(Sys.time())
-updated_text <- function(time) {
-  paste0("Data: CoinMarketCap, updated ", format(time, "%H:%M"))
+#' golemcrypto:::updated_text(Sys.time(), "The market data cannot be downloaded right now.")
+updated_text <- function(time, problem = NULL) {
+  if (is.null(time)) {
+    return(NULL)
+  }
+  paste0("Data: CoinMarketCap, updated ", format(time, "%H:%M"), if (!is.null(problem)) paste(".", problem))
 }

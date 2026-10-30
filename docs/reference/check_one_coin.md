@@ -24,6 +24,6 @@ check_one_coin(history)
 
 ``` r
 history <- data.frame(name_symbol = c("Alpha (A)", "Beta (B)"))
-try(crypto:::check_one_coin(history))
+try(golemcrypto:::check_one_coin(history))
 #> Error : history holds 2 coins, keep one of them first, for example history[history$name_symbol == "Alpha (A)", ]
 ```

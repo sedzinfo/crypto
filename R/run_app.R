@@ -21,7 +21,9 @@
 #'       in the Timeseries tab.}
 #'   }
 #'   Market listings are downloaded when the app starts and refreshed every 10
-#'   minutes. Historical prices are downloaded on demand with
+#'   minutes. When they cannot be downloaded, for example because the API key
+#'   has used up its credits, the app still starts, and the Top 100 and
+#'   Treemap tabs tell the visitors why and when the limit resets. Historical prices are downloaded on demand with
 #'   [crypto2::crypto_history()] and kept on disk between R sessions, so
 #'   after the first download only the days since the last one are fetched.
 #'   An internet connection is required. When 'CoinMarketCap' limits the requests,
@@ -56,6 +58,10 @@ crypto <- function(api_key = Sys.getenv("COINMARKETCAP_APIKEY"), analytics = FAL
   use_api_key(api_key)
   coins <- get_coins()
   top_coins <- get_listings()$data$name_symbol
+  # without the listings, the Compare tab starts with the two largest coins
+  if (is.null(top_coins)) {
+    top_coins <- c("Bitcoin (BTC)", "Ethereum (ETH)")
+  }
 
   shinyApp(
     ui = app_ui(coins, top_coins, analytics, keep_alive),

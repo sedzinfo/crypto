@@ -60,6 +60,8 @@ The market data comes from the CoinMarketCap API, which needs a free API key.
 
 You can also pass the key directly with `crypto(api_key = "your-api-key")`. Keep the key out of your code and out of Git, because anyone who has it can use your API credits.
 
+Only the market listings of the Top 100 and Treemap tabs use the key: one credit per download, at most one download every 10 minutes while the app runs. When the key has used up its credits, the app still starts; those two tabs tell the visitors when the limit resets, and the other tabs work as usual.
+
 ## Usage
 Launch the Shiny app with just two lines of code:
 

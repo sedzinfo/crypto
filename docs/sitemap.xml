@@ -1,8 +1,8 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://sedzinfo.github.io/golemcrypto/404.html</loc></url>
+<url><loc>https://sedzinfo.github.io/golemcrypto/LICENSE-text.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/authors.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/index.html</loc></url>
-<url><loc>https://sedzinfo.github.io/golemcrypto/LICENSE-text.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/news/index.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/reference/analytics_footer.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/reference/analytics_resources.html</loc></url>
@@ -24,6 +24,8 @@
 <url><loc>https://sedzinfo.github.io/golemcrypto/reference/has_gaps.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/reference/index.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/reference/keep_history.html</loc></url>
+<url><loc>https://sedzinfo.github.io/golemcrypto/reference/key_info.html</loc></url>
+<url><loc>https://sedzinfo.github.io/golemcrypto/reference/listings_problem.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/reference/listings_table.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/reference/minutes_since.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemcrypto/reference/mod_compare_server.html</loc></url>

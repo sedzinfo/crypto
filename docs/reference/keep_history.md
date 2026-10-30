@@ -37,6 +37,6 @@ A list with the `history`, `from` and the `time` of the download, or
 if (FALSE) { # \dontrun{
 coins <- get_coins()
 btc <- coins[coins$name_symbol == "Bitcoin (BTC)", ]
-crypto:::keep_history("history_1", crypto:::download_history(btc, Sys.Date() - 30), Sys.Date() - 30)
+golemcrypto:::keep_history("history_1", golemcrypto:::download_history(btc, Sys.Date() - 30), Sys.Date() - 30)
 } # }
 ```

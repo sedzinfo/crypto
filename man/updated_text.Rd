@@ -4,18 +4,24 @@
 \alias{updated_text}
 \title{Text with the source and time of the market listings}
 \usage{
-updated_text(time)
+updated_text(time, problem = NULL)
 }
 \arguments{
-\item{time}{POSIXct. When the listings were downloaded.}
+\item{time}{POSIXct. When the listings were downloaded, \code{NULL} when no
+download has worked yet.}
+
+\item{problem}{Why the last download failed, from \code{\link[=get_listings]{get_listings()}}, or
+\code{NULL} when it worked.}
 }
 \value{
-A character string such as "Data: CoinMarketCap, updated 14:32".
+A character string such as "Data: CoinMarketCap, updated 14:32",
+followed by \code{problem}, or \code{NULL} when there is no \code{time}.
 }
 \description{
 Text with the source and time of the market listings
 }
 \examples{
 golemcrypto:::updated_text(Sys.time())
+golemcrypto:::updated_text(Sys.time(), "The market data cannot be downloaded right now.")
 }
 \keyword{internal}

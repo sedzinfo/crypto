@@ -35,7 +35,7 @@ A `tagList` of Shiny UI elements.
 
 ``` r
 if (FALSE) { # \dontrun{
-coins <- crypto:::get_coins()
-shiny::fluidPage(crypto:::mod_compare_ui("compare", coins, c("Bitcoin (BTC)", "Ethereum (ETH)")))
+coins <- golemcrypto:::get_coins()
+shiny::fluidPage(golemcrypto:::mod_compare_ui("compare", coins, c("Bitcoin (BTC)", "Ethereum (ETH)")))
 } # }
 ```

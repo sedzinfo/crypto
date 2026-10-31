@@ -1,8 +1,7 @@
 ##########################################################################################
 # 
 ##########################################################################################
-#' Date range buttons of the timeseries chart
-#'
+#' @title Date range buttons of the timeseries chart
 #' @noRd
 range_buttons <- list(
   list(count = 1, label = "1 year", step = "year", stepmode = "backward"),
@@ -13,25 +12,23 @@ range_buttons <- list(
   list(count = 7, label = "7 days", step = "day", stepmode = "backward"),
   list(step = "all")
 )
-
-#' Colors of the moving average lines, in the order of the averages
-#'
-#' Blue and purple first, which stand out from the orange close line, the
-#' green and red candles and the green volume, in light and dark mode.
-#'
+##########################################################################################
+# 
+##########################################################################################
+#' @title Colors of the moving average lines, in the order of the averages
+#' @description Blue and purple first, which stand out from the orange close
+#' line, the green and red candles and the green volume, in light and dark mode.
 #' @noRd
 average_colors <- c("#3b82f6", "#a855f7", "#14b8a6", "#eab308")
 ##########################################################################################
 #
 ##########################################################################################
-#' Candlestick chart of a coin's prices
-#'
-#' Plots the daily open, high, low and close prices, with a line through the
-#' close, its moving averages, date range buttons and a range slider.
-#' Underneath, smaller charts show the trading volume and the drawdown: how
-#' far the price is below its all-time high so far. A click on a legend entry
-#' hides or shows that line.
-#'
+#' @title Candlestick chart of a coin's prices
+#' @description Plots the daily open, high, low and close prices, with a line
+#' through the close, its moving averages, date range buttons and a range
+#' slider. Underneath, smaller charts show the trading volume and the 
+#' drawdown: how far the price is below its all-time high so far. A click on
+#' a legend entry hides or shows that line.
 #' @param history Price history of one coin from [get_history()]. The
 #'   averages and the drawdown use the whole history, so pass all of it and
 #'   zoom with the range buttons.
@@ -40,19 +37,13 @@ average_colors <- c("#3b82f6", "#a855f7", "#14b8a6", "#eab308")
 #' @param averages Days of the moving averages to draw (see
 #'   [moving_average()]), or `NULL` for none.
 #' @param show_drawdown `TRUE` to add the drawdown chart (see [drawdown()]).
-#'
 #' @return A plotly object.
-#'
 #' @export
-#'
 #' @examples
-#' \dontrun{
 #' btc <- get_history("Bitcoin (BTC)", as.Date("2013-04-29"))
 #' plot_timeseries(btc)
-#'
 #' # shorter averages, and no drawdown chart
 #' plot_timeseries(btc, averages = c(20, 100), show_drawdown = FALSE)
-#' }
 plot_timeseries <- function(history, mode = "light", averages = c(50, 200), show_drawdown = TRUE) {
   check_one_coin(history)
   hover_text <- paste0(
@@ -137,23 +128,16 @@ plot_timeseries <- function(history, mode = "light", averages = c(50, 200), show
 ##########################################################################################
 # 
 ##########################################################################################
-#' Line chart of normalized close prices
-#'
-#' One line per coin, with buttons that switch the y axis between a linear
-#' and a log scale.
-#'
+#' @title Line chart of normalized close prices
+#' @description One line per coin, with buttons that switch the y axis between
+#' a linear and a log scale.
 #' @param prices Prices from [normalize_prices()].
 #' @inheritParams plot_timeseries
-#'
 #' @return A plotly object.
-#'
 #' @export
-#'
 #' @examples
-#' \dontrun{
 #' history <- get_history(c("Bitcoin (BTC)", "Ethereum (ETH)", "Solana (SOL)"))
 #' plot_compare(normalize_prices(history))
-#' }
 plot_compare <- function(prices, mode = "light") {
   plotly::plot_ly(prices,
     x = ~timestamp,
@@ -188,24 +172,17 @@ plot_compare <- function(prices, mode = "light") {
 ##########################################################################################
 # 
 ##########################################################################################
-#' Treemap of the top 100 coins
-#'
-#' Each box is sized by market cap and colored from red to green by the 24h
-#' price change. The color limits are the 5th and 95th percentiles of the
-#' changes, so a few outliers do not wash out the rest. Coins without a 24h
-#' change are labelled n/a and colored white.
-#'
+#' @title Treemap of the top 100 coins
+#' @description Each box is sized by market cap and colored from red to green
+#' by the 24h price change. The color limits are the 5th and 95th percentiles
+#' of the changes, so a few outliers do not wash out the rest. Coins without
+#' 24h change are labelled n/a and colored white.
 #' @param listings The `data` of [get_listings()].
 #' @inheritParams plot_timeseries
-#'
 #' @return A plotly object.
-#'
 #' @export
-#'
 #' @examples
-#' \dontrun{
 #' plot_treemap(get_listings()$data)
-#' }
 plot_treemap <- function(listings, mode = "light") {
   top <- utils::head(listings, 100)
   market_cap <- top$USD_market_cap
@@ -242,25 +219,18 @@ plot_treemap <- function(listings, mode = "light") {
 ##########################################################################################
 # 
 ##########################################################################################
-#' Heatmap of monthly returns by year
-#'
-#' Months are colored from red to green by their return. The color limit is
-#' the 95th percentile of the absolute returns, so a few extreme months do
-#' not wash out the rest.
-#'
+#' @title Heatmap of monthly returns by year
+#' @description Months are colored from red to green by their return. The color
+#' limit is the 95th percentile of the absolute returns, so a few extreme
+#' months do not wash out the rest.
 #' @param calendar Matrix from [monthly_returns()].
 #' @param label Label of the coin for the title, or `NULL` for none.
 #' @inheritParams plot_timeseries
-#'
 #' @return A plotly object.
-#'
 #' @export
-#'
 #' @examples
-#' \dontrun{
 #' btc <- get_history("Bitcoin (BTC)", as.Date("2013-04-29"))
 #' plot_returns_calendar(monthly_returns(btc), "Bitcoin (BTC)")
-#' }
 plot_returns_calendar <- function(calendar, label = NULL, mode = "light") {
   limit <- unname(stats::quantile(abs(calendar), .95, na.rm = TRUE))
   plotly::plot_ly(
@@ -284,25 +254,18 @@ plot_returns_calendar <- function(calendar, label = NULL, mode = "light") {
 ##########################################################################################
 # 
 ##########################################################################################
-#' Table of the market listings
-#'
-#' A sortable table with 100 rows per page and numbers rounded to 2
-#' decimals, showing the price in dollars and the price changes in percent.
-#' Losses are shaded red and gains green, more strongly the larger the
+#' @title Table of the market listings
+#' @description A sortable table with 100 rows per page and numbers rounded 
+#' to 2 decimals, showing the price in dollars and the price changes in 
+#' percent. Losses are shaded red and gains green, more strongly the larger the
 #' change, in steps of 0.1 percentile from the 5th to the 95th. Changes near
 #' zero keep the table's own background, so the table suits the light and the
 #' dark mode.
-#'
 #' @param listings The `data` of [get_listings()].
-#'
 #' @return A DT datatable.
-#'
 #' @export
-#'
 #' @examples
-#' \dontrun{
 #' listings_table(get_listings()$data)
-#' }
 listings_table <- function(listings) {
   names(listings) <- gsub("USD_|percent_", "", names(listings))
   listings <- data.frame(listings, check.names = FALSE)

@@ -6,3 +6,6 @@ crypto(
   analytics = TRUE,    # Google Analytics, after the visitor accepts the cookie banner
   keep_alive = FALSE   # let the app sleep when nobody uses it, so it does not use up the hours of the plan
 )
+
+
+# rsconnect::writeManifest(appDir = ".", appPrimaryDoc = "app.R")

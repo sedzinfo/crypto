@@ -13,6 +13,7 @@ Description: A 'shiny' application for exploring cryptocurrency exchange rates.
     calendar of monthly returns. Market data is retrieved from
     'CoinMarketCap'.
 Imports:
+    shinycssloaders,
     bslib,
     cachem,
     coinmarketcapr,

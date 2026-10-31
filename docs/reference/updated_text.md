@@ -30,7 +30,7 @@ followed by `problem`, or `NULL` when there is no `time`.
 
 ``` r
 golemcrypto:::updated_text(Sys.time())
-#> [1] "Data: CoinMarketCap, updated 11:52"
+#> [1] "Data: CoinMarketCap, updated 17:05"
 golemcrypto:::updated_text(Sys.time(), "The market data cannot be downloaded right now.")
-#> [1] "Data: CoinMarketCap, updated 11:52. The market data cannot be downloaded right now."
+#> [1] "Data: CoinMarketCap, updated 17:05. The market data cannot be downloaded right now."
 ```

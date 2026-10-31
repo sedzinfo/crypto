@@ -15,7 +15,10 @@
 #' @examples
 #' \dontrun{
 #' coins <- golemcrypto:::get_coins()
-#' shiny::fluidPage(golemcrypto:::mod_compare_ui("compare", coins, c("Bitcoin (BTC)", "Ethereum (ETH)")))
+#' shiny::fluidPage(golemcrypto:::mod_compare_ui(
+#'                 "compare",
+#'                  coins,
+#'                  c("Bitcoin (BTC)", "Ethereum (ETH)")))
 #' }
 mod_compare_ui <- function(id, coins, top_coins) {
   ns <- NS(id)

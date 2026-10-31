@@ -17,8 +17,9 @@ A numeric vector as long as \code{close}, \code{NA} for the first
 as for a coin younger than the average.
 }
 \description{
-The simple moving average: each day's value is the mean of the last
-\code{days} closes, that day included, so the first \code{days - 1} days have none.
+The simple moving average: each day's value is the mean of the
+last \code{days} closes, that day included, so the first \code{days - 1} days have
+none.
 }
 \examples{
 moving_average(c(1, 2, 3, 4, 5), days = 3)

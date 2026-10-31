@@ -16,8 +16,8 @@ The price history of the coin, as described in \code{\link[=get_history]{get_his
 or \code{NULL} when nothing could be downloaded.
 }
 \description{
-Downloads the daily USD prices with \code{\link[crypto2:crypto_history]{crypto2::crypto_history()}}, in
-requests of 400 days. A failed download is reported as a message instead
+Downloads the daily USD prices with \code{\link[crypto2:crypto_history]{crypto2::crypto_history()}},
+in requests of 400 days. A failed download is reported as a message instead
 of an error.
 }
 \examples{

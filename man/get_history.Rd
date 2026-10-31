@@ -22,11 +22,12 @@ coin are left out with a message, and \code{NULL} is returned when no label
 matches or nothing could be downloaded.
 }
 \description{
-Returns the daily USD prices of one or more coins from 'CoinMarketCap'.
-Each coin's history is kept on disk between R sessions, and once it is
-more than an hour old only the days since its last day are downloaded, so
-calls are fast and stay below the request limit of 'CoinMarketCap'. When
-that limit is hit, crypto2 waits a minute and tries again.
+Returns the daily USD prices of one or more coins from
+'CoinMarketCap'. Each coin's history is kept on disk between R sessions, and
+once it is more than an hour old only the days since its last day are
+downloaded, so calls are fast and stay below the request limit of
+'CoinMarketCap'. When that limit is hit, crypto2 waits a minute and tries
+again.
 }
 \examples{
 \dontrun{

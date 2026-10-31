@@ -19,9 +19,9 @@ are in \code{coins} are selected at start.}
 A \code{tagList} of Shiny UI elements.
 }
 \description{
-A picker for up to 10 coins, a start date, a button that downloads the
-normalized prices as CSV, and a chart of the coins' close prices
-normalized to 100.
+A picker for up to 10 coins, a start date, a button that
+downloads the normalized prices as CSV, and a chart of the coins' close
+prices normalized to 100.
 }
 \examples{
 \dontrun{

@@ -13,19 +13,19 @@ download works), and \code{problem}, \code{NULL} when the last download worked
 and otherwise a sentence on why it failed.
 }
 \description{
-Returns the listings of the coins by market cap, with their price, volume,
-price changes from 24 hours to 90 days, market cap and dominance in USD.
-The listings are downloaded again when they are older than 10 minutes,
-and the download is shared by all sessions and app runs in the same R
-process, so the API is called at most once in that time.
+Returns the listings of the coins by market cap, with their
+price, volume, price changes from 24 hours to 90 days, market cap and
+dominance in USD. The listings are downloaded again when they are older than
+10 minutes, and the download is shared by all sessions and app runs in the
+same R process, so the API is called at most once in that time.
 }
 \details{
-The listings need a 'CoinMarketCap' API key in the \code{COINMARKETCAP_APIKEY}
-environment variable, see the README. A failed download, for example when
-the key has used up its credits, is tried again after 10 minutes. Until
-then the previous listings and their time are kept, so the time stays
-truthful, and \code{problem} tells the visitors of the app why, see
-\code{\link[=listings_problem]{listings_problem()}}.
+The listings need a 'CoinMarketCap' API key in the
+\code{COINMARKETCAP_APIKEY} environment variable, see the README. A failed
+download, for example when the key has used up its credits, is tried again
+after 10 minutes. Until then the previous listings and their time are kept,
+so the time stays truthful, and \code{problem} tells the visitors of the app why,
+see \code{\link[=listings_problem]{listings_problem()}}.
 }
 \examples{
 \dontrun{

@@ -1,20 +1,15 @@
 ##########################################################################################
 #
 ##########################################################################################
-#' Timeseries module - UI
-#'
-#' A coin picker with live search, a button that downloads the coin's daily
-#' prices as CSV, and a candlestick chart of those prices, with the trading
-#' volume underneath.
-#'
+#' @title Timeseries module - UI
+#' @description A coin picker with live search, a button that downloads the
+#' coin's daily prices as CSV, and a candlestick chart of those prices, with the
+#' trading volume underneath.
 #' @param id Character. Module namespace id.
 #' @param coins Data frame of coins from [get_coins()], whose `name_symbol`
 #'   labels fill the picker.
-#'
 #' @return A `tagList` of Shiny UI elements.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' shiny::fluidPage(golemcrypto:::mod_timeseries_ui("timeseries", golemcrypto:::get_coins()))
@@ -41,24 +36,19 @@ mod_timeseries_ui <- function(id, coins) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Timeseries module - server
-#'
-#' Downloads the full price history of the selected coin, renders its
-#' candlestick chart and serves it as a CSV file named like
-#' `bitcoin-btc-history-2026-10-24.csv`, with the columns `date`,
-#' `name_symbol`, `open`, `high`, `low`, `close`, `volume` and `market_cap`.
-#'
+#' @title Timeseries module - server
+#' @description Downloads the full price history of the selected coin, renders
+#' its candlestick chart and serves it as a CSV file named like
+#' `bitcoin-btc-history-2026-10-24.csv`, with the columns `date`, `name_symbol`,
+#' `open`, `high`, `low`, `close`, `volume` and `market_cap`.
 #' @param id Character. Module namespace id, must match the id used in
 #'   [mod_timeseries_ui()].
 #' @param coins Data frame of coins from [get_coins()].
 #' @param dark_mode Reactive returning `"light"` or `"dark"`, the mode of the
 #'   app.
-#'
 #' @return A reactive returning the price history of the selected coin, from
 #'   [get_history()], which the Returns calendar reuses.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' # inside app_server():

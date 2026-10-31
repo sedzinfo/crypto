@@ -1,47 +1,45 @@
 ##########################################################################################
 #
 ##########################################################################################
-#' Minutes between downloads of the market listings
-#'
+#' @title Minutes between downloads of the market listings
 #' @noRd
 refresh_minutes <- 10
-
-#' Minutes before a kept price history is brought up to date
-#'
+##########################################################################################
+#
+##########################################################################################
+#' @title Minutes before a kept price history is brought up to date
 #' @noRd
 history_minutes <- 60
-
-#' Minutes the list of coins is reused
-#'
+##########################################################################################
+#
+##########################################################################################
+#' @title Minutes the list of coins is reused
 #' @noRd
 coins_minutes <- 24 * 60
-
-#' Cache of the market listings
-#'
-#' Shared by all sessions and app runs in the same R process, so the API is
-#' called at most once per refresh interval.
-#'
+##########################################################################################
+#
+##########################################################################################
+#' @title Cache of the market listings
+#' @description Shared by all sessions and app runs in the same R process, so
+#' the API is called at most once per refresh interval.
 #' @noRd
 listings_cache <- new.env(parent = emptyenv())
-
-#' Folder and object of the disk cache, see `disk_cache()`
-#'
+##########################################################################################
+#
+##########################################################################################
+#' @title Folder and object of the disk cache, see `disk_cache()`
 #' @noRd
 disk <- new.env(parent = emptyenv())
 ##########################################################################################
 #
 ##########################################################################################
-#' The downloads kept between R sessions
-#'
-#' The price histories and the list of coins are kept on disk, so they
-#' survive R restarts: by default in the cache folder of the package from
+#' @title The downloads kept between R sessions
+#' @description The price histories and the list of coins are kept on disk, so
+#' they survive R restarts: by default in the cache folder of the package from
 #' [tools::R_user_dir()], or in the folder set with
 #' `options(crypto.cache_dir = )`. Delete the folder to start over.
-#'
 #' @return A [cachem::cache_disk()] object.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' golemcrypto:::disk_cache()$keys()
@@ -57,18 +55,13 @@ disk_cache <- function() {
 ##########################################################################################
 #
 ##########################################################################################
-#' Set up the 'CoinMarketCap' API key
-#'
-#' Checks that there is a key and passes it to 'coinmarketcapr', which also
-#' sets the address of the API.
-#'
+#' @title Set up the 'CoinMarketCap' API key
+#' @description Checks that there is a key and passes it to 'coinmarketcapr',
+#' which also sets the address of the API.
 #' @param api_key A 'CoinMarketCap' API key, by default the
 #'   `COINMARKETCAP_APIKEY` environment variable.
-#'
 #' @return The key, invisibly.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' golemcrypto:::use_api_key()
@@ -87,17 +80,13 @@ use_api_key <- function(api_key = Sys.getenv("COINMARKETCAP_APIKEY")) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Label coins as "Name (SYMBOL)"
-#'
-#' The label identifies coins throughout the package: in the arguments of
-#' [get_history()], and in the pickers, tables and plots of the app.
-#'
+#' @title Label coins as "Name (SYMBOL)"
+#' @description The label identifies coins throughout the package: in the
+#' arguments of [get_history()], and in the pickers, tables and plots of the
+#' app.
 #' @param coins Data frame with `name` and `symbol` columns.
-#'
 #' @return A character vector with one label per row of `coins`.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' golemcrypto:::coin_label(data.frame(name = c("Bitcoin", "Ethereum"), symbol = c("BTC", "ETH")))
 coin_label <- function(coins) {
@@ -106,18 +95,14 @@ coin_label <- function(coins) {
 ##########################################################################################
 #
 ##########################################################################################
-#' List the active coins
-#'
-#' Downloads the list of the active coins tracked by 'CoinMarketCap' and
-#' keeps it on disk for a day (see [disk_cache()]). When the download fails,
-#' the kept list is used. Its `name_symbol` column holds the labels, such as
-#' "Bitcoin (BTC)", that pick coins in [get_history()].
-#'
+#' @title List the active coins
+#' @description Downloads the list of the active coins tracked by
+#' 'CoinMarketCap' and keeps it on disk for a day (see [disk_cache()]). When the
+#' download fails, the kept list is used. Its `name_symbol` column holds the
+#' labels, such as "Bitcoin (BTC)", that pick coins in [get_history()].
 #' @return The [crypto2::crypto_list()] data frame, with a `name_symbol`
 #'   column.
-#'
 #' @export
-#'
 #' @examples
 #' \dontrun{
 #' coins <- get_coins()
@@ -145,16 +130,12 @@ get_coins <- function() {
 ##########################################################################################
 #
 ##########################################################################################
-#' Download the latest market listings
-#'
-#' Calls the 'CoinMarketCap' API with the key from [use_api_key()].
-#'
+#' @title Download the latest market listings
+#' @description Calls the 'CoinMarketCap' API with the key from [use_api_key()].
 #' @return A data frame with one row per coin, sorted by market cap, with a
 #'   `name_symbol` label and the USD price, volume, price change, market cap
 #'   and dominance columns shown in the app.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' listings <- golemcrypto:::fetch_listings()
@@ -175,16 +156,12 @@ fetch_listings <- function() {
 ##########################################################################################
 #
 ##########################################################################################
-#' Ask 'CoinMarketCap' about the API key
-#'
-#' Calls the key/info endpoint, which uses no credits, for the plan of the
-#' key from [use_api_key()] and the credits it has used and has left.
-#'
+#' @title Ask 'CoinMarketCap' about the API key
+#' @description Calls the key/info endpoint, which uses no credits, for the plan
+#' of the key from [use_api_key()] and the credits it has used and has left.
 #' @return The answer as a list with `status` and, for a valid key, `data`,
 #'   or `NULL` when 'CoinMarketCap' cannot be reached.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' golemcrypto:::key_info()$data$usage$current_month
@@ -200,18 +177,13 @@ key_info <- function() {
 ##########################################################################################
 #
 ##########################################################################################
-#' Why the market listings cannot be downloaded
-#'
-#' Tells the visitors of the app when the API key has used up its credits
-#' for the month or the day, and when the limit resets. For any other
+#' @title Why the market listings cannot be downloaded
+#' @description Tells the visitors of the app when the API key has used up its
+#' credits for the month or the day, and when the limit resets. For any other
 #' failure, it says that the download is tried again in 10 minutes.
-#'
 #' @param info The answer of [key_info()].
-#'
 #' @return A character string for the visitors of the app.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' info <- list(
 #'   status = list(error_code = 0),
@@ -252,28 +224,23 @@ listings_problem <- function(info = key_info()) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Get the latest market listings
-#'
-#' Returns the listings of the coins by market cap, with their price, volume,
-#' price changes from 24 hours to 90 days, market cap and dominance in USD.
-#' The listings are downloaded again when they are older than 10 minutes,
-#' and the download is shared by all sessions and app runs in the same R
-#' process, so the API is called at most once in that time.
-#'
-#' The listings need a 'CoinMarketCap' API key in the `COINMARKETCAP_APIKEY`
-#' environment variable, see the README. A failed download, for example when
-#' the key has used up its credits, is tried again after 10 minutes. Until
-#' then the previous listings and their time are kept, so the time stays
-#' truthful, and `problem` tells the visitors of the app why, see
-#' [listings_problem()].
-#'
+#' @title Get the latest market listings
+#' @description Returns the listings of the coins by market cap, with their
+#' price, volume, price changes from 24 hours to 90 days, market cap and
+#' dominance in USD. The listings are downloaded again when they are older than
+#' 10 minutes, and the download is shared by all sessions and app runs in the
+#' same R process, so the API is called at most once in that time.
+#' @details The listings need a 'CoinMarketCap' API key in the
+#' `COINMARKETCAP_APIKEY` environment variable, see the README. A failed
+#' download, for example when the key has used up its credits, is tried again
+#' after 10 minutes. Until then the previous listings and their time are kept,
+#' so the time stays truthful, and `problem` tells the visitors of the app why,
+#' see [listings_problem()].
 #' @return A list with `data`, a data frame with one row per coin sorted by
 #'   market cap, and `time`, when it was downloaded (both `NULL` until a
 #'   download works), and `problem`, `NULL` when the last download worked
 #'   and otherwise a sentence on why it failed.
-#'
 #' @export
-#'
 #' @examples
 #' \dontrun{
 #' listings <- get_listings()
@@ -300,20 +267,15 @@ get_listings <- function() {
 ##########################################################################################
 #
 ##########################################################################################
-#' Download the daily price history of a coin
-#'
-#' Downloads the daily USD prices with [crypto2::crypto_history()], in
-#' requests of 400 days. A failed download is reported as a message instead
+#' @title Download the daily price history of a coin
+#' @description Downloads the daily USD prices with [crypto2::crypto_history()],
+#' in requests of 400 days. A failed download is reported as a message instead
 #' of an error.
-#'
 #' @param coin One row of [get_coins()].
 #' @param start_date Date. The first day to download.
-#'
 #' @return The price history of the coin, as described in [get_history()],
 #'   or `NULL` when nothing could be downloaded.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' coins <- get_coins()
@@ -348,19 +310,15 @@ download_history <- function(coin, start_date) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Check a price history for missing days
-#'
-#' When 'CoinMarketCap' blocks the same request twice, crypto2 leaves its 400
-#' days out of the download, which shows as a gap in the dates of a coin.
-#'
+#' @title Check a price history for missing days
+#' @description When 'CoinMarketCap' blocks the same request twice, crypto2
+#' leaves its 400 days out of the download, which shows as a gap in the dates of
+#' a coin.
 #' @param history Price history from [download_history()], sorted by coin
 #'   and date.
-#'
 #' @return `TRUE` when a day is missing between the first and the last day
 #'   of any coin.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' history <- data.frame(
 #'   name_symbol = "Alpha (A)",
@@ -373,22 +331,17 @@ has_gaps <- function(history) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Keep a downloaded price history on disk
-#'
-#' A history with missing days (see [has_gaps()]) is returned but not kept,
-#' so the next call downloads it again.
-#'
+#' @title Keep a downloaded price history on disk
+#' @description A history with missing days (see [has_gaps()]) is returned but
+#' not kept, so the next call downloads it again.
 #' @param key Key of the coin in [disk_cache()].
 #' @param history Price history of the coin, or `NULL` when the download
 #'   failed.
 #' @param from Date. The first day asked for, which can be earlier than the
 #'   first day of the coin.
-#'
 #' @return A list with the `history`, `from` and the `time` of the download,
 #'   or `NULL` when `history` is `NULL`.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' coins <- get_coins()
@@ -410,23 +363,18 @@ keep_history <- function(key, history, from) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Get the price history of one coin, kept on disk and brought up to date
-#'
-#' The first call downloads the history from `start_date` and keeps it on
-#' disk (see [disk_cache()]). Later calls use the kept history, and once it
-#' is more than an hour old download only the days since its last day,
-#' because past days do not change: one request instead of one per 400 days.
-#' A history kept from a later day than `start_date` is downloaded again in
-#' full, and when bringing it up to date fails, the kept history is used.
-#'
+#' @title Get the price history of one coin, kept on disk and brought up to date
+#' @description The first call downloads the history from `start_date` and keeps
+#' it on disk (see [disk_cache()]). Later calls use the kept history, and once
+#' it is more than an hour old download only the days since its last day,
+#' because past days do not change: one request instead of one per 400 days. A
+#' history kept from a later day than `start_date` is downloaded again in full,
+#' and when bringing it up to date fails, the kept history is used.
 #' @param coin One row of [get_coins()].
 #' @param start_date Date. The first day needed.
-#'
 #' @return The price history of the coin from `start_date`, or `NULL` when it
 #'   could not be downloaded.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' coins <- get_coins()
@@ -455,27 +403,23 @@ coin_history <- function(coin, start_date) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Get the daily price history of coins
-#'
-#' Returns the daily USD prices of one or more coins from 'CoinMarketCap'.
-#' Each coin's history is kept on disk between R sessions, and once it is
-#' more than an hour old only the days since its last day are downloaded, so
-#' calls are fast and stay below the request limit of 'CoinMarketCap'. When
-#' that limit is hit, crypto2 waits a minute and tries again.
-#'
+#' @title Get the daily price history of coins
+#' @description Returns the daily USD prices of one or more coins from
+#' 'CoinMarketCap'. Each coin's history is kept on disk between R sessions, and
+#' once it is more than an hour old only the days since its last day are
+#' downloaded, so calls are fast and stay below the request limit of
+#' 'CoinMarketCap'. When that limit is hit, crypto2 waits a minute and tries
+#' again.
 #' @param labels Character vector of coin labels, such as "Bitcoin (BTC)",
 #'   from the `name_symbol` column of [get_coins()].
 #' @param start_date Date. The first day to get, a year ago by default.
 #' @param coins Data frame of coins from [get_coins()], to look the labels up.
-#'
 #' @return A data frame with one row per coin and day, sorted by coin and
 #'   date, with the `open`, `high`, `low`, `close` and `volume` columns,
 #'   `timestamp` as a Date and the `name_symbol` label. Labels that match no
 #'   coin are left out with a message, and `NULL` is returned when no label
 #'   matches or nothing could be downloaded.
-#'
 #' @export
-#'
 #' @examples
 #' \dontrun{
 #' btc <- get_history("Bitcoin (BTC)", as.Date("2020-01-01"))

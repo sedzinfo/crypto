@@ -11,6 +11,7 @@
   * **Compare** plots up to 10 coins from a chosen start date, each starting at 100, with a linear or log scale.
   * **Treemap** shows the top 100 coins sized by market cap and colored by their 24h change.
   * **Returns calendar** shows the monthly returns, by year, of the coin selected in the Timeseries tab.
+* An **About** tab explains what every tab shows and how its numbers are calculated, with the formulas: the candles, moving averages and drawdown of the Timeseries tab, the index of the Compare tab, the columns of the Top 100 table and the colors of the tables and charts. It also explains linear and log scales, with an example chart, and when a log scale helps.
 * The Timeseries chart shows the 50- and 200-day moving averages, and a drawdown chart of how far the price is below its all-time high. `moving_average()` and `drawdown()` compute them, and `plot_timeseries()` gained the `averages` and `show_drawdown` arguments.
 * The app has a name, a Bootstrap 5 theme, a favicon and a light/dark mode toggle. The charts and the Top 100 table follow the mode: price changes are shaded in a red and a green that fade into the page, so values near zero no longer show as white cells in dark mode.
 * Every tab has a CSV button that downloads the data behind it: the coin's daily prices, the listings, the normalized prices, the treemap data and the monthly returns.

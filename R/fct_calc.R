@@ -1,19 +1,14 @@
 ##########################################################################################
 # 
 ##########################################################################################
-#' Normalize close prices to 100
-#'
-#' Every coin starts at 100 on the first date on which all of them have data,
-#' so their lines can be compared directly: 150 means the price rose by half
-#' since that date.
-#'
+#' @title Normalize close prices to 100
+#' @description Every coin starts at 100 on the first date on which all of them
+#' have data, so their lines can be compared directly: 150 means the price rose
+#' by half since that date.
 #' @param history Price history from [get_history()], with `name_symbol`,
 #'   `timestamp` and `close` columns, sorted by coin and date.
-#'
 #' @return `history` from the first common date on, with an `index` column.
-#'
 #' @export
-#'
 #' @examples
 #' history <- data.frame(
 #'   name_symbol = rep(c("Alpha (A)", "Beta (B)"), each = 3),
@@ -33,20 +28,15 @@ normalize_prices <- function(history) {
 ##########################################################################################
 # 
 ##########################################################################################
-#' Monthly returns of a coin
-#'
-#' Each month's return is its last close relative to the last close of the
-#' month before, in percent. The first month, and the months still to come,
-#' are `NA`.
-#'
+#' @title Monthly returns of a coin
+#' @description Each month's return is its last close relative to the last close
+#' of the month before, in percent. The first month, and the months still to
+#' come, are `NA`.
 #' @param history Price history of one coin from [get_history()], with
 #'   `timestamp` and `close` columns, sorted by date.
-#'
 #' @return A year by month matrix of returns in percent, rounded to 2
 #'   decimals, with the years as row names and `month.abb` as column names.
-#'
 #' @export
-#'
 #' @examples
 #' history <- data.frame(
 #'   timestamp = as.Date(c("2024-01-31", "2024-02-29", "2024-03-31")),
@@ -69,20 +59,16 @@ monthly_returns <- function(history) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Moving average of prices
-#'
-#' The simple moving average: each day's value is the mean of the last
-#' `days` closes, that day included, so the first `days - 1` days have none.
-#'
+#' @title Moving average of prices
+#' @description The simple moving average: each day's value is the mean of the
+#' last `days` closes, that day included, so the first `days - 1` days have
+#' none.
 #' @param close Numeric vector of close prices, sorted by date.
 #' @param days Number of days to average, such as 50 or 200.
-#'
 #' @return A numeric vector as long as `close`, `NA` for the first
 #'   `days - 1` days, and all `NA` when there are fewer than `days` closes,
 #'   as for a coin younger than the average.
-#'
 #' @export
-#'
 #' @examples
 #' moving_average(c(1, 2, 3, 4, 5), days = 3)
 moving_average <- function(close, days) {
@@ -94,17 +80,12 @@ moving_average <- function(close, days) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Drawdown of prices
-#'
-#' How far each close is below the highest close up to that day, the
-#' all-time high so far, in percent: 0 on a new high and -50 at half of it.
-#'
+#' @title Drawdown of prices
+#' @description How far each close is below the highest close up to that day,
+#' the all-time high so far, in percent: 0 on a new high and -50 at half of it.
 #' @param close Numeric vector of close prices, sorted by date.
-#'
 #' @return A numeric vector as long as `close`, from -100 to 0.
-#'
 #' @export
-#'
 #' @examples
 #' drawdown(c(100, 120, 90, 130, 65))
 drawdown <- function(close) {

@@ -5,7 +5,17 @@ test_that("every plot builds in light and dark mode", {
     expect_no_error(plotly::plotly_build(plot_compare(normalize_prices(history), mode)))
     expect_no_error(plotly::plotly_build(plot_treemap(listings, mode)))
     expect_no_error(plotly::plotly_build(plot_returns_calendar(monthly_returns(alpha), "Alpha (A)", mode)))
+    expect_no_error(plotly::plotly_build(plot_scales(mode)))
   }
+})
+
+test_that("the scales example draws the same coins on a linear and a log axis", {
+  built <- plotly::plotly_build(plot_scales())$x
+  expect_equal(c(built$layout$yaxis$type, built$layout$yaxis2$type), c("linear", "log"))
+  expect_length(built$data, 4)
+  expect_equal(built$data[[1]]$y, built$data[[3]]$y)
+  # both coins end at their growth over 5 years
+  expect_equal(c(max(built$data[[1]]$y), max(built$data[[2]]$y)), c(100 * 2^5, 100 * 1.25^5))
 })
 
 test_that("the plots default to light mode, and the calendar to a title without a coin", {

@@ -13,8 +13,8 @@ listings_problem(info = key_info())
 A character string for the visitors of the app.
 }
 \description{
-Tells the visitors of the app when the API key has used up its credits
-for the month or the day, and when the limit resets. For any other
+Tells the visitors of the app when the API key has used up its
+credits for the month or the day, and when the limit resets. For any other
 failure, it says that the download is tried again in 10 minutes.
 }
 \examples{

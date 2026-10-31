@@ -14,8 +14,8 @@ use_api_key(api_key = Sys.getenv("COINMARKETCAP_APIKEY"))
 The key, invisibly.
 }
 \description{
-Checks that there is a key and passes it to 'coinmarketcapr', which also
-sets the address of the API.
+Checks that there is a key and passes it to 'coinmarketcapr',
+which also sets the address of the API.
 }
 \examples{
 \dontrun{

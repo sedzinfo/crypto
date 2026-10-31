@@ -28,18 +28,15 @@ page.}
 A plotly object.
 }
 \description{
-Plots the daily open, high, low and close prices, with a line through the
-close, its moving averages, date range buttons and a range slider.
-Underneath, smaller charts show the trading volume and the drawdown: how
-far the price is below its all-time high so far. A click on a legend entry
-hides or shows that line.
+Plots the daily open, high, low and close prices, with a line
+through the close, its moving averages, date range buttons and a range
+slider. Underneath, smaller charts show the trading volume and the
+drawdown: how far the price is below its all-time high so far. A click on
+a legend entry hides or shows that line.
 }
 \examples{
-\dontrun{
 btc <- get_history("Bitcoin (BTC)", as.Date("2013-04-29"))
 plot_timeseries(btc)
-
 # shorter averages, and no drawdown chart
 plot_timeseries(btc, averages = c(20, 100), show_drawdown = FALSE)
-}
 }

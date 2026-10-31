@@ -2800,6 +2800,9 @@
     "DESCRIPTION": {
       "checksum": "5e2ee811f1d20c81b234a6f9b6074cd9"
     },
+    "inst/app/about.md": {
+      "checksum": "a09060b903eb366e78287b2348d05357"
+    },
     "inst/app/www/analytics.js": {
       "checksum": "1918493ff537401c08c4ecd06ce1b03a"
     },
@@ -2810,7 +2813,7 @@
       "checksum": "84de9cc0ea9c7d485fd4c993ededf1a1"
     },
     "inst/app/www/styles.css": {
-      "checksum": "102bc5bf74b58e727257978dcbd3eced"
+      "checksum": "d01c227b4469c78288d6dd1d2845bc38"
     },
     "NAMESPACE": {
       "checksum": "4c4c1401afb5c5a3ab42f3543493e63d"
@@ -2819,49 +2822,52 @@
       "checksum": "1178c335d6c11555fd1c4ec6098dfee6"
     },
     "R/app_config.R": {
-      "checksum": "7f7bbe97754f439e92fec21078483c92"
+      "checksum": "9423799fb67bf03034f32a3cbcfd17b3"
     },
     "R/app_server.R": {
-      "checksum": "b35afee49c5b07a032e97fd730f30be7"
+      "checksum": "f455a601958c6ff9fa0ef51f6b10614f"
     },
     "R/app_ui.R": {
-      "checksum": "a112b79781762e4540d56536f2bd48ed"
+      "checksum": "e054d475e77a1e070b8e4a84cad93b79"
     },
     "R/fct_calc.R": {
-      "checksum": "b7b55497d4b4510b45533b50ed5cb0c5"
+      "checksum": "c9f494f79448562ffa43def5c7c0c5b1"
     },
     "R/fct_data.R": {
-      "checksum": "77d117181e47128d6c14347c391632a5"
+      "checksum": "024cda7c667255c1fc8dc507c54f0a63"
     },
     "R/fct_plots.R": {
-      "checksum": "eb38aa8b82f2f87900779be049c20c57"
+      "checksum": "eafd49936569cc84609ac41ecd621c5a"
+    },
+    "R/mod_about.R": {
+      "checksum": "788acfcacf9f8ff6c1fff97dabea164c"
     },
     "R/mod_compare.R": {
-      "checksum": "dd135831fd0e4b245c46a92cccc49d7d"
+      "checksum": "161464d1ca7c927f46e6cf248af7355f"
     },
     "R/mod_returns_calendar.R": {
-      "checksum": "45e7e126cc01526213a9ab932d95e192"
+      "checksum": "3db17591d3cee13a928a8947e2c6c885"
     },
     "R/mod_timeseries.R": {
-      "checksum": "929903a41b3a4e91bcc07cf19148e9bc"
+      "checksum": "bde993ca7d4e7f76d6d07152784d5852"
     },
     "R/mod_top100.R": {
-      "checksum": "17f0d5ccac61c8ce995bc672bf9be650"
+      "checksum": "46a4ed7fd672d393b6ad3154b6df0725"
     },
     "R/mod_treemap.R": {
-      "checksum": "18bf92d3526b57fb511b4cb137f035b7"
+      "checksum": "f220ac395731f48dc1515d83d08fcc81"
     },
     "R/run_app.R": {
       "checksum": "c3b9257adf9c69b9b48b1424b2e59545"
     },
     "R/utils_analytics.R": {
-      "checksum": "0d96d1f07f19da02b9b7d3ff1caafc01"
+      "checksum": "cc6e3f0f54b190a1d642ee064b80edf2"
     },
     "R/utils_download.R": {
-      "checksum": "69d514678f115e60a778bac59819786c"
+      "checksum": "3a9802a0d4b974c57ea24bc0babb9b03"
     },
     "R/utils_helpers.R": {
-      "checksum": "31e84c89f23913bbe85428b3dbb1b4ce"
+      "checksum": "ad5f5bc9aaeca427f459b6017c8f0056"
     }
   },
   "users": null

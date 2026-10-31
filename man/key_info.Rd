@@ -11,8 +11,8 @@ The answer as a list with \code{status} and, for a valid key, \code{data},
 or \code{NULL} when 'CoinMarketCap' cannot be reached.
 }
 \description{
-Calls the key/info endpoint, which uses no credits, for the plan of the
-key from \code{\link[=use_api_key]{use_api_key()}} and the credits it has used and has left.
+Calls the key/info endpoint, which uses no credits, for the plan
+of the key from \code{\link[=use_api_key]{use_api_key()}} and the credits it has used and has left.
 }
 \examples{
 \dontrun{

@@ -13,15 +13,13 @@ listings_table(listings)
 A DT datatable.
 }
 \description{
-A sortable table with 100 rows per page and numbers rounded to 2
-decimals, showing the price in dollars and the price changes in percent.
-Losses are shaded red and gains green, more strongly the larger the
+A sortable table with 100 rows per page and numbers rounded
+to 2 decimals, showing the price in dollars and the price changes in
+percent. Losses are shaded red and gains green, more strongly the larger the
 change, in steps of 0.1 percentile from the 5th to the 95th. Changes near
 zero keep the table's own background, so the table suits the light and the
 dark mode.
 }
 \examples{
-\dontrun{
 listings_table(get_listings()$data)
-}
 }

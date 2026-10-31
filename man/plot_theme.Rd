@@ -15,8 +15,8 @@ plot_theme(p, mode)
 The plotly object \code{p}, with its layout changed.
 }
 \description{
-plotly ignores the Bootstrap theme, so the backgrounds are made
-transparent and the text and grid colors are switched to suit the mode,
+plotly ignores the Bootstrap theme, so the backgrounds are
+made transparent and the text and grid colors are switched to suit the mode,
 on every axis of a chart with several panels.
 }
 \examples{

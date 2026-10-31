@@ -1,17 +1,12 @@
 ##########################################################################################
 #
 ##########################################################################################
-#' Returns calendar module - UI
-#'
-#' A button that downloads the monthly returns as CSV, and a heatmap of the
-#' monthly returns of the coin selected in the Timeseries tab.
-#'
+#' @title Returns calendar module - UI
+#' @description A button that downloads the monthly returns as CSV, and a
+#' heatmap of the monthly returns of the coin selected in the Timeseries tab.
 #' @param id Character. Module namespace id.
-#'
 #' @return A `tagList` of Shiny UI elements.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' shiny::fluidPage(golemcrypto:::mod_returns_calendar_ui("returns_calendar"))
@@ -33,24 +28,20 @@ mod_returns_calendar_ui <- function(id) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Returns calendar module - server
-#'
-#' Renders the monthly returns of the coin selected in the Timeseries tab,
-#' reusing its price history instead of downloading it again, and serves
-#' them as a CSV file named like `bitcoin-btc-monthly-returns-2026-10-24.csv`,
-#' with a `year` column and one column per month.
-#'
+#' @title Returns calendar module - server
+#' @description Renders the monthly returns of the coin selected in the
+#' Timeseries tab, reusing its price history instead of downloading it again,
+#' and serves them as a CSV file named like
+#' `bitcoin-btc-monthly-returns-2026-10-24.csv`, with a `year` column and one
+#' column per month.
 #' @param id Character. Module namespace id, must match the id used in
 #'   [mod_returns_calendar_ui()].
 #' @param history Reactive returning the price history of the selected coin,
 #'   from [mod_timeseries_server()].
 #' @param dark_mode Reactive returning `"light"` or `"dark"`, the mode of the
 #'   app.
-#'
 #' @return None. Called for its side effect of registering the module server.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' # inside app_server():

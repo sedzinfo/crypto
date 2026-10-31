@@ -115,3 +115,21 @@ test_that("the returns calendar needs at least two months of history", {
     expect_error(output$plot, "Not enough history")
   })
 })
+
+test_that("the about tab explains every tab and every column of the top 100 table", {
+  page <- htmltools::renderTags(mod_about_ui("about"))$html
+  for (tab in c("Timeseries", "Compare", "Top 100", "Treemap", "Returns calendar")) {
+    expect_match(page, paste0(">", tab, "</h3>"), fixed = TRUE, label = tab)
+  }
+  for (column in setdiff(names(listings_table(listings)$x$data), " ")) {
+    expect_match(page, paste0("<code>", column, "</code>"), fixed = TRUE, label = column)
+  }
+  # the refresh intervals are filled in, and the example chart sits in the text
+  expect_no_match(page, "{{", fixed = TRUE)
+  expect_match(page, "id=\"about-example\"", fixed = TRUE)
+  ids <- regmatches(page, gregexpr("id=\"[^\"]+\"", page))[[1]]
+  expect_false(anyDuplicated(ids) > 0)
+  testServer(mod_about_server, args = list(dark_mode = light), {
+    expect_no_error(output$example)
+  })
+})

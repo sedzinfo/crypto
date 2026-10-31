@@ -170,7 +170,56 @@ plot_compare <- function(prices, mode = "light") {
     plot_theme(mode)
 }
 ##########################################################################################
-# 
+#
+##########################################################################################
+#' @title Linear and log axes side by side
+#' @description An example for the About tab: two made-up coins that grow at
+#' steady rates, one doubling every year and one by 25% a year, on a linear axis
+#' and on a log axis. On the log axis both are straight lines, and the steeper
+#' line is the faster growth.
+#' @inheritParams plot_timeseries
+#' @return A plotly object.
+#' @keywords internal
+#' @examples
+#' golemcrypto:::plot_scales()
+plot_scales <- function(mode = "light") {
+  years <- seq(0, 5, by = 1 / 12)
+  coins <- list("Doubles every year" = 100 * 2^years, "+25% a year" = 100 * 1.25^years)
+  panel <- function(type) {
+    p <- plotly::plot_ly()
+    for (i in seq_along(coins)) {
+      p <- plotly::add_lines(p,
+        x = years,
+        y = coins[[i]],
+        name = names(coins)[i],
+        legendgroup = names(coins)[i],
+        # one legend entry per coin for both panels
+        showlegend = type == "linear",
+        line = list(color = average_colors[i]),
+        hovertemplate = "Year %{x:.1f}<br>Index %{y:,.0f}<extra></extra>"
+      )
+    }
+    yaxis <- list(type = type, title = if (type == "linear") "Index" else "")
+    # a gridline at every doubling, equally far apart on the log axis
+    if (type == "log") yaxis$tickvals <- 100 * 2^(0:5)
+    plotly::layout(p, xaxis = list(title = "Years"), yaxis = yaxis)
+  }
+  title <- function(text, x) {
+    list(text = text, x = x, y = 1, xref = "paper", yref = "paper", xanchor = "center", yanchor = "bottom", showarrow = FALSE)
+  }
+  plotly::subplot(panel("linear"), panel("log"), titleX = TRUE, titleY = TRUE, margin = 0.07) %>%
+    plotly::layout(
+      # above the panel titles, clear of the axis titles under the panels
+      legend = list(orientation = "h", x = 0.5, xanchor = "center", y = 1.12, yanchor = "bottom"),
+      annotations = list(title("Linear axis", 0.215), title("Log axis", 0.785)),
+      margin = list(t = 80)
+    ) %>%
+    # an illustration: no zoom or download buttons, which would cover the panel titles
+    plotly::config(displayModeBar = FALSE) %>%
+    plot_theme(mode)
+}
+##########################################################################################
+#
 ##########################################################################################
 #' @title Treemap of the top 100 coins
 #' @description Each box is sized by market cap and colored from red to green

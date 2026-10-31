@@ -18,13 +18,11 @@ page.}
 A plotly object.
 }
 \description{
-Months are colored from red to green by their return. The color limit is
-the 95th percentile of the absolute returns, so a few extreme months do
-not wash out the rest.
+Months are colored from red to green by their return. The color
+limit is the 95th percentile of the absolute returns, so a few extreme
+months do not wash out the rest.
 }
 \examples{
-\dontrun{
 btc <- get_history("Bitcoin (BTC)", as.Date("2013-04-29"))
 plot_returns_calendar(monthly_returns(btc), "Bitcoin (BTC)")
-}
 }

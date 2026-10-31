@@ -13,8 +13,9 @@ coin_label(coins)
 A character vector with one label per row of \code{coins}.
 }
 \description{
-The label identifies coins throughout the package: in the arguments of
-\code{\link[=get_history]{get_history()}}, and in the pickers, tables and plots of the app.
+The label identifies coins throughout the package: in the
+arguments of \code{\link[=get_history]{get_history()}}, and in the pickers, tables and plots of the
+app.
 }
 \examples{
 golemcrypto:::coin_label(data.frame(name = c("Bitcoin", "Ethereum"), symbol = c("BTC", "ETH")))

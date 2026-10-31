@@ -10,8 +10,8 @@ disk_cache()
 A \code{\link[cachem:cache_disk]{cachem::cache_disk()}} object.
 }
 \description{
-The price histories and the list of coins are kept on disk, so they
-survive R restarts: by default in the cache folder of the package from
+The price histories and the list of coins are kept on disk, so
+they survive R restarts: by default in the cache folder of the package from
 \code{\link[tools:R_user_dir]{tools::R_user_dir()}}, or in the folder set with
 \code{options(crypto.cache_dir = )}. Delete the folder to start over.
 }

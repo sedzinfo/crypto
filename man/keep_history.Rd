@@ -20,8 +20,8 @@ A list with the \code{history}, \code{from} and the \code{time} of the download,
 or \code{NULL} when \code{history} is \code{NULL}.
 }
 \description{
-A history with missing days (see \code{\link[=has_gaps]{has_gaps()}}) is returned but not kept,
-so the next call downloads it again.
+A history with missing days (see \code{\link[=has_gaps]{has_gaps()}}) is returned but
+not kept, so the next call downloads it again.
 }
 \examples{
 \dontrun{

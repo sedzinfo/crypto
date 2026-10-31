@@ -13,8 +13,8 @@ check_one_coin(history)
 \code{history}, invisibly, when it holds at most one coin.
 }
 \description{
-For the functions that work on one coin at a time, so that a history of
-several coins gives a clear error instead of a wrong result.
+For the functions that work on one coin at a time, so that a
+history of several coins gives a clear error instead of a wrong result.
 }
 \examples{
 history <- data.frame(name_symbol = c("Alpha (A)", "Beta (B)"))

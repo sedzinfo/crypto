@@ -20,10 +20,11 @@ app.}
 None. Called for its side effect of registering the module server.
 }
 \description{
-Renders the monthly returns of the coin selected in the Timeseries tab,
-reusing its price history instead of downloading it again, and serves
-them as a CSV file named like \verb{bitcoin-btc-monthly-returns-2026-10-24.csv},
-with a \code{year} column and one column per month.
+Renders the monthly returns of the coin selected in the
+Timeseries tab, reusing its price history instead of downloading it again,
+and serves them as a CSV file named like
+\verb{bitcoin-btc-monthly-returns-2026-10-24.csv}, with a \code{year} column and one
+column per month.
 }
 \examples{
 \dontrun{

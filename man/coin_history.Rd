@@ -16,12 +16,12 @@ The price history of the coin from \code{start_date}, or \code{NULL} when it
 could not be downloaded.
 }
 \description{
-The first call downloads the history from \code{start_date} and keeps it on
-disk (see \code{\link[=disk_cache]{disk_cache()}}). Later calls use the kept history, and once it
-is more than an hour old download only the days since its last day,
-because past days do not change: one request instead of one per 400 days.
-A history kept from a later day than \code{start_date} is downloaded again in
-full, and when bringing it up to date fails, the kept history is used.
+The first call downloads the history from \code{start_date} and keeps
+it on disk (see \code{\link[=disk_cache]{disk_cache()}}). Later calls use the kept history, and once
+it is more than an hour old download only the days since its last day,
+because past days do not change: one request instead of one per 400 days. A
+history kept from a later day than \code{start_date} is downloaded again in full,
+and when bringing it up to date fails, the kept history is used.
 }
 \examples{
 \dontrun{

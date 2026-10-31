@@ -16,9 +16,9 @@ labels fill the picker.}
 A \code{tagList} of Shiny UI elements.
 }
 \description{
-A coin picker with live search, a button that downloads the coin's daily
-prices as CSV, and a candlestick chart of those prices, with the trading
-volume underneath.
+A coin picker with live search, a button that downloads the
+coin's daily prices as CSV, and a candlestick chart of those prices, with the
+trading volume underneath.
 }
 \examples{
 \dontrun{

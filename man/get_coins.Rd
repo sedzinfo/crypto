@@ -11,10 +11,10 @@ The \code{\link[crypto2:crypto_list]{crypto2::crypto_list()}} data frame, with a
 column.
 }
 \description{
-Downloads the list of the active coins tracked by 'CoinMarketCap' and
-keeps it on disk for a day (see \code{\link[=disk_cache]{disk_cache()}}). When the download fails,
-the kept list is used. Its \code{name_symbol} column holds the labels, such as
-"Bitcoin (BTC)", that pick coins in \code{\link[=get_history]{get_history()}}.
+Downloads the list of the active coins tracked by
+'CoinMarketCap' and keeps it on disk for a day (see \code{\link[=disk_cache]{disk_cache()}}). When the
+download fails, the kept list is used. Its \code{name_symbol} column holds the
+labels, such as "Bitcoin (BTC)", that pick coins in \code{\link[=get_history]{get_history()}}.
 }
 \examples{
 \dontrun{

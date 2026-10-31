@@ -16,11 +16,11 @@ reactive returning one.}
 A \code{\link[shiny:downloadHandler]{shiny::downloadHandler()}}, to assign to an output.
 }
 \description{
-Builds the \code{downloadHandler()} behind the CSV buttons of the app. The file
-is named after \code{stem} and today's date, such as \verb{top100-2026-10-24.csv},
-and written with \code{\link[utils:write.csv]{utils::write.csv()}} without row names. When \code{data} or
-\code{stem} stop with \code{\link[shiny:req]{shiny::req()}} or \code{\link[shiny:validate]{shiny::validate()}}, the download fails
-and the app keeps running.
+Builds the \code{downloadHandler()} behind the CSV buttons of the
+app. The file is named after \code{stem} and today's date, such as
+\verb{top100-2026-10-24.csv}, and written with \code{\link[utils:write.csv]{utils::write.csv()}} without row
+names. When \code{data} or \code{stem} stop with \code{\link[shiny:req]{shiny::req()}} or \code{\link[shiny:validate]{shiny::validate()}},
+the download fails and the app keeps running.
 }
 \examples{
 \dontrun{

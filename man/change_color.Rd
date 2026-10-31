@@ -15,9 +15,10 @@ change_color(strength, gain)
 CSS \code{rgba()} colors, one per \code{strength}.
 }
 \description{
-Losses are red and gains green, more opaque the larger the change, so
-that changes near zero take the color of the page in light and dark mode.
-At most 75\% opaque, so the text on top stays readable in both modes.
+Losses are red and gains green, more opaque the larger the
+change, so that changes near zero take the color of the page in light and
+dark mode. At most 75\% opaque, so the text on top stays readable in both
+modes.
 }
 \examples{
 golemcrypto:::change_color(c(0, 0.5, 1), gain = TRUE)

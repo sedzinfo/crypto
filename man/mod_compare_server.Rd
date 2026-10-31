@@ -19,12 +19,12 @@ app.}
 None. Called for its side effect of registering the module server.
 }
 \description{
-Downloads the price history of the selected coins from the start date,
-renders their close prices normalized to 100, and serves them as a CSV
+Downloads the price history of the selected coins from the start
+date, renders their close prices normalized to 100, and serves them as a CSV
 file named like \verb{compare-2026-10-24.csv}, with the columns \code{date},
 \code{name_symbol}, \code{close} and \code{index}. The download waits until the selection
-has not changed for 1.5 seconds, instead of starting on every click in
-the picker.
+has not changed for 1.5 seconds, instead of starting on every click in the
+picker.
 }
 \examples{
 \dontrun{

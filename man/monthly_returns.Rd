@@ -15,9 +15,9 @@ A year by month matrix of returns in percent, rounded to 2
 decimals, with the years as row names and \code{month.abb} as column names.
 }
 \description{
-Each month's return is its last close relative to the last close of the
-month before, in percent. The first month, and the months still to come,
-are \code{NA}.
+Each month's return is its last close relative to the last close
+of the month before, in percent. The first month, and the months still to
+come, are \code{NA}.
 }
 \examples{
 history <- data.frame(

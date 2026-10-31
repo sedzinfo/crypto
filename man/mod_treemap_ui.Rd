@@ -13,8 +13,8 @@ mod_treemap_ui(id)
 A \code{tagList} of Shiny UI elements.
 }
 \description{
-The source and time of the last listings download with a button that
-downloads the treemap's data as CSV, and a treemap of the top 100 coins.
+The source and time of the last listings download with a button
+that downloads the treemap's data as CSV, and a treemap of the top 100 coins.
 }
 \examples{
 \dontrun{

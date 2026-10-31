@@ -29,6 +29,7 @@ app_server <- function(coins) {
     mod_compare_server("compare", coins, dark_mode)
     mod_treemap_server("treemap", listings, dark_mode)
     mod_returns_calendar_server("returns_calendar", history, dark_mode)
+    mod_about_server("about", dark_mode)
 
     output$keep_alive <- renderText({
       req(input$count)

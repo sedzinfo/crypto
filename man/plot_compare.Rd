@@ -16,12 +16,10 @@ page.}
 A plotly object.
 }
 \description{
-One line per coin, with buttons that switch the y axis between a linear
-and a log scale.
+One line per coin, with buttons that switch the y axis between
+a linear and a log scale.
 }
 \examples{
-\dontrun{
 history <- get_history(c("Bitcoin (BTC)", "Ethereum (ETH)", "Solana (SOL)"))
 plot_compare(normalize_prices(history))
-}
 }

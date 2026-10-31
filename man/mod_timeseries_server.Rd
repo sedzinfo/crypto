@@ -20,10 +20,10 @@ A reactive returning the price history of the selected coin, from
 \code{\link[=get_history]{get_history()}}, which the Returns calendar reuses.
 }
 \description{
-Downloads the full price history of the selected coin, renders its
-candlestick chart and serves it as a CSV file named like
-\verb{bitcoin-btc-history-2026-10-24.csv}, with the columns \code{date},
-\code{name_symbol}, \code{open}, \code{high}, \code{low}, \code{close}, \code{volume} and \code{market_cap}.
+Downloads the full price history of the selected coin, renders
+its candlestick chart and serves it as a CSV file named like
+\verb{bitcoin-btc-history-2026-10-24.csv}, with the columns \code{date}, \code{name_symbol},
+\code{open}, \code{high}, \code{low}, \code{close}, \code{volume} and \code{market_cap}.
 }
 \examples{
 \dontrun{

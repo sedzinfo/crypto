@@ -13,8 +13,8 @@ mod_returns_calendar_ui(id)
 A \code{tagList} of Shiny UI elements.
 }
 \description{
-A button that downloads the monthly returns as CSV, and a heatmap of the
-monthly returns of the coin selected in the Timeseries tab.
+A button that downloads the monthly returns as CSV, and a
+heatmap of the monthly returns of the coin selected in the Timeseries tab.
 }
 \examples{
 \dontrun{

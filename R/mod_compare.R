@@ -1,22 +1,17 @@
 ##########################################################################################
 #
 ##########################################################################################
-#' Compare module - UI
-#'
-#' A picker for up to 10 coins, a start date, a button that downloads the
-#' normalized prices as CSV, and a chart of the coins' close prices
-#' normalized to 100.
-#'
+#' @title Compare module - UI
+#' @description A picker for up to 10 coins, a start date, a button that
+#' downloads the normalized prices as CSV, and a chart of the coins' close
+#' prices normalized to 100.
 #' @param id Character. Module namespace id.
 #' @param coins Data frame of coins from [get_coins()], whose `name_symbol`
 #'   labels fill the picker.
 #' @param top_coins Coin labels sorted by market cap; the first three that
 #'   are in `coins` are selected at start.
-#'
 #' @return A `tagList` of Shiny UI elements.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' coins <- golemcrypto:::get_coins()
@@ -46,25 +41,20 @@ mod_compare_ui <- function(id, coins, top_coins) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Compare module - server
-#'
-#' Downloads the price history of the selected coins from the start date,
-#' renders their close prices normalized to 100, and serves them as a CSV
+#' @title Compare module - server
+#' @description Downloads the price history of the selected coins from the start
+#' date, renders their close prices normalized to 100, and serves them as a CSV
 #' file named like `compare-2026-10-24.csv`, with the columns `date`,
 #' `name_symbol`, `close` and `index`. The download waits until the selection
-#' has not changed for 1.5 seconds, instead of starting on every click in
-#' the picker.
-#'
+#' has not changed for 1.5 seconds, instead of starting on every click in the
+#' picker.
 #' @param id Character. Module namespace id, must match the id used in
 #'   [mod_compare_ui()].
 #' @param coins Data frame of coins from [get_coins()].
 #' @param dark_mode Reactive returning `"light"` or `"dark"`, the mode of the
 #'   app.
-#'
 #' @return None. Called for its side effect of registering the module server.
-#'
 #' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' # inside app_server():

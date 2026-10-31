@@ -45,6 +45,34 @@
   min-height: 500px;
 }
 
+/* the About tab: a column of text that stays easy to read on wide screens, with the formulas
+   on a shaded background and lines between the rows of the table, in light and dark mode */
+.about {
+  max-width: 52rem;
+  margin: 0 auto 2rem;
+}
+
+.about h3 {
+  margin-top: 2rem;
+}
+
+.about pre {
+  padding: 0.75rem 1rem;
+  background-color: var(--bs-tertiary-bg);
+  border-radius: var(--bs-border-radius);
+}
+
+.about table {
+  margin-bottom: 1rem;
+}
+
+.about th,
+.about td {
+  padding: 0.375rem 0.75rem;
+  border-bottom: var(--bs-border-width) solid var(--bs-border-color);
+  vertical-align: top;
+}
+
 /* the cookie banner of consent.js uses the primary color of the theme, which is the orange of
    the app, too pale behind its white text: use the navy of the sedzinfo.github.io sites instead */
 #analytics-choice.bg-primary {

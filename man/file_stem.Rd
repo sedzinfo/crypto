@@ -13,8 +13,8 @@ file_stem(label)
 A character string that can be used in a file name.
 }
 \description{
-Lower case, with every run of characters other than letters and digits
-replaced by a hyphen, so that "Bitcoin (BTC)" becomes "bitcoin-btc".
+Lower case, with every run of characters other than letters and
+digits replaced by a hyphen, so that "Bitcoin (BTC)" becomes "bitcoin-btc".
 }
 \examples{
 golemcrypto:::file_stem("Bitcoin (BTC)")

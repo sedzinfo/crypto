@@ -20,6 +20,7 @@ An interactive R Shiny application for visualizing cryptocurrency exchange rates
 - **Returns Calendar**: Monthly returns by year for any coin
 - **Light and Dark Mode**: Switch with the toggle in the navigation bar
 - **CSV Downloads**: Download the data behind every tab as a CSV file
+- **About Tab**: What every tab shows and how its numbers are calculated, with the formulas
 
 # Quick Start
 
@@ -130,6 +131,11 @@ Coins are picked by their label, such as `"Bitcoin (BTC)"`, and `get_coins()$nam
 ### Returns Calendar Tab
 - Monthly returns by year for the coin selected in the Timeseries tab
 
+### About Tab
+- What every tab shows and how its numbers are calculated: the candles, moving averages and drawdown, the index of the Compare tab, the Top 100 columns, and the colors of the tables and charts
+- Linear and log scales: how each is drawn, with an example chart, and when a log scale helps
+- The text is in `inst/app/about.md`, so it can be edited without touching the R code
+
 ## Screenshots
 
 ### Cryptocurrency Price Chart
@@ -184,6 +190,7 @@ The package follows the layout of a [golem](https://thinkr-open.github.io/golem/
 | `R/fct_plots.R` | The plotly charts and the Top 100 table |
 | `R/utils_helpers.R` | Color scales and light/dark mode helpers |
 | `inst/app/www/` | Favicon and the keep-alive script |
+| `inst/app/about.md` | The text of the About tab |
 | `tests/testthat/` | Tests, which run offline on small sample data |
 
 Run the tests with `devtools::test()`, and the full package check with `devtools::check()`.

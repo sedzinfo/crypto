@@ -14,9 +14,9 @@ normalize_prices(history)
 \code{history} from the first common date on, with an \code{index} column.
 }
 \description{
-Every coin starts at 100 on the first date on which all of them have data,
-so their lines can be compared directly: 150 means the price rose by half
-since that date.
+Every coin starts at 100 on the first date on which all of them
+have data, so their lines can be compared directly: 150 means the price rose
+by half since that date.
 }
 \examples{
 history <- data.frame(

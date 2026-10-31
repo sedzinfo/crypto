@@ -13,8 +13,9 @@ mod_top100_ui(id)
 A \code{tagList} of Shiny UI elements.
 }
 \description{
-The source and time of the last listings download with a button that
-downloads the listings as CSV, and a sortable table of the top 100 coins.
+The source and time of the last listings download with a button
+that downloads the listings as CSV, and a sortable table of the top 100
+coins.
 }
 \examples{
 \dontrun{

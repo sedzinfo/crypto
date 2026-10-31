@@ -15,8 +15,9 @@ and date.}
 of any coin.
 }
 \description{
-When 'CoinMarketCap' blocks the same request twice, crypto2 leaves its 400
-days out of the download, which shows as a gap in the dates of a coin.
+When 'CoinMarketCap' blocks the same request twice, crypto2
+leaves its 400 days out of the download, which shows as a gap in the dates of
+a coin.
 }
 \examples{
 history <- data.frame(

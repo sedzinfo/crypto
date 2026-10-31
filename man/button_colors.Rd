@@ -14,8 +14,8 @@ A list with the \code{bgcolor} and \code{activecolor} of the buttons, as
 used by a plotly \code{rangeselector}.
 }
 \description{
-plotly buttons default to a light background, which hides the light text
-of the dark mode.
+plotly buttons default to a light background, which hides the
+light text of the dark mode.
 }
 \examples{
 golemcrypto:::button_colors("dark")

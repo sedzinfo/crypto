@@ -26,7 +26,8 @@ system("R CMD Rd2pdf . --force --no-preview --output=golemcrypto.pdf")
 if (.Platform$OS.type == "windows") shell.exec("golemcrypto.pdf") else system("evince golemcrypto.pdf")
 system("R CMD build . --resave-data")
 
-if (interactive()) crypto()
-
+readRenviron("~/GitHub/golemcrypto/.Renviron")
+Sys.getenv("COINMARKETCAP_APIKEY")
+crypto()
 
 
